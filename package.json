@@ -1,0 +1,33 @@
+{
+  "name": "rdf-tree",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Visualizes a (small) RDF dataset",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@rdfjs/parser-n3": "^2.0.2",
+    "grapoi": "^1.1.3",
+    "n3": "^1.23.1",
+    "naive-ui": "^2.40.3",
+    "rdf-assets": "^0.2.1",
+    "rdf-ext": "^2.5.2",
+    "readable-stream": "^4.5.2"
+  },
+  "devDependencies": {
+    "@vicons/ionicons5": "^0.12.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vueuse/core": "^12.0.0",
+    "pinia": "^2.3.0",
+    "vite": "^5.4.11",
+    "vite-plugin-node-polyfills": "^0.22.0",
+    "vue": "^3.5.13",
+    "expect": "^29.7.0",
+    "expect-mocha-snapshot": "^2.1.5",
+    "mocha": "^11.0.1"
+  }
+}
