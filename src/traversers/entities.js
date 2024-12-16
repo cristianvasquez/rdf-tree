@@ -10,9 +10,11 @@ const all = { subject: undefined, predicate: undefined, object: undefined }
 // ignoreNamedGraphs: trims namedGraphs from the dataset
 function getEntities (dataset, options) {
 
-  const { matchers, ignoreNamedGraphs } = {
+  const { matchers, ignoreNamedGraphs, maxDepth } = {
     matchers: [all],
-    ignoreNamedGraphs: true, ...options,
+    ignoreNamedGraphs: true,
+    maxDepth: Infinity,
+    ...options,
   }
 
   const result = []
@@ -35,12 +37,15 @@ function getEntities (dataset, options) {
 
       const pointer = grapoi({ dataset: d, term, factory: rdf })
 
-      if (pointer.in().term) {
-        // If there is another triple pointing to it, ignore it from batch
-        return { entities: acc.entities, visited: acc.visited }
-      }
+      // if (pointer.in().term) {
+      //   // If there is another triple pointing to it, ignore it from batch
+      //   return { entities: acc.entities, visited: acc.visited }
+      // }
 
-      const { entity, visited } = bfsEntity(pointer, acc.visited)
+      const { entity, visited } = bfsEntity(pointer, {
+        maxDepth,
+        visited:acc.visited,
+      })
       return {
         entities: acc.entities.concat(entity),
         visited,
@@ -51,6 +56,7 @@ function getEntities (dataset, options) {
     visited = batchResult.visited
   }
 
+  console.log('visited',visited.size)
   return result
 }
 

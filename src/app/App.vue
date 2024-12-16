@@ -33,6 +33,7 @@ async function handleUserUpload (text, file) {
 
     const options = {
       ignoreNamedGraphs: true,
+      // maxDepth: 3,
       matchers: [
         { // Priority for entities of type Notice
           predicate: ns.rdf.type,

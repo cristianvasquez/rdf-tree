@@ -36,4 +36,13 @@ describe('bfs', () => {
     const entities = getEntities(dataset, options)
     expect(entities).toMatchSnapshot(this)
   })
+
+  it(`maxDepth = 2`, function () {
+    const dataset = getRabbitDataset()
+    const options = {
+      maxDepth: 2,
+    }
+    const entities = getEntities(dataset, options)
+    expect(entities).toMatchSnapshot(this)
+  })
 })

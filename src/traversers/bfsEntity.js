@@ -1,7 +1,7 @@
 import rdf from 'rdf-ext'
 
 class Entity {
-  constructor (term) {
+  constructor(term) {
     this.term = term
     this.types = []
     this.rows = []
@@ -10,26 +10,27 @@ class Entity {
 
 const rdfType = rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
 
-function bfsEntity (pointer, visited = rdf.termSet()) {
+function bfsEntity(pointer, { visited, maxDepth }) {
   const entity = new Entity(pointer.term)
-
   entity.types = pointer.node(pointer.term).out(rdfType).terms
-  const queue = [entity]
+
+  const queue = [{ entity, depth: 0 }]
 
   while (queue.length > 0) {
-    const entity = queue.shift()
-    const term = entity.term
+    const { entity: currentEntity, depth } = queue.shift()
+    const term = currentEntity.term
 
     if (visited.has(term)) {
-      entity.isInternalLink = true
+      currentEntity.isInternalLink = true
       continue
     }
 
     visited.add(term)
-
     const predicates = [
       ...rdf.termSet(
-        [...pointer.node(term).out().quads()].map(x => x.predicate))]
+        [...pointer.node(term).out().quads()].map(x => x.predicate)
+      ),
+    ]
 
     for (const predicate of predicates) {
       const values = pointer.node(term).out(predicate)
@@ -41,10 +42,13 @@ function bfsEntity (pointer, visited = rdf.termSet()) {
 
         childEntity.types = pointer.node(value.term).out(rdfType).terms
         row.values.push(childEntity)
-        queue.push(childEntity)
+
+        if (depth + 1 < maxDepth) {
+          queue.push({ entity: childEntity, depth: depth + 1 })
+        }
       }
 
-      entity.rows.push(row)
+      currentEntity.rows.push(row)
     }
   }
 
