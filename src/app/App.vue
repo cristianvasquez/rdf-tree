@@ -9,7 +9,7 @@ import { Readable } from 'readable-stream'
 import { useStore } from './state.js'
 
 const store = useStore()
-const { entities } = storeToRefs(store)
+const { entities, currentFocus } = storeToRefs(store)
 
 const { files, open, reset, onChange } = useFileDialog({
   accept: '*.ttl, *.trig',
@@ -44,7 +44,6 @@ const name = ref()
 </script>
 
 <template>
-
   <n-config-provider :theme="lightTheme">
     <n-card>
       <n-space>
@@ -52,6 +51,7 @@ const name = ref()
           Select turtle or Trig
         </n-button>
         {{ name }}
+        <n-button v-if="currentFocus" @click="store.reset()">{{currentFocus}}</n-button>
       </n-space>
     </n-card>
     {{ parseError }}

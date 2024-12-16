@@ -56,7 +56,6 @@ function getEntities (dataset, options) {
     visited = batchResult.visited
   }
 
-  console.log('visited',visited.size)
   return result
 }
 

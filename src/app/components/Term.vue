@@ -42,6 +42,7 @@ const namedNodeDisplay = computed(() => {
     <span>
       <slot></slot>
     </span>
+
     <template v-if="namedNodeDisplay">
       <a href="#"><span v-if="namedNodeDisplay.prefix"
                         class="vocab">{{ namedNodeDisplay.prefix }}</span>
