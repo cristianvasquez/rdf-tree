@@ -2,14 +2,13 @@
 import { useFileDialog } from '@vueuse/core'
 import { lightTheme, NButton, NCard, NConfigProvider, NSpace, NCheckbox } from 'naive-ui'
 import { ref, provide } from 'vue'
-import { getEntities } from '../traversers/bfsEntity.js'
+import { getEntities } from '../traversers/entities.js'
 import { ns } from '../namespaces.js'
 import EntityList from './components/EntityList.vue'
 import { parseTurtle } from '../io/rdf-parser.js'
 import { Readable } from 'readable-stream'
 
 const entities = ref([])
-const apiLinks = ref([])
 
 const { files, open, reset, onChange } = useFileDialog({
   accept: '*.ttl, *.trig',
@@ -19,7 +18,6 @@ const { files, open, reset, onChange } = useFileDialog({
 onChange(async (selectedFiles) => {
   if (selectedFiles) {
     const [file] = selectedFiles
-    apiLinks.value = []
     const reader = new FileReader()
     reader.onload = async (e) => await handleUserUpload(e.target.result, file)
     reader.readAsText(file)
@@ -67,7 +65,6 @@ provide('displayWarnings', displayWarnings)
           Select turtle or Trig
         </n-button>
         {{ name }}
-
       </n-space>
     </n-card>
     {{ parseError }}

@@ -253,7 +253,7 @@ Array [
                     ],
                     "term": Object {
                       "termType": "BlankNode",
-                      "value": "b0_b4",
+                      "value": "b1_b4",
                     },
                     "types": Array [
                       Object {
@@ -279,7 +279,7 @@ Array [
                     "rows": Array [],
                     "term": Object {
                       "termType": "BlankNode",
-                      "value": "b0_b4",
+                      "value": "b1_b4",
                     },
                     "types": Array [
                       Object {
@@ -428,7 +428,7 @@ Array [
                             ],
                             "term": Object {
                               "termType": "BlankNode",
-                              "value": "n3-1",
+                              "value": "n3-3",
                             },
                             "types": Array [
                               Object {
@@ -456,7 +456,7 @@ Array [
             ],
             "term": Object {
               "termType": "BlankNode",
-              "value": "n3-0",
+              "value": "n3-2",
             },
             "types": Array [
               Object {
