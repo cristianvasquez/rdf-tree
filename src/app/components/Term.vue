@@ -39,6 +39,10 @@ const namedNodeDisplay = computed(() => {
 <template>
 
   <div>
+    <span>
+      <slot></slot>
+    </span>
+
     <template v-if="namedNodeDisplay">
       <a href="#"><span v-if="namedNodeDisplay.prefix"
                         class="vocab">{{ namedNodeDisplay.prefix }}</span>
@@ -49,6 +53,7 @@ const namedNodeDisplay = computed(() => {
       <span class="datatype">{{ getDatatype(term) }}</span>
       <span class="language">{{ getLanguage(term) }}</span>
     </template>
+
   </div>
 
 </template>

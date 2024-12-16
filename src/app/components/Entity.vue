@@ -1,7 +1,8 @@
 <script setup>
 import { ArrowUp } from '@vicons/ionicons5'
 import { NIcon } from 'naive-ui'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, toRaw } from 'vue'
+import ToolIcon from './ToolIcon.vue'
 import Row from './Row.vue'
 import Term from './Term.vue'
 
@@ -14,6 +15,7 @@ onMounted(() => {
   inDataset.value = !!document.getElementById(`${props.pointer.term.value}`)
 })
 
+
 </script>
 
 <template>
@@ -22,21 +24,20 @@ onMounted(() => {
     <div class="entity" :id="pointer.term.value">
       <div class="entity-header">
         <Term :term="pointer.term">
-          <!--Allows slots-->
+          <ToolIcon :term="toRaw(pointer.term)"/>
         </Term>
+        <slot></slot>
       </div>
       <div class="rows">
         <template v-for="row of pointer.rows">
           <Row :row="row">
-            <!--Allows slots-->
+            <ToolIcon :term="toRaw(row.predicate)"/>
           </Row>
         </template>
       </div>
     </div>
   </template>
   <template v-else>
-
-
     <template v-if="pointer.isInternalLink && inDataset">
       <a :href="`#${pointer.term.value}`">
         {{ pointer.term.value }}
@@ -46,9 +47,10 @@ onMounted(() => {
       </a>
     </template>
     <template v-else>
-      <Term :term="pointer.term"></Term>
+      <Term :term="pointer.term">
+        <ToolIcon :term="toRaw(pointer.term)"/>
+      </Term>
     </template>
-
 
   </template>
 </template>

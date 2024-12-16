@@ -2,7 +2,7 @@ import { expect } from 'expect'
 import toMatchSnapshot from 'expect-mocha-snapshot'
 import { describe, it } from 'mocha'
 import { getRabbitDataset } from './support/dataset.js'
-import { getEntities } from '../src/traversers/bfsEntity.js'
+import { getEntities } from '../src/traversers/entities.js'
 import rdf from 'rdf-ext'
 
 expect.extend({ toMatchSnapshot })
@@ -32,6 +32,15 @@ describe('bfs', () => {
     const dataset = getRabbitDataset()
     const options = {
       ignoreNamedGraphs: false,
+    }
+    const entities = getEntities(dataset, options)
+    expect(entities).toMatchSnapshot(this)
+  })
+
+  it(`maxDepth = 2`, function () {
+    const dataset = getRabbitDataset()
+    const options = {
+      maxDepth: 2,
     }
     const entities = getEntities(dataset, options)
     expect(entities).toMatchSnapshot(this)
