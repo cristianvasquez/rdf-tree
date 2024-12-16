@@ -17,7 +17,7 @@ function focusOn (term) {
 </script>
 
 <template>
-  <template v-if="currentFocus && currentFocus.value === term.value">
+  <template v-if="currentFocus && currentFocus.equals(term)">
     <NIcon size="30" style="color: green;" @click="store.reset()">
       <CheckmarkOutline />
     </NIcon>
