@@ -31,6 +31,7 @@ onMounted(() => {
       <div class="rows">
         <template v-for="row of pointer.rows">
           <Row :row="row">
+            {{row.graphs}}
             <ToolIcon :term="toRaw(row.predicate)"/>
           </Row>
         </template>
@@ -48,6 +49,7 @@ onMounted(() => {
     </template>
     <template v-else>
       <Term :term="pointer.term">
+        {{pointer.graphs}}
         <ToolIcon :term="toRaw(pointer.term)"/>
       </Term>
     </template>

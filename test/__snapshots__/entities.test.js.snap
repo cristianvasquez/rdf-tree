@@ -16,7 +16,6 @@ Array [
               "termType": "NamedNode",
               "value": "http://pkm-united.org/Note",
             },
-            "types": Array [],
           },
         ],
       },
@@ -37,7 +36,6 @@ Array [
               "termType": "Literal",
               "value": "WhiteRabbit",
             },
-            "types": Array [],
           },
         ],
       },
@@ -61,7 +59,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "http://pkm-united.org/Block",
                     },
-                    "types": Array [],
                   },
                   Entity {
                     "rows": Array [],
@@ -69,7 +66,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "http://example.org/Rabbit",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -90,7 +86,6 @@ Array [
                       "termType": "Literal",
                       "value": "White rabbit",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -112,7 +107,6 @@ Array [
                       "termType": "Literal",
                       "value": "White rabbit",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -128,7 +122,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "https://miro.medium.com/max/720/1*HZazTjGg9EBSOoz34IN-tA.jpeg",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -153,7 +146,6 @@ Array [
                               "termType": "NamedNode",
                               "value": "http://pkm-united.org/Block",
                             },
-                            "types": Array [],
                           },
                           Entity {
                             "rows": Array [],
@@ -161,7 +153,6 @@ Array [
                               "termType": "NamedNode",
                               "value": "http://schema.org/Place",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -182,7 +173,6 @@ Array [
                               "termType": "Literal",
                               "value": "Wozenderlands",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -204,7 +194,6 @@ Array [
                               "termType": "Literal",
                               "value": "Wozenderlands",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -225,7 +214,6 @@ Array [
                               "termType": "Literal",
                               "value": "4879",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -246,7 +234,6 @@ Array [
                               "termType": "Literal",
                               "value": "5 Wonderland Street",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -255,16 +242,6 @@ Array [
                       "termType": "BlankNode",
                       "value": "b1_b4",
                     },
-                    "types": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://pkm-united.org/Block",
-                      },
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://schema.org/Place",
-                      },
-                    ],
                   },
                 ],
               },
@@ -281,16 +258,6 @@ Array [
                       "termType": "BlankNode",
                       "value": "b1_b4",
                     },
-                    "types": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://pkm-united.org/Block",
-                      },
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://schema.org/Place",
-                      },
-                    ],
                   },
                 ],
               },
@@ -315,7 +282,6 @@ Array [
                               "termType": "NamedNode",
                               "value": "http://pkm-united.org/Note",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -336,7 +302,6 @@ Array [
                               "termType": "Literal",
                               "value": "Alice",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -361,7 +326,6 @@ Array [
                                       "termType": "NamedNode",
                                       "value": "http://pkm-united.org/Block",
                                     },
-                                    "types": Array [],
                                   },
                                 ],
                               },
@@ -383,7 +347,6 @@ Array [
                                       "termType": "Literal",
                                       "value": "Alice",
                                     },
-                                    "types": Array [],
                                   },
                                 ],
                               },
@@ -405,7 +368,6 @@ Array [
                                       "termType": "Literal",
                                       "value": "Alice",
                                     },
-                                    "types": Array [],
                                   },
                                 ],
                               },
@@ -421,7 +383,6 @@ Array [
                                       "termType": "NamedNode",
                                       "value": "https://miro.medium.com/max/1100/1*xupcHn3b0jEFPkjvuH5Pbw.jpeg",
                                     },
-                                    "types": Array [],
                                   },
                                 ],
                               },
@@ -430,12 +391,6 @@ Array [
                               "termType": "BlankNode",
                               "value": "n3-3",
                             },
-                            "types": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://pkm-united.org/Block",
-                              },
-                            ],
                           },
                         ],
                       },
@@ -444,12 +399,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "http://example.org/note/Alice.md",
                     },
-                    "types": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://pkm-united.org/Note",
-                      },
-                    ],
                   },
                 ],
               },
@@ -458,16 +407,6 @@ Array [
               "termType": "BlankNode",
               "value": "n3-2",
             },
-            "types": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://pkm-united.org/Block",
-              },
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/Rabbit",
-              },
-            ],
           },
         ],
       },
@@ -476,12 +415,29 @@ Array [
       "termType": "NamedNode",
       "value": "http://example.org/note/WhiteRabbit.md",
     },
-    "types": Array [
+  },
+  Entity {
+    "rows": Array [
       Object {
-        "termType": "NamedNode",
-        "value": "http://pkm-united.org/Note",
+        "predicate": Object {
+          "termType": "NamedNode",
+          "value": "quad",
+        },
+        "values": Array [
+          Entity {
+            "rows": Array [],
+            "term": Object {
+              "termType": "NamedNode",
+              "value": "oh-my",
+            },
+          },
+        ],
       },
     ],
+    "term": Object {
+      "termType": "NamedNode",
+      "value": "shared",
+    },
   },
   Entity {
     "rows": Array [
@@ -502,7 +458,6 @@ Array [
               "termType": "Literal",
               "value": "loves to drink tea with",
             },
-            "types": Array [],
           },
         ],
       },
@@ -511,7 +466,6 @@ Array [
       "termType": "NamedNode",
       "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
     },
-    "types": Array [],
   },
   Entity {
     "rows": Array [
@@ -527,7 +481,6 @@ Array [
               "termType": "NamedNode",
               "value": "http://example.org/Something",
             },
-            "types": Array [],
           },
         ],
       },
@@ -543,7 +496,6 @@ Array [
               "termType": "NamedNode",
               "value": "http://example.org/o",
             },
-            "types": Array [],
           },
         ],
       },
@@ -552,12 +504,6 @@ Array [
       "termType": "NamedNode",
       "value": "http://example.org/s",
     },
-    "types": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/Something",
-      },
-    ],
   },
 ]
 `;
@@ -578,7 +524,6 @@ Array [
               "termType": "NamedNode",
               "value": "http://example.org/Something",
             },
-            "types": Array [],
           },
         ],
       },
@@ -594,7 +539,6 @@ Array [
               "termType": "NamedNode",
               "value": "http://example.org/o",
             },
-            "types": Array [],
           },
         ],
       },
@@ -603,12 +547,6 @@ Array [
       "termType": "NamedNode",
       "value": "http://example.org/s",
     },
-    "types": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/Something",
-      },
-    ],
   },
   Entity {
     "rows": Array [
@@ -624,7 +562,6 @@ Array [
               "termType": "NamedNode",
               "value": "http://pkm-united.org/Note",
             },
-            "types": Array [],
           },
         ],
       },
@@ -645,7 +582,6 @@ Array [
               "termType": "Literal",
               "value": "WhiteRabbit",
             },
-            "types": Array [],
           },
         ],
       },
@@ -669,7 +605,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "http://pkm-united.org/Block",
                     },
-                    "types": Array [],
                   },
                   Entity {
                     "rows": Array [],
@@ -677,7 +612,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "http://example.org/Rabbit",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -698,7 +632,6 @@ Array [
                       "termType": "Literal",
                       "value": "White rabbit",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -723,7 +656,6 @@ Array [
                               "termType": "NamedNode",
                               "value": "http://pkm-united.org/Block",
                             },
-                            "types": Array [],
                           },
                           Entity {
                             "rows": Array [],
@@ -731,7 +663,6 @@ Array [
                               "termType": "NamedNode",
                               "value": "http://schema.org/Place",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -752,7 +683,6 @@ Array [
                               "termType": "Literal",
                               "value": "Wozenderlands",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -774,7 +704,6 @@ Array [
                               "termType": "Literal",
                               "value": "Wozenderlands",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -795,7 +724,6 @@ Array [
                               "termType": "Literal",
                               "value": "4879",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -816,7 +744,6 @@ Array [
                               "termType": "Literal",
                               "value": "5 Wonderland Street",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -825,16 +752,6 @@ Array [
                       "termType": "BlankNode",
                       "value": "b0_b4",
                     },
-                    "types": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://pkm-united.org/Block",
-                      },
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://schema.org/Place",
-                      },
-                    ],
                   },
                 ],
               },
@@ -856,7 +773,6 @@ Array [
                       "termType": "Literal",
                       "value": "White rabbit",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -872,7 +788,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "https://miro.medium.com/max/720/1*HZazTjGg9EBSOoz34IN-tA.jpeg",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -889,16 +804,6 @@ Array [
                       "termType": "BlankNode",
                       "value": "b0_b4",
                     },
-                    "types": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://pkm-united.org/Block",
-                      },
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://schema.org/Place",
-                      },
-                    ],
                   },
                 ],
               },
@@ -923,7 +828,6 @@ Array [
                               "termType": "NamedNode",
                               "value": "http://pkm-united.org/Note",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -944,7 +848,6 @@ Array [
                               "termType": "Literal",
                               "value": "Alice",
                             },
-                            "types": Array [],
                           },
                         ],
                       },
@@ -969,7 +872,6 @@ Array [
                                       "termType": "NamedNode",
                                       "value": "http://pkm-united.org/Block",
                                     },
-                                    "types": Array [],
                                   },
                                 ],
                               },
@@ -991,7 +893,6 @@ Array [
                                       "termType": "Literal",
                                       "value": "Alice",
                                     },
-                                    "types": Array [],
                                   },
                                 ],
                               },
@@ -1013,7 +914,6 @@ Array [
                                       "termType": "Literal",
                                       "value": "Alice",
                                     },
-                                    "types": Array [],
                                   },
                                 ],
                               },
@@ -1029,7 +929,6 @@ Array [
                                       "termType": "NamedNode",
                                       "value": "https://miro.medium.com/max/1100/1*xupcHn3b0jEFPkjvuH5Pbw.jpeg",
                                     },
-                                    "types": Array [],
                                   },
                                 ],
                               },
@@ -1038,12 +937,6 @@ Array [
                               "termType": "BlankNode",
                               "value": "n3-1",
                             },
-                            "types": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://pkm-united.org/Block",
-                              },
-                            ],
                           },
                         ],
                       },
@@ -1052,12 +945,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "http://example.org/note/Alice.md",
                     },
-                    "types": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://pkm-united.org/Note",
-                      },
-                    ],
                   },
                 ],
               },
@@ -1066,16 +953,6 @@ Array [
               "termType": "BlankNode",
               "value": "n3-0",
             },
-            "types": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://pkm-united.org/Block",
-              },
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/Rabbit",
-              },
-            ],
           },
         ],
       },
@@ -1084,12 +961,6 @@ Array [
       "termType": "NamedNode",
       "value": "http://example.org/note/WhiteRabbit.md",
     },
-    "types": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://pkm-united.org/Note",
-      },
-    ],
   },
   Entity {
     "rows": Array [
@@ -1110,7 +981,6 @@ Array [
               "termType": "Literal",
               "value": "loves to drink tea with",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1119,7 +989,29 @@ Array [
       "termType": "NamedNode",
       "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
     },
-    "types": Array [],
+  },
+  Entity {
+    "rows": Array [
+      Object {
+        "predicate": Object {
+          "termType": "NamedNode",
+          "value": "quad",
+        },
+        "values": Array [
+          Entity {
+            "rows": Array [],
+            "term": Object {
+              "termType": "NamedNode",
+              "value": "oh-my",
+            },
+          },
+        ],
+      },
+    ],
+    "term": Object {
+      "termType": "NamedNode",
+      "value": "shared",
+    },
   },
 ]
 `;
@@ -1140,7 +1032,6 @@ Array [
               "termType": "NamedNode",
               "value": "http://pkm-united.org/Note",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1161,7 +1052,6 @@ Array [
               "termType": "Literal",
               "value": "WhiteRabbit",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1185,7 +1075,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "http://pkm-united.org/Block",
                     },
-                    "types": Array [],
                   },
                   Entity {
                     "rows": Array [],
@@ -1193,7 +1082,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "http://example.org/Rabbit",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -1214,7 +1102,6 @@ Array [
                       "termType": "Literal",
                       "value": "White rabbit",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -1230,16 +1117,6 @@ Array [
                       "termType": "BlankNode",
                       "value": "b2_b4",
                     },
-                    "types": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://pkm-united.org/Block",
-                      },
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://schema.org/Place",
-                      },
-                    ],
                   },
                 ],
               },
@@ -1260,7 +1137,6 @@ Array [
                       "termType": "Literal",
                       "value": "White rabbit",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -1276,7 +1152,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "https://miro.medium.com/max/720/1*HZazTjGg9EBSOoz34IN-tA.jpeg",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -1292,16 +1167,6 @@ Array [
                       "termType": "BlankNode",
                       "value": "b2_b4",
                     },
-                    "types": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://pkm-united.org/Block",
-                      },
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://schema.org/Place",
-                      },
-                    ],
                   },
                 ],
               },
@@ -1317,12 +1182,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "http://example.org/note/Alice.md",
                     },
-                    "types": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://pkm-united.org/Note",
-                      },
-                    ],
                   },
                 ],
               },
@@ -1331,16 +1190,6 @@ Array [
               "termType": "BlankNode",
               "value": "n3-4",
             },
-            "types": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://pkm-united.org/Block",
-              },
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/Rabbit",
-              },
-            ],
           },
         ],
       },
@@ -1349,12 +1198,6 @@ Array [
       "termType": "NamedNode",
       "value": "http://example.org/note/WhiteRabbit.md",
     },
-    "types": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://pkm-united.org/Note",
-      },
-    ],
   },
   Entity {
     "rows": Array [
@@ -1370,7 +1213,6 @@ Array [
               "termType": "NamedNode",
               "value": "http://pkm-united.org/Block",
             },
-            "types": Array [],
           },
           Entity {
             "rows": Array [],
@@ -1378,7 +1220,6 @@ Array [
               "termType": "NamedNode",
               "value": "http://schema.org/Place",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1399,7 +1240,6 @@ Array [
               "termType": "Literal",
               "value": "Wozenderlands",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1421,7 +1261,6 @@ Array [
               "termType": "Literal",
               "value": "Wozenderlands",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1442,7 +1281,6 @@ Array [
               "termType": "Literal",
               "value": "4879",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1463,7 +1301,6 @@ Array [
               "termType": "Literal",
               "value": "5 Wonderland Street",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1472,16 +1309,6 @@ Array [
       "termType": "BlankNode",
       "value": "b2_b4",
     },
-    "types": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://pkm-united.org/Block",
-      },
-      Object {
-        "termType": "NamedNode",
-        "value": "http://schema.org/Place",
-      },
-    ],
   },
   Entity {
     "rows": Array [
@@ -1502,7 +1329,6 @@ Array [
               "termType": "Literal",
               "value": "loves to drink tea with",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1511,7 +1337,6 @@ Array [
       "termType": "NamedNode",
       "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
     },
-    "types": Array [],
   },
   Entity {
     "rows": Array [
@@ -1528,7 +1353,6 @@ Array [
               "termType": "NamedNode",
               "value": "http://pkm-united.org/Note",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1549,7 +1373,6 @@ Array [
               "termType": "Literal",
               "value": "Alice",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1573,7 +1396,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "http://pkm-united.org/Block",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -1594,7 +1416,6 @@ Array [
                       "termType": "Literal",
                       "value": "Alice",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -1615,7 +1436,6 @@ Array [
                       "termType": "Literal",
                       "value": "Alice",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -1631,7 +1451,6 @@ Array [
                       "termType": "NamedNode",
                       "value": "https://miro.medium.com/max/1100/1*xupcHn3b0jEFPkjvuH5Pbw.jpeg",
                     },
-                    "types": Array [],
                   },
                 ],
               },
@@ -1640,12 +1459,6 @@ Array [
               "termType": "BlankNode",
               "value": "n3-5",
             },
-            "types": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://pkm-united.org/Block",
-              },
-            ],
           },
         ],
       },
@@ -1654,12 +1467,29 @@ Array [
       "termType": "NamedNode",
       "value": "http://example.org/note/Alice.md",
     },
-    "types": Array [
+  },
+  Entity {
+    "rows": Array [
       Object {
-        "termType": "NamedNode",
-        "value": "http://pkm-united.org/Note",
+        "predicate": Object {
+          "termType": "NamedNode",
+          "value": "quad",
+        },
+        "values": Array [
+          Entity {
+            "rows": Array [],
+            "term": Object {
+              "termType": "NamedNode",
+              "value": "oh-my",
+            },
+          },
+        ],
       },
     ],
+    "term": Object {
+      "termType": "NamedNode",
+      "value": "shared",
+    },
   },
   Entity {
     "rows": Array [
@@ -1675,7 +1505,6 @@ Array [
               "termType": "NamedNode",
               "value": "http://example.org/Something",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1691,7 +1520,6 @@ Array [
               "termType": "NamedNode",
               "value": "http://example.org/o",
             },
-            "types": Array [],
           },
         ],
       },
@@ -1700,12 +1528,6 @@ Array [
       "termType": "NamedNode",
       "value": "http://example.org/s",
     },
-    "types": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/Something",
-      },
-    ],
   },
 ]
 `;

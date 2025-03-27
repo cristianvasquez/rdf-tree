@@ -1,18 +1,16 @@
 import rdf from 'rdf-ext'
 
 class Entity {
-  constructor(term) {
+  constructor (term) {
     this.term = term
-    this.types = []
     this.rows = []
   }
 }
 
-const rdfType = rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
+const unique = (arr) => [...rdf.termSet(arr)]
 
-function bfsEntity(pointer, { visited, maxDepth }) {
+function bfsEntity (pointer, { visited, maxDepth }) {
   const entity = new Entity(pointer.term)
-  entity.types = pointer.node(pointer.term).out(rdfType).terms
 
   const queue = [{ entity, depth: 0 }]
 
@@ -26,23 +24,16 @@ function bfsEntity(pointer, { visited, maxDepth }) {
     }
 
     visited.add(term)
-    const predicates = [
-      ...rdf.termSet(
-        [...pointer.node(term).out().quads()].map(x => x.predicate)
-      ),
-    ]
+    const outgoingQuads = [...pointer.node(term).out().quads()]
 
-    for (const predicate of predicates) {
-      const values = pointer.node(term).out(predicate)
+    for (const predicate of unique(outgoingQuads.map(x => x.predicate))) {
+      const terms = pointer.node(term).out(predicate).terms
 
       const row = { predicate, values: [] }
 
-      for (const value of values) {
-        const childEntity = new Entity(value.term)
-
-        childEntity.types = pointer.node(value.term).out(rdfType).terms
+      for (const term of unique(terms)) {
+        const childEntity = new Entity(term)
         row.values.push(childEntity)
-
         if (depth + 1 < maxDepth) {
           queue.push({ entity: childEntity, depth: depth + 1 })
         }

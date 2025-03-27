@@ -24,6 +24,9 @@ _:b4 a dot:Block, schema:Place ;
      dot:selector "Wozenderlands" ;
      schema:postalCode "4879" ;
      schema:streetAddress "5 Wonderland Street" .
+
+     <shared> <quad> <oh-my> .
+
 }
 
 <http://example.org/note/Alice.md> {
@@ -37,6 +40,7 @@ _:b4 a dot:Block, schema:Place ;
                schema:image <https://miro.medium.com/max/1100/1*xupcHn3b0jEFPkjvuH5Pbw.jpeg> ;
            ] .
 
+    <shared> <quad> <oh-my> .
 }
 
 ex:s ex:p ex:o ;

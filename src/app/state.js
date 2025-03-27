@@ -6,7 +6,7 @@ import { getEntities } from '../traversers/entities.js'
 const tools = {
   typeOf: (type) => {
     return {
-      ignoreNamedGraphs: true,
+      ignoreNamedGraphs: false,
       matchers: [
         { // Priority for entities of type
           predicate: ns.rdf.type,
@@ -18,7 +18,7 @@ const tools = {
   },
   focusOn: (term) => {
     return {
-      ignoreNamedGraphs: true,
+      ignoreNamedGraphs: false,
       maxDepth: 1,
       matchers: [
         {
