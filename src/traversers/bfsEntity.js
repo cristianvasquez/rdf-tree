@@ -29,10 +29,18 @@ function bfsEntity (pointer, { visited, maxDepth }) {
     for (const predicate of unique(outgoingQuads.map(x => x.predicate))) {
       const terms = pointer.node(term).out(predicate).terms
 
-      const row = { predicate, values: [] }
+      const predicateGraphs = unique(
+        outgoingQuads.filter(x => x.predicate.equals(predicate)).
+          map(x => x.graph))
+
+      const row = { predicate, values: [], graphs: predicateGraphs }
 
       for (const term of unique(terms)) {
         const childEntity = new Entity(term)
+
+        childEntity.graphs = unique(
+          outgoingQuads.filter(x => x.object.equals(term)).map(x => x.graph))
+
         row.values.push(childEntity)
         if (depth + 1 < maxDepth) {
           queue.push({ entity: childEntity, depth: depth + 1 })
