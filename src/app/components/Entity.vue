@@ -1,37 +1,70 @@
 <script setup>
 import { ArrowUp } from '@vicons/ionicons5'
-import { NIcon } from 'naive-ui'
-import { onMounted, ref, toRaw } from 'vue'
+import { NIcon, NPopover } from 'naive-ui'
+import { onMounted, ref, toRaw, inject, provide, computed } from 'vue'
 import ToolIcon from './ToolIcon.vue'
 import Row from './Row.vue'
 import Term from './Term.vue'
+import { getGraphBackgroundStyle, getAllTerms, getNewTerms } from './colors.js'
 
 const props = defineProps({
   pointer: Object,
 })
+
 const inDataset = ref()
 
 onMounted(() => {
   inDataset.value = !!document.getElementById(`${props.pointer.term.value}`)
 })
 
+// // Inject parent graphs from higher up in the hierarchy
+// const parentGraphs = inject('parentGraphs', [])
+// const combinedGraphs = getAllTerms(parentGraphs, props.pointer.graphs)
+// provide('parentGraphs', combinedGraphs)
+
+
+const entityStyle = computed(() => {
+  return getGraphBackgroundStyle(props.pointer.graphs.map(x=>x.value), true)
+})
+
+// const newDeclarations = computed(() => {
+//   return getNewTerms(parentGraphs, props.pointer.graphs)
+// })
+// const entityStyle = computed(() => {
+//   return getGraphBackgroundStyle(newDeclarations.value, true)
+// })
+
+
 
 </script>
 
 <template>
-
   <template v-if="pointer.rows.length">
-    <div class="entity" :id="pointer.term.value">
-      <div class="entity-header">
-        <Term :term="pointer.term">
-          <ToolIcon :term="toRaw(pointer.term)"/>
-        </Term>
+
+    <div class="entity" :id="pointer.term.value" :style="entityStyle">
+      <div
+          class="entity-header"
+      >
+        <n-popover trigger="hover" :delay="500" >
+          <template #trigger>
+            <Term :term="pointer.term">
+              <ToolIcon :term="toRaw(pointer.term)"/>
+            </Term>
+          </template>
+          <span>
+            Graphs
+            <ul>
+              <li v-for="graph of pointer.graphs">{{ graph }}</li>
+            </ul>
+
+          </span>
+        </n-popover>
+
         <slot></slot>
       </div>
       <div class="rows">
         <template v-for="row of pointer.rows">
           <Row :row="row">
-            {{row.graphs}}
             <ToolIcon :term="toRaw(row.predicate)"/>
           </Row>
         </template>
@@ -49,11 +82,8 @@ onMounted(() => {
     </template>
     <template v-else>
       <Term :term="pointer.term">
-        {{pointer.graphs}}
         <ToolIcon :term="toRaw(pointer.term)"/>
       </Term>
     </template>
-
   </template>
 </template>
-
