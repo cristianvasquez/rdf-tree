@@ -41,17 +41,10 @@ function bfsEntity (pointer, { visited = new Set(), maxDepth = Infinity }) {
     for (const predicate of outgoingPredicates) {
       const terms = pointer.node(term).out(predicate).terms
 
-      // Append graphs for the predicates (@TODO, refactor - make this optional)
-      const predicateGraphs = unique(
-        outgoingQuads.filter(x => x.predicate.equals(predicate)).
-          map(x => x.graph),
-      )
-
       // One row for each unique predicate
       const row = {
         predicate,
         values: [],
-        graphs: predicateGraphs,
       }
 
       // Process unique terms for this predicate

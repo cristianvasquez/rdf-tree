@@ -11,25 +11,6 @@ const props = defineProps({
     row: Object,
 });
 
-// Inject parent graphs from higher up in the hierarchy
-// const parentGraphs = inject('parentGraphs', [])
-// const combinedGraphs = getAllTerms(parentGraphs, props.row.graphs)
-// provide('parentGraphs', combinedGraphs)
-//
-//
-// const newDeclarations = computed(() => {
-//   return getNewTerms(parentGraphs, props.row.graphs)
-// })
-//
-// const rowStyle = computed(() => {
-//   return getGraphBackgroundStyle(newDeclarations.value)
-// })
-
-const entityStyle = computed(() => {
-  return getGraphBackgroundStyle(props.row.graphs.map(x=>x.value), true)
-})
-
-
 const show = ref(true);
 
 function toggle() {
@@ -38,7 +19,7 @@ function toggle() {
 
 </script>
 <template>
-    <div class="row" :style="rowStyle">
+    <div class="row" >
         <ul class="property">
             <li>
                 <div style="display: flex; align-items: center">

@@ -17,24 +17,9 @@ onMounted(() => {
   inDataset.value = !!document.getElementById(`${props.pointer.term.value}`)
 })
 
-// // Inject parent graphs from higher up in the hierarchy
-// const parentGraphs = inject('parentGraphs', [])
-// const combinedGraphs = getAllTerms(parentGraphs, props.pointer.graphs)
-// provide('parentGraphs', combinedGraphs)
-
-
 const entityStyle = computed(() => {
   return getGraphBackgroundStyle(props.pointer.graphs.map(x=>x.value), true)
 })
-
-// const newDeclarations = computed(() => {
-//   return getNewTerms(parentGraphs, props.pointer.graphs)
-// })
-// const entityStyle = computed(() => {
-//   return getGraphBackgroundStyle(newDeclarations.value, true)
-// })
-
-
 
 </script>
 
@@ -56,7 +41,6 @@ const entityStyle = computed(() => {
             <ul>
               <li v-for="graph of pointer.graphs">{{ graph }}</li>
             </ul>
-
           </span>
         </n-popover>
 
