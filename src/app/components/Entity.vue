@@ -30,7 +30,6 @@ const entityStyle = computed(() => {
   return getGraphBackgroundStyle(newDeclarations.value)
 })
 
-
 </script>
 
 <template>
@@ -46,7 +45,6 @@ const entityStyle = computed(() => {
     <div class="entity" :id="pointer.term.value" :style="entityStyle">
       <div
           class="entity-header"
-
       >
         <Term :term="pointer.term">
           <ToolIcon :term="toRaw(pointer.term)"/>
@@ -78,10 +76,3 @@ const entityStyle = computed(() => {
     </template>
   </template>
 </template>
-<style scoped>
-.entity,
-.row-container {
-  background-blend-mode: multiply;
-  transition: background 0.3s ease;
-}
-</style>

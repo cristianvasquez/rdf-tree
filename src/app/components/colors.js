@@ -1,3 +1,5 @@
+import { toRaw } from 'vue'
+
 const graphColorCache = new Map()
 // Predefined transparent colors
 const graphColors = [
@@ -27,6 +29,7 @@ const getGraphColor = (graphValue) => {
 
 // Generate background style for graphs
 const getGraphBackgroundStyle = (graphs) => {
+
   if (!graphs || graphs.length === 0) return {}
 
   // Multiple graphs - create layered background
@@ -37,6 +40,9 @@ const getGraphBackgroundStyle = (graphs) => {
     }
   }
 
+
+
+  console.log('Found', toRaw(graphs[0]) )
   // Single graph - return its color
   return { background: getGraphColor(graphs[0]) }
 }
@@ -52,7 +58,7 @@ function getAllTerms (parentGraphs, termArr) {
 function getNewTerms (parentGraphs, termArr) {
   if (!termArr) return []
   const parentSet = new Set(parentGraphs)
-  return [...termArr].filter(term => !parentSet.has(term.value))
+  return termArr.map(x => x.value).filter(value => !parentSet.has(value))
 }
 
 export { getGraphBackgroundStyle, getAllTerms, getNewTerms }
