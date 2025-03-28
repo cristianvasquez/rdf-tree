@@ -12,18 +12,23 @@ const props = defineProps({
 });
 
 // Inject parent graphs from higher up in the hierarchy
-const parentGraphs = inject('parentGraphs', [])
-const combinedGraphs = getAllTerms(parentGraphs, props.row.graphs)
-provide('parentGraphs', combinedGraphs)
+// const parentGraphs = inject('parentGraphs', [])
+// const combinedGraphs = getAllTerms(parentGraphs, props.row.graphs)
+// provide('parentGraphs', combinedGraphs)
+//
+//
+// const newDeclarations = computed(() => {
+//   return getNewTerms(parentGraphs, props.row.graphs)
+// })
+//
+// const rowStyle = computed(() => {
+//   return getGraphBackgroundStyle(newDeclarations.value)
+// })
 
-
-const newDeclarations = computed(() => {
-  return getNewTerms(parentGraphs, props.row.graphs)
+const entityStyle = computed(() => {
+  return getGraphBackgroundStyle(props.row.graphs.map(x=>x.value), true)
 })
 
-const rowStyle = computed(() => {
-  return getGraphBackgroundStyle(newDeclarations.value)
-})
 
 const show = ref(true);
 

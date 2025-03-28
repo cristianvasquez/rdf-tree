@@ -29,8 +29,7 @@ const getGraphColor = (graphValue) => {
 }
 
 // Generate background style for graphs
-const getGraphBackgroundStyle = (graphs) => {
-
+const getGraphBackgroundStyle = (graphs, ignoreParents = false) => {
   if (!graphs || graphs.length === 0) return {}
 
   // Multiple graphs - create layered background
@@ -38,11 +37,15 @@ const getGraphBackgroundStyle = (graphs) => {
     const backgroundLayers = graphs.map(graph => getGraphColor(graph))
     return {
       backgroundImage: `linear-gradient(45deg, ${backgroundLayers.join(', ')})`,
+      isolation: ignoreParents ? 'isolate' : 'auto'
     }
   }
 
   // Single graph - return its color
-  return { background: getGraphColor(graphs[0]) }
+  return {
+    background: getGraphColor(graphs[0]),
+    isolation: ignoreParents ? 'isolate' : 'auto'
+  }
 }
 
 function getAllTerms (parentGraphs, termArr) {

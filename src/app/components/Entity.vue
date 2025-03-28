@@ -1,6 +1,6 @@
 <script setup>
 import { ArrowUp } from '@vicons/ionicons5'
-import { NIcon } from 'naive-ui'
+import { NIcon, NPopover } from 'naive-ui'
 import { onMounted, ref, toRaw, inject, provide, computed } from 'vue'
 import ToolIcon from './ToolIcon.vue'
 import Row from './Row.vue'
@@ -17,38 +17,49 @@ onMounted(() => {
   inDataset.value = !!document.getElementById(`${props.pointer.term.value}`)
 })
 
-// Inject parent graphs from higher up in the hierarchy
-const parentGraphs = inject('parentGraphs', [])
-const combinedGraphs = getAllTerms(parentGraphs, props.pointer.graphs)
-provide('parentGraphs', combinedGraphs)
+// // Inject parent graphs from higher up in the hierarchy
+// const parentGraphs = inject('parentGraphs', [])
+// const combinedGraphs = getAllTerms(parentGraphs, props.pointer.graphs)
+// provide('parentGraphs', combinedGraphs)
 
-const newDeclarations = computed(() => {
-  return getNewTerms(parentGraphs, props.pointer.graphs)
-})
 
 const entityStyle = computed(() => {
-  return getGraphBackgroundStyle(newDeclarations.value)
+  return getGraphBackgroundStyle(props.pointer.graphs.map(x=>x.value), true)
 })
+
+// const newDeclarations = computed(() => {
+//   return getNewTerms(parentGraphs, props.pointer.graphs)
+// })
+// const entityStyle = computed(() => {
+//   return getGraphBackgroundStyle(newDeclarations.value, true)
+// })
+
+
 
 </script>
 
 <template>
   <template v-if="pointer.rows.length">
 
-<!--    <ul>-->
-<!--      <li>PARENT GRAPHS[{{ parentGraphs }}]</li>-->
-<!--      <li>ELEMENT DECLARATIONS[{{ pointer.graphs }}]</li>-->
-<!--      <li>NEW DECLARATIONS[{{ newDeclarations }}]</li>-->
-<!--      <li>entityHeaderStyle[{{ entityStyle }}]</li>-->
-<!--    </ul>-->
-
     <div class="entity" :id="pointer.term.value" :style="entityStyle">
       <div
           class="entity-header"
       >
-        <Term :term="pointer.term">
-          <ToolIcon :term="toRaw(pointer.term)"/>
-        </Term>
+        <n-popover trigger="hover" :delay="500" >
+          <template #trigger>
+            <Term :term="pointer.term">
+              <ToolIcon :term="toRaw(pointer.term)"/>
+            </Term>
+          </template>
+          <span>
+            Graphs
+            <ul>
+              <li v-for="graph of pointer.graphs">{{ graph }}</li>
+            </ul>
+
+          </span>
+        </n-popover>
+
         <slot></slot>
       </div>
       <div class="rows">
