@@ -24,6 +24,7 @@ onMounted(() => {
     <div class="entity" :id="pointer.term.value">
       <div class="entity-header">
         <Term :term="pointer.term">
+          {{pointer.graphs}}
           <ToolIcon :term="toRaw(pointer.term)"/>
         </Term>
         <slot></slot>
