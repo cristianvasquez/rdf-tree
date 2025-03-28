@@ -3,15 +3,16 @@ import { toRaw } from 'vue'
 const graphColorCache = new Map()
 // Predefined transparent colors
 const graphColors = [
-  'rgba(76, 175, 80, 0.2)',    // Green
-  'rgba(33, 150, 243, 0.2)',   // Blue
-  'rgba(255, 152, 0, 0.2)',    // Orange
-  'rgba(156, 39, 176, 0.2)',   // Purple
-  'rgba(244, 67, 54, 0.2)',    // Red
-  'rgba(0, 188, 212, 0.2)',    // Cyan
-  'rgba(255, 235, 59, 0.2)',   // Yellow
-  'rgba(158, 158, 158, 0.2)',  // Gray
-]
+  'rgba(120, 200, 130, 0.3)',  // Soft Green
+  'rgba(100, 180, 255, 0.3)',  // Light Blue
+  'rgba(255, 180, 70, 0.3)',   // Warm Orange
+  'rgba(220, 140, 250, 0.3)',  // Soft Purple
+  'rgba(255, 100, 120, 0.3)',  // Bright Red
+  'rgba(80, 210, 230, 0.3)',   // Aqua Cyan
+  'rgba(255, 240, 80, 0.3)',   // Pastel Yellow
+  'rgba(190, 190, 190, 0.3)',  // Light Gray
+];
+
 
 // Lazily assign color to a graph
 const getGraphColor = (graphValue) => {
@@ -40,9 +41,6 @@ const getGraphBackgroundStyle = (graphs) => {
     }
   }
 
-
-
-  console.log('Found', toRaw(graphs[0]) )
   // Single graph - return its color
   return { background: getGraphColor(graphs[0]) }
 }
