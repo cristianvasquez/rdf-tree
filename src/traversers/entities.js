@@ -12,7 +12,7 @@ function getEntities (dataset, options) {
 
   const { matchers, ignoreNamedGraphs, maxDepth } = {
     matchers: [all],
-    ignoreNamedGraphs: true,
+    ignoreNamedGraphs: false,
     maxDepth: Infinity,
     ...options,
   }

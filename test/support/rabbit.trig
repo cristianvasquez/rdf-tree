@@ -9,6 +9,7 @@
 
 <http://example.org/note/WhiteRabbit.md> a dot:Note ;
      schema:name "WhiteRabbit" ;
+     schema:name "Conejo blanco"@es ;
      dot:contains [
                      rdf:type dot:Block, ex:Rabbit ;
                      schema:name "White rabbit" ;
