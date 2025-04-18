@@ -7,12 +7,11 @@ const all = { subject: undefined, predicate: undefined, object: undefined }
 // Gets the roots of all entities.
 //
 // matchers: array of matchers of the type {s,p,o}, where {} is all triples
-// ignoreNamedGraphs: trims namedGraphs from the dataset
+// maxDepth: max depth of the traversal
 function getEntities (dataset, options) {
 
-  const { matchers, ignoreNamedGraphs, maxDepth } = {
+  const { matchers, asTriples, maxDepth } = {
     matchers: [all],
-    ignoreNamedGraphs: false,
     maxDepth: Infinity,
     ...options,
   }
@@ -21,12 +20,9 @@ function getEntities (dataset, options) {
 
   let visited = rdf.termSet()
 
-  const d = ignoreNamedGraphs ? dataset.map(
-    quad => rdf.quad(quad.subject, quad.predicate, quad.object)) : dataset
-
   for (const { subject, predicate, object } of matchers) {
-    const batch = [...d.match(subject, predicate, object)].map(
-      x => x.subject).filter(x => !visited.has(x))
+    const batch = [...dataset.match(subject, predicate, object)].map(
+      x => x.subject).filter(subject => !visited.has(subject))
 
     const batchResult = batch.reduce((acc, term) => {
 
@@ -35,16 +31,11 @@ function getEntities (dataset, options) {
         return { entities: acc.entities, visited: acc.visited }
       }
 
-      const pointer = grapoi({ dataset: d, term, factory: rdf })
-
-      // if (pointer.in().term) {
-      //   // If there is another triple pointing to it, ignore it from batch
-      //   return { entities: acc.entities, visited: acc.visited }
-      // }
+      const pointer = grapoi({ dataset, term, factory: rdf })
 
       const { entity, visited } = bfsEntity(pointer, {
         maxDepth,
-        visited:acc.visited,
+        visited: acc.visited,
       })
       return {
         entities: acc.entities.concat(entity),

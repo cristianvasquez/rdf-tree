@@ -1,3 +1,8 @@
+/**
+ * Gist of a PoC to do this with 3d layers instead of colors:
+ * https://gist.github.com/cristianvasquez/2b450d60c0d63ff1d1f69240de0abb00
+ */
+
 const graphColorCache = new Map()
 // Predefined transparent colors
 const graphColors = [
