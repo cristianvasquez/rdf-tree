@@ -3,7 +3,6 @@ import { ChevronDown, ChevronForwardOutline } from "@vicons/ionicons5";
 
 import { NIcon } from "naive-ui";
 import { ref, computed, inject, provide, toRaw } from "vue";
-import { getGraphBackgroundStyle,getAllTerms, getNewTerms } from './colors.js'
 import Entity from "./Entity.vue";
 import Term from "./Term.vue";
 

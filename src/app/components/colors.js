@@ -1,5 +1,3 @@
-import { toRaw } from 'vue'
-
 const graphColorCache = new Map()
 // Predefined transparent colors
 const graphColors = [
@@ -11,8 +9,7 @@ const graphColors = [
   'rgba(80, 210, 230, 0.3)',   // Aqua Cyan
   'rgba(255, 240, 80, 0.3)',   // Pastel Yellow
   'rgba(190, 190, 190, 0.3)',  // Light Gray
-];
-
+]
 
 // Lazily assign color to a graph
 const getGraphColor = (graphValue) => {
@@ -29,7 +26,10 @@ const getGraphColor = (graphValue) => {
 }
 
 // Generate background style for graphs
-const getGraphBackgroundStyle = (graphs, ignoreParents = false) => {
+const getBackgroundStyle = (pointer, ignoreParents = false) => {
+
+  const graphs = (pointer.meta?.graphs ?? []).map(x => x.value)
+
   if (!graphs || graphs.length === 0) return {}
 
   // Multiple graphs - create layered background
@@ -37,14 +37,14 @@ const getGraphBackgroundStyle = (graphs, ignoreParents = false) => {
     const backgroundLayers = graphs.map(graph => getGraphColor(graph))
     return {
       backgroundImage: `linear-gradient(45deg, ${backgroundLayers.join(', ')})`,
-      isolation: ignoreParents ? 'isolate' : 'auto'
+      isolation: ignoreParents ? 'isolate' : 'auto',
     }
   }
 
   // Single graph - return its color
   return {
     background: getGraphColor(graphs[0]),
-    isolation: ignoreParents ? 'isolate' : 'auto'
+    isolation: ignoreParents ? 'isolate' : 'auto',
   }
 }
 
@@ -62,4 +62,4 @@ function getNewTerms (parentGraphs, termArr) {
   return termArr.map(x => x.value).filter(value => !parentSet.has(value))
 }
 
-export { getGraphBackgroundStyle, getAllTerms, getNewTerms }
+export { getBackgroundStyle, getAllTerms, getNewTerms }

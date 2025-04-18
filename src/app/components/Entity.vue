@@ -5,7 +5,7 @@ import { onMounted, ref, toRaw, inject, provide, computed } from 'vue'
 import ToolIcon from './ToolIcon.vue'
 import Row from './Row.vue'
 import Term from './Term.vue'
-import { getGraphBackgroundStyle, getAllTerms, getNewTerms } from './colors.js'
+import { getBackgroundStyle, getAllTerms, getNewTerms } from './colors.js'
 
 const props = defineProps({
   pointer: Object,
@@ -18,7 +18,7 @@ onMounted(() => {
 })
 
 const entityStyle = computed(() => {
-  return getGraphBackgroundStyle(props.pointer.graphs.map(x=>x.value), true)
+  return getBackgroundStyle(props.pointer, true)
 })
 
 </script>
@@ -30,17 +30,24 @@ const entityStyle = computed(() => {
       <div
           class="entity-header"
       >
-        <n-popover trigger="hover" :delay="500" >
+        <n-popover trigger="hover" :delay="500">
           <template #trigger>
             <Term :term="pointer.term">
               <ToolIcon :term="toRaw(pointer.term)"/>
             </Term>
           </template>
           <span>
+            <template v-if="pointer.meta">
             Graphs
             <ul>
-              <li v-for="graph of pointer.graphs">{{ graph }}</li>
+              <li v-for="graph of pointer.meta.graphs">{{ graph }}</li>
             </ul>
+             types
+            <ul>
+              <li v-for="type of pointer.meta.types">{{ type }}</li>
+            </ul>
+            </template>
+
           </span>
         </n-popover>
 
