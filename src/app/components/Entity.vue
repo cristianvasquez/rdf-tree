@@ -1,11 +1,11 @@
 <script setup>
 import { ArrowUp } from '@vicons/ionicons5'
 import { NIcon, NPopover } from 'naive-ui'
-import { onMounted, ref, toRaw, inject, provide, computed } from 'vue'
-import ToolIcon from './ToolIcon.vue'
+import { computed, onMounted, ref, toRaw } from 'vue'
+import { getBackgroundStyle } from './colors.js'
 import Row from './Row.vue'
 import Term from './Term.vue'
-import { getBackgroundStyle, getAllTerms, getNewTerms } from './colors.js'
+import ToolIcon from './ToolIcon.vue'
 
 const props = defineProps({
   pointer: Object,
