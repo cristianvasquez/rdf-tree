@@ -1,811 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`bfs do not ignore namedGraphs 1`] = `
-Array [
-  Object {
-    "id": "34",
-    "isInternalLink": false,
-    "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/WhiteRabbit.md",
-        },
-      ],
-      "types": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://pkm-united.org/Note",
-        },
-      ],
-    },
-    "rows": Array [
-      Object {
-        "predicate": Object {
-          "termType": "NamedNode",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-        },
-        "values": Array [
-          Object {
-            "id": "35",
-            "isInternalLink": false,
-            "meta": Object {
-              "graphs": Array [],
-              "types": Array [],
-            },
-            "rows": Array [],
-            "term": Object {
-              "termType": "NamedNode",
-              "value": "http://pkm-united.org/Note",
-            },
-          },
-        ],
-      },
-      Object {
-        "predicate": Object {
-          "termType": "NamedNode",
-          "value": "http://schema.org/name",
-        },
-        "values": Array [
-          Object {
-            "id": "36",
-            "isInternalLink": false,
-            "meta": Object {
-              "graphs": Array [],
-              "types": Array [],
-            },
-            "rows": Array [],
-            "term": Object {
-              "datatype": Object {
-                "termType": "NamedNode",
-                "value": "http://www.w3.org/2001/XMLSchema#string",
-              },
-              "language": "",
-              "termType": "Literal",
-              "value": "WhiteRabbit",
-            },
-          },
-          Object {
-            "id": "37",
-            "isInternalLink": false,
-            "meta": Object {
-              "graphs": Array [],
-              "types": Array [],
-            },
-            "rows": Array [],
-            "term": Object {
-              "datatype": Object {
-                "termType": "NamedNode",
-                "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              },
-              "language": "es",
-              "termType": "Literal",
-              "value": "Conejo blanco",
-            },
-          },
-        ],
-      },
-      Object {
-        "predicate": Object {
-          "termType": "NamedNode",
-          "value": "http://pkm-united.org/contains",
-        },
-        "values": Array [
-          Object {
-            "id": "38",
-            "isInternalLink": false,
-            "meta": Object {
-              "graphs": Array [
-                Object {
-                  "termType": "NamedNode",
-                  "value": "http://example.org/note/WhiteRabbit.md",
-                },
-              ],
-              "types": Array [
-                Object {
-                  "termType": "NamedNode",
-                  "value": "http://pkm-united.org/Block",
-                },
-                Object {
-                  "termType": "NamedNode",
-                  "value": "http://example.org/Rabbit",
-                },
-              ],
-            },
-            "rows": Array [
-              Object {
-                "predicate": Object {
-                  "termType": "NamedNode",
-                  "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-                },
-                "values": Array [
-                  Object {
-                    "id": "39",
-                    "isInternalLink": false,
-                    "meta": Object {
-                      "graphs": Array [],
-                      "types": Array [],
-                    },
-                    "rows": Array [],
-                    "term": Object {
-                      "termType": "NamedNode",
-                      "value": "http://pkm-united.org/Block",
-                    },
-                  },
-                  Object {
-                    "id": "40",
-                    "isInternalLink": false,
-                    "meta": Object {
-                      "graphs": Array [],
-                      "types": Array [],
-                    },
-                    "rows": Array [],
-                    "term": Object {
-                      "termType": "NamedNode",
-                      "value": "http://example.org/Rabbit",
-                    },
-                  },
-                ],
-              },
-              Object {
-                "predicate": Object {
-                  "termType": "NamedNode",
-                  "value": "http://schema.org/name",
-                },
-                "values": Array [
-                  Object {
-                    "id": "41",
-                    "isInternalLink": false,
-                    "meta": Object {
-                      "graphs": Array [],
-                      "types": Array [],
-                    },
-                    "rows": Array [],
-                    "term": Object {
-                      "datatype": Object {
-                        "termType": "NamedNode",
-                        "value": "http://www.w3.org/2001/XMLSchema#string",
-                      },
-                      "language": "",
-                      "termType": "Literal",
-                      "value": "White rabbit",
-                    },
-                  },
-                ],
-              },
-              Object {
-                "predicate": Object {
-                  "termType": "NamedNode",
-                  "value": "http://pkm-united.org/selector",
-                },
-                "values": Array [
-                  Object {
-                    "id": "42",
-                    "isInternalLink": true,
-                    "meta": Object {
-                      "graphs": Array [],
-                      "types": Array [],
-                    },
-                    "rows": Array [],
-                    "term": Object {
-                      "datatype": Object {
-                        "termType": "NamedNode",
-                        "value": "http://www.w3.org/2001/XMLSchema#string",
-                      },
-                      "language": "",
-                      "termType": "Literal",
-                      "value": "White rabbit",
-                    },
-                  },
-                ],
-              },
-              Object {
-                "predicate": Object {
-                  "termType": "NamedNode",
-                  "value": "http://schema.org/image",
-                },
-                "values": Array [
-                  Object {
-                    "id": "43",
-                    "isInternalLink": false,
-                    "meta": Object {
-                      "graphs": Array [],
-                      "types": Array [],
-                    },
-                    "rows": Array [],
-                    "term": Object {
-                      "termType": "NamedNode",
-                      "value": "https://miro.medium.com/max/720/1*HZazTjGg9EBSOoz34IN-tA.jpeg",
-                    },
-                  },
-                ],
-              },
-              Object {
-                "predicate": Object {
-                  "termType": "NamedNode",
-                  "value": "http://pkm-united.org/contains",
-                },
-                "values": Array [
-                  Object {
-                    "id": "44",
-                    "isInternalLink": false,
-                    "meta": Object {
-                      "graphs": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://example.org/note/WhiteRabbit.md",
-                        },
-                      ],
-                      "types": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://pkm-united.org/Block",
-                        },
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://schema.org/Place",
-                        },
-                      ],
-                    },
-                    "rows": Array [
-                      Object {
-                        "predicate": Object {
-                          "termType": "NamedNode",
-                          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-                        },
-                        "values": Array [
-                          Object {
-                            "id": "47",
-                            "isInternalLink": true,
-                            "meta": Object {
-                              "graphs": Array [],
-                              "types": Array [],
-                            },
-                            "rows": Array [],
-                            "term": Object {
-                              "termType": "NamedNode",
-                              "value": "http://pkm-united.org/Block",
-                            },
-                          },
-                          Object {
-                            "id": "48",
-                            "isInternalLink": false,
-                            "meta": Object {
-                              "graphs": Array [],
-                              "types": Array [],
-                            },
-                            "rows": Array [],
-                            "term": Object {
-                              "termType": "NamedNode",
-                              "value": "http://schema.org/Place",
-                            },
-                          },
-                        ],
-                      },
-                      Object {
-                        "predicate": Object {
-                          "termType": "NamedNode",
-                          "value": "http://schema.org/name",
-                        },
-                        "values": Array [
-                          Object {
-                            "id": "49",
-                            "isInternalLink": false,
-                            "meta": Object {
-                              "graphs": Array [],
-                              "types": Array [],
-                            },
-                            "rows": Array [],
-                            "term": Object {
-                              "datatype": Object {
-                                "termType": "NamedNode",
-                                "value": "http://www.w3.org/2001/XMLSchema#string",
-                              },
-                              "language": "",
-                              "termType": "Literal",
-                              "value": "Wozenderlands",
-                            },
-                          },
-                        ],
-                      },
-                      Object {
-                        "predicate": Object {
-                          "termType": "NamedNode",
-                          "value": "http://pkm-united.org/selector",
-                        },
-                        "values": Array [
-                          Object {
-                            "id": "50",
-                            "isInternalLink": true,
-                            "meta": Object {
-                              "graphs": Array [],
-                              "types": Array [],
-                            },
-                            "rows": Array [],
-                            "term": Object {
-                              "datatype": Object {
-                                "termType": "NamedNode",
-                                "value": "http://www.w3.org/2001/XMLSchema#string",
-                              },
-                              "language": "",
-                              "termType": "Literal",
-                              "value": "Wozenderlands",
-                            },
-                          },
-                        ],
-                      },
-                      Object {
-                        "predicate": Object {
-                          "termType": "NamedNode",
-                          "value": "http://schema.org/postalCode",
-                        },
-                        "values": Array [
-                          Object {
-                            "id": "51",
-                            "isInternalLink": false,
-                            "meta": Object {
-                              "graphs": Array [],
-                              "types": Array [],
-                            },
-                            "rows": Array [],
-                            "term": Object {
-                              "datatype": Object {
-                                "termType": "NamedNode",
-                                "value": "http://www.w3.org/2001/XMLSchema#string",
-                              },
-                              "language": "",
-                              "termType": "Literal",
-                              "value": "4879",
-                            },
-                          },
-                        ],
-                      },
-                      Object {
-                        "predicate": Object {
-                          "termType": "NamedNode",
-                          "value": "http://schema.org/streetAddress",
-                        },
-                        "values": Array [
-                          Object {
-                            "id": "52",
-                            "isInternalLink": false,
-                            "meta": Object {
-                              "graphs": Array [],
-                              "types": Array [],
-                            },
-                            "rows": Array [],
-                            "term": Object {
-                              "datatype": Object {
-                                "termType": "NamedNode",
-                                "value": "http://www.w3.org/2001/XMLSchema#string",
-                              },
-                              "language": "",
-                              "termType": "Literal",
-                              "value": "5 Wonderland Street",
-                            },
-                          },
-                        ],
-                      },
-                    ],
-                    "term": Object {
-                      "termType": "BlankNode",
-                      "value": "b1_b4",
-                    },
-                  },
-                ],
-              },
-              Object {
-                "predicate": Object {
-                  "termType": "NamedNode",
-                  "value": "http://schema.org/address",
-                },
-                "values": Array [
-                  Object {
-                    "id": "45",
-                    "isInternalLink": true,
-                    "meta": Object {
-                      "graphs": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://example.org/note/WhiteRabbit.md",
-                        },
-                      ],
-                      "types": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://pkm-united.org/Block",
-                        },
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://schema.org/Place",
-                        },
-                      ],
-                    },
-                    "rows": Array [],
-                    "term": Object {
-                      "termType": "BlankNode",
-                      "value": "b1_b4",
-                    },
-                  },
-                ],
-              },
-              Object {
-                "predicate": Object {
-                  "termType": "NamedNode",
-                  "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
-                },
-                "values": Array [
-                  Object {
-                    "id": "46",
-                    "isInternalLink": false,
-                    "meta": Object {
-                      "graphs": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://example.org/note/Alice.md",
-                        },
-                      ],
-                      "types": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://pkm-united.org/Note",
-                        },
-                      ],
-                    },
-                    "rows": Array [
-                      Object {
-                        "predicate": Object {
-                          "termType": "NamedNode",
-                          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-                        },
-                        "values": Array [
-                          Object {
-                            "id": "53",
-                            "isInternalLink": true,
-                            "meta": Object {
-                              "graphs": Array [],
-                              "types": Array [],
-                            },
-                            "rows": Array [],
-                            "term": Object {
-                              "termType": "NamedNode",
-                              "value": "http://pkm-united.org/Note",
-                            },
-                          },
-                        ],
-                      },
-                      Object {
-                        "predicate": Object {
-                          "termType": "NamedNode",
-                          "value": "http://schema.org/name",
-                        },
-                        "values": Array [
-                          Object {
-                            "id": "54",
-                            "isInternalLink": false,
-                            "meta": Object {
-                              "graphs": Array [],
-                              "types": Array [],
-                            },
-                            "rows": Array [],
-                            "term": Object {
-                              "datatype": Object {
-                                "termType": "NamedNode",
-                                "value": "http://www.w3.org/2001/XMLSchema#string",
-                              },
-                              "language": "",
-                              "termType": "Literal",
-                              "value": "Alice",
-                            },
-                          },
-                        ],
-                      },
-                      Object {
-                        "predicate": Object {
-                          "termType": "NamedNode",
-                          "value": "http://pkm-united.org/contains",
-                        },
-                        "values": Array [
-                          Object {
-                            "id": "55",
-                            "isInternalLink": false,
-                            "meta": Object {
-                              "graphs": Array [
-                                Object {
-                                  "termType": "NamedNode",
-                                  "value": "http://example.org/note/Alice.md",
-                                },
-                              ],
-                              "types": Array [
-                                Object {
-                                  "termType": "NamedNode",
-                                  "value": "http://pkm-united.org/Block",
-                                },
-                              ],
-                            },
-                            "rows": Array [
-                              Object {
-                                "predicate": Object {
-                                  "termType": "NamedNode",
-                                  "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-                                },
-                                "values": Array [
-                                  Object {
-                                    "id": "56",
-                                    "isInternalLink": true,
-                                    "meta": Object {
-                                      "graphs": Array [],
-                                      "types": Array [],
-                                    },
-                                    "rows": Array [],
-                                    "term": Object {
-                                      "termType": "NamedNode",
-                                      "value": "http://pkm-united.org/Block",
-                                    },
-                                  },
-                                ],
-                              },
-                              Object {
-                                "predicate": Object {
-                                  "termType": "NamedNode",
-                                  "value": "http://schema.org/name",
-                                },
-                                "values": Array [
-                                  Object {
-                                    "id": "57",
-                                    "isInternalLink": true,
-                                    "meta": Object {
-                                      "graphs": Array [],
-                                      "types": Array [],
-                                    },
-                                    "rows": Array [],
-                                    "term": Object {
-                                      "datatype": Object {
-                                        "termType": "NamedNode",
-                                        "value": "http://www.w3.org/2001/XMLSchema#string",
-                                      },
-                                      "language": "",
-                                      "termType": "Literal",
-                                      "value": "Alice",
-                                    },
-                                  },
-                                ],
-                              },
-                              Object {
-                                "predicate": Object {
-                                  "termType": "NamedNode",
-                                  "value": "http://pkm-united.org/selector",
-                                },
-                                "values": Array [
-                                  Object {
-                                    "id": "58",
-                                    "isInternalLink": true,
-                                    "meta": Object {
-                                      "graphs": Array [],
-                                      "types": Array [],
-                                    },
-                                    "rows": Array [],
-                                    "term": Object {
-                                      "datatype": Object {
-                                        "termType": "NamedNode",
-                                        "value": "http://www.w3.org/2001/XMLSchema#string",
-                                      },
-                                      "language": "",
-                                      "termType": "Literal",
-                                      "value": "Alice",
-                                    },
-                                  },
-                                ],
-                              },
-                              Object {
-                                "predicate": Object {
-                                  "termType": "NamedNode",
-                                  "value": "http://schema.org/image",
-                                },
-                                "values": Array [
-                                  Object {
-                                    "id": "59",
-                                    "isInternalLink": false,
-                                    "meta": Object {
-                                      "graphs": Array [],
-                                      "types": Array [],
-                                    },
-                                    "rows": Array [],
-                                    "term": Object {
-                                      "termType": "NamedNode",
-                                      "value": "https://miro.medium.com/max/1100/1*xupcHn3b0jEFPkjvuH5Pbw.jpeg",
-                                    },
-                                  },
-                                ],
-                              },
-                            ],
-                            "term": Object {
-                              "termType": "BlankNode",
-                              "value": "n3-3",
-                            },
-                          },
-                        ],
-                      },
-                    ],
-                    "term": Object {
-                      "termType": "NamedNode",
-                      "value": "http://example.org/note/Alice.md",
-                    },
-                  },
-                ],
-              },
-            ],
-            "term": Object {
-              "termType": "BlankNode",
-              "value": "n3-2",
-            },
-          },
-        ],
-      },
-    ],
-    "term": Object {
-      "termType": "NamedNode",
-      "value": "http://example.org/note/WhiteRabbit.md",
-    },
-  },
-  Object {
-    "id": "60",
-    "isInternalLink": false,
-    "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/WhiteRabbit.md",
-        },
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/Alice.md",
-        },
-      ],
-      "types": Array [],
-    },
-    "rows": Array [
-      Object {
-        "predicate": Object {
-          "termType": "NamedNode",
-          "value": "quad",
-        },
-        "values": Array [
-          Object {
-            "id": "61",
-            "isInternalLink": false,
-            "meta": Object {
-              "graphs": Array [],
-              "types": Array [],
-            },
-            "rows": Array [],
-            "term": Object {
-              "termType": "NamedNode",
-              "value": "oh-my",
-            },
-          },
-        ],
-      },
-    ],
-    "term": Object {
-      "termType": "NamedNode",
-      "value": "shared",
-    },
-  },
-  Object {
-    "id": "62",
-    "isInternalLink": false,
-    "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "DefaultGraph",
-          "value": "",
-        },
-      ],
-      "types": Array [],
-    },
-    "rows": Array [
-      Object {
-        "predicate": Object {
-          "termType": "NamedNode",
-          "value": "http://schema.org/name",
-        },
-        "values": Array [
-          Object {
-            "id": "63",
-            "isInternalLink": false,
-            "meta": Object {
-              "graphs": Array [],
-              "types": Array [],
-            },
-            "rows": Array [],
-            "term": Object {
-              "datatype": Object {
-                "termType": "NamedNode",
-                "value": "http://www.w3.org/2001/XMLSchema#string",
-              },
-              "language": "",
-              "termType": "Literal",
-              "value": "loves to drink tea with",
-            },
-          },
-        ],
-      },
-    ],
-    "term": Object {
-      "termType": "NamedNode",
-      "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
-    },
-  },
-  Object {
-    "id": "64",
-    "isInternalLink": false,
-    "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "DefaultGraph",
-          "value": "",
-        },
-      ],
-      "types": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/Something",
-        },
-      ],
-    },
-    "rows": Array [
-      Object {
-        "predicate": Object {
-          "termType": "NamedNode",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-        },
-        "values": Array [
-          Object {
-            "id": "65",
-            "isInternalLink": false,
-            "meta": Object {
-              "graphs": Array [],
-              "types": Array [],
-            },
-            "rows": Array [],
-            "term": Object {
-              "termType": "NamedNode",
-              "value": "http://example.org/Something",
-            },
-          },
-        ],
-      },
-      Object {
-        "predicate": Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/p",
-        },
-        "values": Array [
-          Object {
-            "id": "66",
-            "isInternalLink": false,
-            "meta": Object {
-              "graphs": Array [],
-              "types": Array [],
-            },
-            "rows": Array [],
-            "term": Object {
-              "termType": "NamedNode",
-              "value": "http://example.org/o",
-            },
-          },
-        ],
-      },
-    ],
-    "term": Object {
-      "termType": "NamedNode",
-      "value": "http://example.org/s",
-    },
-  },
-]
-`;
-
 exports[`bfs extracts ex:Something first 1`] = `
 Array [
   Object {
@@ -1612,10 +806,290 @@ Array [
 ]
 `;
 
+exports[`bfs maps URIs to their corresponding IDs 1`] = `
+TermMap {
+  "index": Map {
+    "<http://example.org/note/WhiteRabbit.md>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/note/WhiteRabbit.md",
+      },
+      "value": Array [
+        "69",
+      ],
+    },
+    "<http://pkm-united.org/Note>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://pkm-united.org/Note",
+      },
+      "value": Array [
+        "70",
+        "88",
+      ],
+    },
+    "\\"WhiteRabbit\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "WhiteRabbit",
+      },
+      "value": Array [
+        "71",
+      ],
+    },
+    "\\"Conejo blanco\\"@es" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+        },
+        "language": "es",
+        "termType": "Literal",
+        "value": "Conejo blanco",
+      },
+      "value": Array [
+        "72",
+      ],
+    },
+    "_:n3-4" => Object {
+      "term": Object {
+        "termType": "BlankNode",
+        "value": "n3-4",
+      },
+      "value": Array [
+        "73",
+      ],
+    },
+    "<http://pkm-united.org/Block>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://pkm-united.org/Block",
+      },
+      "value": Array [
+        "74",
+        "82",
+        "91",
+      ],
+    },
+    "<http://example.org/Rabbit>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/Rabbit",
+      },
+      "value": Array [
+        "75",
+      ],
+    },
+    "\\"White rabbit\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "White rabbit",
+      },
+      "value": Array [
+        "76",
+        "77",
+      ],
+    },
+    "<https://miro.medium.com/max/720/1*HZazTjGg9EBSOoz34IN-tA.jpeg>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "https://miro.medium.com/max/720/1*HZazTjGg9EBSOoz34IN-tA.jpeg",
+      },
+      "value": Array [
+        "78",
+      ],
+    },
+    "_:b2_b4" => Object {
+      "term": Object {
+        "termType": "BlankNode",
+        "value": "b2_b4",
+      },
+      "value": Array [
+        "79",
+        "80",
+      ],
+    },
+    "<http://example.org/note/Alice.md>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/note/Alice.md",
+      },
+      "value": Array [
+        "81",
+      ],
+    },
+    "<http://schema.org/Place>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://schema.org/Place",
+      },
+      "value": Array [
+        "83",
+      ],
+    },
+    "\\"Wozenderlands\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "Wozenderlands",
+      },
+      "value": Array [
+        "84",
+        "85",
+      ],
+    },
+    "\\"4879\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "4879",
+      },
+      "value": Array [
+        "86",
+      ],
+    },
+    "\\"5 Wonderland Street\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "5 Wonderland Street",
+      },
+      "value": Array [
+        "87",
+      ],
+    },
+    "\\"Alice\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "Alice",
+      },
+      "value": Array [
+        "89",
+        "92",
+        "93",
+      ],
+    },
+    "_:n3-5" => Object {
+      "term": Object {
+        "termType": "BlankNode",
+        "value": "n3-5",
+      },
+      "value": Array [
+        "90",
+      ],
+    },
+    "<https://miro.medium.com/max/1100/1*xupcHn3b0jEFPkjvuH5Pbw.jpeg>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "https://miro.medium.com/max/1100/1*xupcHn3b0jEFPkjvuH5Pbw.jpeg",
+      },
+      "value": Array [
+        "94",
+      ],
+    },
+    "<shared>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "shared",
+      },
+      "value": Array [
+        "95",
+      ],
+    },
+    "<oh-my>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "oh-my",
+      },
+      "value": Array [
+        "96",
+      ],
+    },
+    "<http://example.org/property/loves%20to%20drink%20tea%20with>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
+      },
+      "value": Array [
+        "97",
+      ],
+    },
+    "\\"loves to drink tea with\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "loves to drink tea with",
+      },
+      "value": Array [
+        "98",
+      ],
+    },
+    "<http://example.org/s>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/s",
+      },
+      "value": Array [
+        "99",
+      ],
+    },
+    "<http://example.org/Something>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/Something",
+      },
+      "value": Array [
+        "100",
+      ],
+    },
+    "<http://example.org/o>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/o",
+      },
+      "value": Array [
+        "101",
+      ],
+    },
+  },
+}
+`;
+
 exports[`bfs maxDepth = 2 1`] = `
 Array [
   Object {
-    "id": "67",
+    "id": "34",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -1639,7 +1113,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "68",
+            "id": "35",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1660,7 +1134,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "69",
+            "id": "36",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1678,7 +1152,7 @@ Array [
             },
           },
           Object {
-            "id": "70",
+            "id": "37",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1704,7 +1178,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "71",
+            "id": "38",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [
@@ -1732,7 +1206,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "72",
+                    "id": "39",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1745,7 +1219,7 @@ Array [
                     },
                   },
                   Object {
-                    "id": "73",
+                    "id": "40",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1766,7 +1240,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "74",
+                    "id": "41",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1792,7 +1266,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "75",
+                    "id": "42",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1818,7 +1292,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "76",
+                    "id": "43",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1839,7 +1313,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "77",
+                    "id": "44",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -1862,7 +1336,7 @@ Array [
                     "rows": Array [],
                     "term": Object {
                       "termType": "BlankNode",
-                      "value": "b2_b4",
+                      "value": "b1_b4",
                     },
                   },
                 ],
@@ -1874,7 +1348,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "78",
+                    "id": "45",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -1897,7 +1371,7 @@ Array [
                     "rows": Array [],
                     "term": Object {
                       "termType": "BlankNode",
-                      "value": "b2_b4",
+                      "value": "b1_b4",
                     },
                   },
                 ],
@@ -1909,7 +1383,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "79",
+                    "id": "46",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -1936,7 +1410,7 @@ Array [
             ],
             "term": Object {
               "termType": "BlankNode",
-              "value": "n3-4",
+              "value": "n3-2",
             },
           },
         ],
@@ -1948,7 +1422,7 @@ Array [
     },
   },
   Object {
-    "id": "80",
+    "id": "47",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -1976,7 +1450,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "81",
+            "id": "48",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1989,7 +1463,7 @@ Array [
             },
           },
           Object {
-            "id": "82",
+            "id": "49",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2010,7 +1484,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "83",
+            "id": "50",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2036,7 +1510,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "84",
+            "id": "51",
             "isInternalLink": true,
             "meta": Object {
               "graphs": Array [],
@@ -2062,7 +1536,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "85",
+            "id": "52",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2088,7 +1562,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "86",
+            "id": "53",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2110,11 +1584,11 @@ Array [
     ],
     "term": Object {
       "termType": "BlankNode",
-      "value": "b2_b4",
+      "value": "b1_b4",
     },
   },
   Object {
-    "id": "87",
+    "id": "54",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -2137,7 +1611,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "88",
+            "id": "55",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2158,7 +1632,7 @@ Array [
     },
   },
   Object {
-    "id": "89",
+    "id": "56",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -2182,7 +1656,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "90",
+            "id": "57",
             "isInternalLink": true,
             "meta": Object {
               "graphs": Array [],
@@ -2203,7 +1677,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "91",
+            "id": "58",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2229,7 +1703,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "92",
+            "id": "59",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [
@@ -2253,7 +1727,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "93",
+                    "id": "60",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -2274,7 +1748,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "94",
+                    "id": "61",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -2300,7 +1774,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "95",
+                    "id": "62",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -2326,7 +1800,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "96",
+                    "id": "63",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -2343,7 +1817,7 @@ Array [
             ],
             "term": Object {
               "termType": "BlankNode",
-              "value": "n3-5",
+              "value": "n3-3",
             },
           },
         ],
@@ -2355,7 +1829,7 @@ Array [
     },
   },
   Object {
-    "id": "97",
+    "id": "64",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -2374,7 +1848,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "98",
+            "id": "65",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2400,7 +1874,7 @@ Array [
     },
   },
   Object {
-    "id": "99",
+    "id": "66",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -2424,7 +1898,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "100",
+            "id": "67",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2445,7 +1919,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "101",
+            "id": "68",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],

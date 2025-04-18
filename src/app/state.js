@@ -37,6 +37,7 @@ const facets = {
 export const useStore = defineStore('state', () => {
 
   const entities = ref([])
+  const uriToIds = ref()
   const currentDataset = ref()
   const currentFocus = ref()
 
@@ -49,17 +50,31 @@ export const useStore = defineStore('state', () => {
   function reset () {
     currentFocus.value = undefined
     const options = facets.typeOf(ns.epo.Notice)
-    entities.value = getEntities(currentDataset.value, options)
+    traverseDataset(options)
   }
 
   function focusOn (term) {
-    const options = facets.focusOn(term)
     currentFocus.value = term
-    entities.value = getEntities(currentDataset.value, options)
+    const options = facets.focusOn(term)
+    traverseDataset(options)
+  }
+
+  function traverseDataset (options) {
+    const result = getEntities(currentDataset.value, options)
+    entities.value = result.entities
+    uriToIds.value = result.uriToIds
+  }
+
+  function getIdsForTerm (term) {
+    if (!uriToIds.value || !uriToIds.value.has(term)) {
+      return []
+    }
+    return [...uriToIds.value.get(term)]
   }
 
   return {
     entities,
+    getIdsForTerm,
     setDataset,
     focusOn,
     reset,

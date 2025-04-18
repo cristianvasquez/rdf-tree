@@ -2,7 +2,7 @@ import rdf from 'rdf-ext'
 import { createMeta } from './meta.js'
 import { createEntity } from './schemas.js'
 
-function bfsEntity (pointer, { visited = new Set(), maxDepth = Infinity }) {
+function bfsEntity (pointer, { visited = rdf.termMap(), maxDepth = Infinity }) {
 
   const rootEntity = createEntity(pointer.term)
   rootEntity.meta = createMeta(pointer)
@@ -17,10 +17,13 @@ function bfsEntity (pointer, { visited = new Set(), maxDepth = Infinity }) {
     // Check for internal links
     if (visited.has(term)) {
       currentEntity.isInternalLink = true
+      // Add this entity's ID to the list for this term
+      visited.get(term).push(currentEntity.id)
       continue
     }
 
-    visited.add(term)
+    // Initialize the list of IDs for this term
+    visited.set(term, [currentEntity.id])
 
     // Get outgoing quads for the current term
     const outgoingQuads = [...pointer.node(term).out().quads()]

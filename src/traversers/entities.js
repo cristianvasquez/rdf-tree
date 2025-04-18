@@ -18,7 +18,8 @@ function getEntities (dataset, options) {
 
   const result = []
 
-  let visited = rdf.termSet()
+  // Changed from termSet to termMap for the URI -> ID mapping
+  let visited = rdf.termMap()
 
   for (const { subject, predicate, object } of matchers) {
     const batch = [...dataset.match(subject, predicate, object)].map(
@@ -47,7 +48,8 @@ function getEntities (dataset, options) {
     visited = batchResult.visited
   }
 
-  return result
+  // Return both the entities and the visited map for URI -> ID mapping
+  return { entities: result, uriToIds: visited }
 }
 
 export { getEntities }
