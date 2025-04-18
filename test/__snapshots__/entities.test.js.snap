@@ -3,6 +3,7 @@
 exports[`bfs do not ignore namedGraphs 1`] = `
 Array [
   Object {
+    "id": "e804061d-d0be-4461-9bbe-cca5377cd5b3",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -26,6 +27,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "92918c04-45ce-42ba-bdf5-008d4e8a3e07",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -46,6 +48,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "ad8fd89b-31b5-463d-9714-726c75d2d43f",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -63,6 +66,7 @@ Array [
             },
           },
           Object {
+            "id": "cceebc15-e6f9-4af1-b81e-20880191e143",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -88,6 +92,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "fa881ab3-02fa-4a0a-ba8d-eaee44ffe5cf",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [
@@ -115,6 +120,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "45221d9b-7d7c-4b61-a787-182b78775ffe",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -127,6 +133,7 @@ Array [
                     },
                   },
                   Object {
+                    "id": "aea5d637-b799-4367-833d-830d22f5fe80",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -147,6 +154,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "90714c96-8098-4da4-ba39-2b9b28ed5ff6",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -172,6 +180,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "8309b37d-5c21-43b9-bcc7-000c6f6eedc4",
                     "isInternalLink": true,
                     "meta": Object {
                       "graphs": Array [],
@@ -197,6 +206,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "c21b68c9-6777-4203-94bc-868bb1ed2850",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -217,6 +227,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "d9143b31-ad0c-435e-9390-34c91209cbc3",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -244,6 +255,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "edd19139-a732-4921-85a7-6e586521ab05",
                             "isInternalLink": true,
                             "meta": Object {
                               "graphs": Array [],
@@ -256,6 +268,7 @@ Array [
                             },
                           },
                           Object {
+                            "id": "f6e90486-72e6-44b1-829c-9a6b39928b27",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -276,6 +289,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "f64ba7e7-8b1f-45a0-ab25-cb5357752e19",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -301,6 +315,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "1ebd8881-cdaa-48dd-86e3-d5c2dc81adab",
                             "isInternalLink": true,
                             "meta": Object {
                               "graphs": Array [],
@@ -326,6 +341,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "c9d14027-099e-4558-82b4-4ec0152e55d6",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -351,6 +367,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "f427423a-31b6-4901-85c5-5a40f0f4efa1",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -384,6 +401,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "2b75ac54-4464-4d16-840a-8a1934d34882",
                     "isInternalLink": true,
                     "meta": Object {
                       "graphs": Array [
@@ -418,6 +436,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "292f32b0-2997-41b3-b1b8-fea5c7ad2190",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -441,6 +460,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "0bf97f7a-337b-437c-ae28-e12686289b8d",
                             "isInternalLink": true,
                             "meta": Object {
                               "graphs": Array [],
@@ -461,6 +481,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "73fccb73-c457-4fb9-a8d0-8193da7e2fbe",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -486,6 +507,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "85c3e1fe-1524-4e49-bc07-74dbae4c9a06",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [
@@ -509,6 +531,7 @@ Array [
                                 },
                                 "values": Array [
                                   Object {
+                                    "id": "315ee466-3681-439e-92cb-90d91a0956a9",
                                     "isInternalLink": true,
                                     "meta": Object {
                                       "graphs": Array [],
@@ -529,6 +552,7 @@ Array [
                                 },
                                 "values": Array [
                                   Object {
+                                    "id": "fdfb921e-4da2-4e00-a591-2f9f1711a940",
                                     "isInternalLink": true,
                                     "meta": Object {
                                       "graphs": Array [],
@@ -554,6 +578,7 @@ Array [
                                 },
                                 "values": Array [
                                   Object {
+                                    "id": "3b918ce8-a97f-4691-a7e6-f811d53ae840",
                                     "isInternalLink": true,
                                     "meta": Object {
                                       "graphs": Array [],
@@ -579,6 +604,7 @@ Array [
                                 },
                                 "values": Array [
                                   Object {
+                                    "id": "0063b231-38a7-4fd9-bb9f-b63ba4ce0e72",
                                     "isInternalLink": false,
                                     "meta": Object {
                                       "graphs": Array [],
@@ -623,6 +649,7 @@ Array [
     },
   },
   Object {
+    "id": "7dea6221-ccd0-417c-9f3c-652e62105c8d",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -645,6 +672,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "c042518e-5913-4c1b-89e9-8c57d53f1e6f",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -665,6 +693,7 @@ Array [
     },
   },
   Object {
+    "id": "e30a32b7-c266-41de-9838-0bb229eda11e",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -683,6 +712,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "56d5bda1-bb2a-4c9a-b301-92b6e7121038",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -708,6 +738,7 @@ Array [
     },
   },
   Object {
+    "id": "a05561db-b3db-4324-bd36-5409c66417cd",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -731,6 +762,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "f1c67222-9061-4827-98e6-4f197323128c",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -751,6 +783,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "b839b406-34b8-4f10-88c3-7cc63602ef9c",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -776,6 +809,7 @@ Array [
 exports[`bfs extracts ex:Something first 1`] = `
 Array [
   Object {
+    "id": "d34b7287-61b1-4f7f-8e10-b0dfe5b7f66f",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -799,6 +833,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "1750704b-953d-4ae6-8daa-3e4f5f73ab84",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -819,6 +854,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "815c3e51-5708-4431-98e4-de58b4142e92",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -839,6 +875,7 @@ Array [
     },
   },
   Object {
+    "id": "3c2a4ff7-e354-484d-aa96-dc27cadad018",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -862,6 +899,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "70a8db89-34b8-401c-803e-13297b7568a5",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -882,6 +920,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "20f67ed8-90de-4558-8b9d-15857d20590d",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -899,6 +938,7 @@ Array [
             },
           },
           Object {
+            "id": "0d2c60ee-cb83-4793-9945-33b5f290215d",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -924,6 +964,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "93bf377b-2ac0-456e-b956-f2f33a7fa718",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [
@@ -951,6 +992,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "7907516e-6a1e-42bf-9e1e-af880e516eeb",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -963,6 +1005,7 @@ Array [
                     },
                   },
                   Object {
+                    "id": "1796a8cb-11bc-41f2-9433-0cb6731df190",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -983,6 +1026,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "ebe57869-755e-4518-b1af-31e79b0a3e48",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1008,6 +1052,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "c58800fb-42ee-404a-9b38-a5354ab78b66",
                     "isInternalLink": true,
                     "meta": Object {
                       "graphs": Array [],
@@ -1033,6 +1078,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "60d49d52-7b2a-4b0b-a1a9-24d12dea007d",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1053,6 +1099,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "c9227d27-4c88-4b40-a28a-a9a28a3e910b",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -1080,6 +1127,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "8ffc8989-3b2e-4408-a7f9-eb883cfb891f",
                             "isInternalLink": true,
                             "meta": Object {
                               "graphs": Array [],
@@ -1092,6 +1140,7 @@ Array [
                             },
                           },
                           Object {
+                            "id": "e08dd201-a53f-4f47-943e-75a183c2c88c",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -1112,6 +1161,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "a148b6c2-98a7-464a-a40d-9c0427b54331",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -1137,6 +1187,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "0c67fdb1-9e20-4e53-a7ae-ef887c1bc97f",
                             "isInternalLink": true,
                             "meta": Object {
                               "graphs": Array [],
@@ -1162,6 +1213,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "078c6d6f-cc3c-4f9e-b418-3a20dffe1918",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -1187,6 +1239,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "b1a6633a-7950-4801-8e23-d728470be1bf",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -1220,6 +1273,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "7d35d2c5-8679-411d-903c-014d3954be69",
                     "isInternalLink": true,
                     "meta": Object {
                       "graphs": Array [
@@ -1254,6 +1308,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "f40abcaf-0a45-4121-a38c-d92d5271a9a9",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -1277,6 +1332,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "ca7dd089-f030-4ee8-b306-2169ec1c25e1",
                             "isInternalLink": true,
                             "meta": Object {
                               "graphs": Array [],
@@ -1297,6 +1353,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "582ab66a-952a-490a-a8b5-45f4c88d4f43",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -1322,6 +1379,7 @@ Array [
                         },
                         "values": Array [
                           Object {
+                            "id": "46882271-a376-4472-947e-25581f6c9efc",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [
@@ -1345,6 +1403,7 @@ Array [
                                 },
                                 "values": Array [
                                   Object {
+                                    "id": "dc754bc7-1842-4f01-a0d8-9beea779f2e4",
                                     "isInternalLink": true,
                                     "meta": Object {
                                       "graphs": Array [],
@@ -1365,6 +1424,7 @@ Array [
                                 },
                                 "values": Array [
                                   Object {
+                                    "id": "71950405-2150-45dc-9ac1-58525abc0dbe",
                                     "isInternalLink": true,
                                     "meta": Object {
                                       "graphs": Array [],
@@ -1390,6 +1450,7 @@ Array [
                                 },
                                 "values": Array [
                                   Object {
+                                    "id": "c303260b-0a78-49ac-8891-e4c755ccf58e",
                                     "isInternalLink": true,
                                     "meta": Object {
                                       "graphs": Array [],
@@ -1415,6 +1476,7 @@ Array [
                                 },
                                 "values": Array [
                                   Object {
+                                    "id": "9f907cb5-345d-4588-b2e8-15c9d71f7896",
                                     "isInternalLink": false,
                                     "meta": Object {
                                       "graphs": Array [],
@@ -1459,6 +1521,7 @@ Array [
     },
   },
   Object {
+    "id": "5f0280ab-e081-40e6-9fcc-e70bb3ea4a91",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -1481,6 +1544,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "f1ca546b-9e74-41b0-b853-482a3be20309",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1501,6 +1565,7 @@ Array [
     },
   },
   Object {
+    "id": "50477023-bf61-4595-b850-9e8b91c9162e",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -1519,6 +1584,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "7eecca19-b27b-44b4-a67f-e2d0f5abd5eb",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1549,6 +1615,7 @@ Array [
 exports[`bfs maxDepth = 2 1`] = `
 Array [
   Object {
+    "id": "86ad8821-14f3-40b8-afbb-7b7db1022206",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -1572,6 +1639,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "e43e39a4-77cb-45e8-8639-09712d171e9c",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1592,6 +1660,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "445fcaf1-59a6-42c1-ae28-59ac8650ea2d",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1609,6 +1678,7 @@ Array [
             },
           },
           Object {
+            "id": "bf79462b-6177-4f8e-a75f-282eb2019f15",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1634,6 +1704,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "09a0eae6-8e64-43d7-b6cd-d1d9cb729bba",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [
@@ -1661,6 +1732,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "4aecc0fa-4b9c-46db-81cf-51173d117e76",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1673,6 +1745,7 @@ Array [
                     },
                   },
                   Object {
+                    "id": "7e87c10d-0f66-41a8-9fc3-ba01b5e8c9de",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1693,6 +1766,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "c1e2accc-31ca-406b-87a5-f3780df1d446",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1718,6 +1792,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "023ed624-625c-4578-8a0c-aff970276286",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1743,6 +1818,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "80020515-8160-4a58-b39e-89e87276b254",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1763,6 +1839,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "88ee33a4-3042-4e0b-8700-d40efece6c2d",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -1797,6 +1874,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "996ee73f-b8e9-4b96-b2d4-3d701a73c1f7",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -1831,6 +1909,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "1d9da429-a05c-434a-a8e9-22bc7a739843",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -1869,6 +1948,7 @@ Array [
     },
   },
   Object {
+    "id": "822a805b-7007-4579-86c0-49a9e183f7ec",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -1896,6 +1976,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "72f65ee5-6efa-4010-9f8d-5a1b14ee00be",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1908,6 +1989,7 @@ Array [
             },
           },
           Object {
+            "id": "0ae99577-1d11-4c43-9c73-7abcb53b009e",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1928,6 +2010,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "076f1b44-e518-4f12-92ae-0b5ead307de1",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1953,6 +2036,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "37522019-b42f-4246-a84f-f12dabc60e38",
             "isInternalLink": true,
             "meta": Object {
               "graphs": Array [],
@@ -1978,6 +2062,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "ced105c1-54cb-4301-b0c9-9ac12cc54ced",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2003,6 +2088,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "b27a5df5-8bd3-47a1-8162-5b756332c4cc",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2028,6 +2114,7 @@ Array [
     },
   },
   Object {
+    "id": "2a292f9f-502a-40ac-b60e-00613e96b771",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -2050,6 +2137,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "d2ac7617-21b3-4b6a-841a-67604a2909c6",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2070,6 +2158,7 @@ Array [
     },
   },
   Object {
+    "id": "4201d45e-9d5e-49d5-9371-3c3095525d40",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -2093,6 +2182,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "e82f94b1-9f69-47c1-bc0a-af79c6a87ea9",
             "isInternalLink": true,
             "meta": Object {
               "graphs": Array [],
@@ -2113,6 +2203,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "7472404a-699b-480f-a2cf-b763810679d6",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2138,6 +2229,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "ece17e74-3655-4b05-a0a9-35d9fa264c40",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [
@@ -2161,6 +2253,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "1dbe31c8-f452-41be-8d3d-847716feed82",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -2181,6 +2274,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "e0f18a10-4dc7-4ab8-a338-6da3152ef364",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -2206,6 +2300,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "03193440-1644-4f31-8167-1349d5a891e0",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -2231,6 +2326,7 @@ Array [
                 },
                 "values": Array [
                   Object {
+                    "id": "51c4fe8f-c61d-4072-9557-cd5ad8d02c52",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -2259,6 +2355,7 @@ Array [
     },
   },
   Object {
+    "id": "401b40a6-8910-4eb5-b660-8521d282f0a2",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -2277,6 +2374,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "b2c00e92-2215-44c3-b85c-b9800f3094d2",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2302,6 +2400,7 @@ Array [
     },
   },
   Object {
+    "id": "6132bc87-d7a5-48f5-881c-d32a6fa6940c",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -2325,6 +2424,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "d1d5a05b-79bc-48fd-b218-15e2363192cd",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -2345,6 +2445,7 @@ Array [
         },
         "values": Array [
           Object {
+            "id": "a925ab7c-c9a7-4cd2-898d-f8b4529a3104",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],

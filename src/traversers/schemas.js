@@ -12,6 +12,7 @@ const RowSchema = z.object({
 })
 
 const EntitySchema = z.object({
+  id: z.string().uuid().default(() => crypto.randomUUID()),
   term: z.any(), // RDF term object
   rows: z.array(RowSchema),
   meta: MetaSchema.optional(),

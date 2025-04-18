@@ -1,10 +1,11 @@
 import rdf from 'rdf-ext'
+import { createMeta } from './meta.js'
 import { createEntity } from './schemas.js'
 
 function bfsEntity (pointer, { visited = new Set(), maxDepth = Infinity }) {
 
   const rootEntity = createEntity(pointer.term)
-  rootEntity.meta = getMeta(pointer)
+  rootEntity.meta = createMeta(pointer)
 
   // Queue for BFS traversal
   const queue = [{ entity: rootEntity, depth: 0 }]
@@ -40,7 +41,7 @@ function bfsEntity (pointer, { visited = new Set(), maxDepth = Infinity }) {
       for (const term of unique(terms)) {
         const childEntity = createEntity(term)
 
-        childEntity.meta = getMeta(pointer.node(term))
+        childEntity.meta = createMeta(pointer.node(term))
 
         row.values.push(childEntity)
 
@@ -57,24 +58,5 @@ function bfsEntity (pointer, { visited = new Set(), maxDepth = Infinity }) {
 }
 
 const unique = (arr) => [...rdf.termSet(arr)]
-
-function getMeta (pointer) {
-  const rdfType = rdf.namedNode(
-    'http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
-  const types = rdf.termSet()
-  const graphs = rdf.termSet()
-  for (const quad of pointer.out().quads()) {
-    if (quad.predicate.equals(rdfType)) {
-      types.add(quad.object)
-    }
-    if (quad.graph) {
-      graphs.add(quad.graph)
-    }
-  }
-  return {
-    types: [...types],
-    graphs: [...graphs],
-  }
-}
 
 export { bfsEntity }
