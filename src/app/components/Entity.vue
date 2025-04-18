@@ -42,7 +42,7 @@ const entityStyle = computed(() => {
             <ul>
               <li v-for="graph of pointer.meta.graphs">{{ graph }}</li>
             </ul>
-             types
+            Types
             <ul>
               <li v-for="type of pointer.meta.types">{{ type }}</li>
             </ul>
