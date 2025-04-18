@@ -62,6 +62,59 @@ Array [
           },
         ],
       },
+      Object {
+        "predicate": Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/relatedTo",
+        },
+        "values": Array [
+          Object {
+            "id": "4",
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://example.org/note/Alice.md",
+                },
+              ],
+              "types": Array [],
+            },
+            "rows": Array [
+              Object {
+                "predicate": Object {
+                  "termType": "NamedNode",
+                  "value": "http://schema.org/name",
+                },
+                "values": Array [
+                  Object {
+                    "id": "5",
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
+                    "rows": Array [],
+                    "term": Object {
+                      "datatype": Object {
+                        "termType": "NamedNode",
+                        "value": "http://www.w3.org/2001/XMLSchema#string",
+                      },
+                      "language": "",
+                      "termType": "Literal",
+                      "value": "Charlie",
+                    },
+                  },
+                ],
+              },
+            ],
+            "term": Object {
+              "termType": "NamedNode",
+              "value": "http://example.org/note/Charlie.md",
+            },
+          },
+        ],
+      },
     ],
     "term": Object {
       "termType": "NamedNode",
@@ -69,7 +122,7 @@ Array [
     },
   },
   Object {
-    "id": "4",
+    "id": "6",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -93,7 +146,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "5",
+            "id": "7",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -114,7 +167,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "6",
+            "id": "8",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -132,7 +185,7 @@ Array [
             },
           },
           Object {
-            "id": "7",
+            "id": "9",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -158,7 +211,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "8",
+            "id": "10",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [
@@ -186,7 +239,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "9",
+                    "id": "11",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -199,7 +252,7 @@ Array [
                     },
                   },
                   Object {
-                    "id": "10",
+                    "id": "12",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -220,7 +273,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "11",
+                    "id": "13",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -246,7 +299,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "12",
+                    "id": "14",
                     "isInternalLink": true,
                     "meta": Object {
                       "graphs": Array [],
@@ -272,7 +325,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "13",
+                    "id": "15",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -293,7 +346,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "14",
+                    "id": "16",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -321,7 +374,7 @@ Array [
                         },
                         "values": Array [
                           Object {
-                            "id": "17",
+                            "id": "20",
                             "isInternalLink": true,
                             "meta": Object {
                               "graphs": Array [],
@@ -334,7 +387,7 @@ Array [
                             },
                           },
                           Object {
-                            "id": "18",
+                            "id": "21",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -355,7 +408,7 @@ Array [
                         },
                         "values": Array [
                           Object {
-                            "id": "19",
+                            "id": "22",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -381,7 +434,7 @@ Array [
                         },
                         "values": Array [
                           Object {
-                            "id": "20",
+                            "id": "23",
                             "isInternalLink": true,
                             "meta": Object {
                               "graphs": Array [],
@@ -407,7 +460,7 @@ Array [
                         },
                         "values": Array [
                           Object {
-                            "id": "21",
+                            "id": "24",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -433,7 +486,7 @@ Array [
                         },
                         "values": Array [
                           Object {
-                            "id": "22",
+                            "id": "25",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -467,7 +520,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "15",
+                    "id": "17",
                     "isInternalLink": true,
                     "meta": Object {
                       "graphs": Array [
@@ -498,11 +551,37 @@ Array [
               Object {
                 "predicate": Object {
                   "termType": "NamedNode",
+                  "value": "http://example.org/knows",
+                },
+                "values": Array [
+                  Object {
+                    "id": "18",
+                    "isInternalLink": true,
+                    "meta": Object {
+                      "graphs": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://example.org/note/Alice.md",
+                        },
+                      ],
+                      "types": Array [],
+                    },
+                    "rows": Array [],
+                    "term": Object {
+                      "termType": "NamedNode",
+                      "value": "http://example.org/note/Charlie.md",
+                    },
+                  },
+                ],
+              },
+              Object {
+                "predicate": Object {
+                  "termType": "NamedNode",
                   "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
                 },
                 "values": Array [
                   Object {
-                    "id": "16",
+                    "id": "19",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -526,7 +605,7 @@ Array [
                         },
                         "values": Array [
                           Object {
-                            "id": "23",
+                            "id": "26",
                             "isInternalLink": true,
                             "meta": Object {
                               "graphs": Array [],
@@ -547,7 +626,7 @@ Array [
                         },
                         "values": Array [
                           Object {
-                            "id": "24",
+                            "id": "27",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [],
@@ -573,7 +652,7 @@ Array [
                         },
                         "values": Array [
                           Object {
-                            "id": "25",
+                            "id": "28",
                             "isInternalLink": false,
                             "meta": Object {
                               "graphs": Array [
@@ -597,7 +676,7 @@ Array [
                                 },
                                 "values": Array [
                                   Object {
-                                    "id": "26",
+                                    "id": "30",
                                     "isInternalLink": true,
                                     "meta": Object {
                                       "graphs": Array [],
@@ -618,7 +697,7 @@ Array [
                                 },
                                 "values": Array [
                                   Object {
-                                    "id": "27",
+                                    "id": "31",
                                     "isInternalLink": true,
                                     "meta": Object {
                                       "graphs": Array [],
@@ -644,7 +723,7 @@ Array [
                                 },
                                 "values": Array [
                                   Object {
-                                    "id": "28",
+                                    "id": "32",
                                     "isInternalLink": true,
                                     "meta": Object {
                                       "graphs": Array [],
@@ -670,7 +749,7 @@ Array [
                                 },
                                 "values": Array [
                                   Object {
-                                    "id": "29",
+                                    "id": "33",
                                     "isInternalLink": false,
                                     "meta": Object {
                                       "graphs": Array [],
@@ -688,6 +767,32 @@ Array [
                             "term": Object {
                               "termType": "BlankNode",
                               "value": "n3-1",
+                            },
+                          },
+                        ],
+                      },
+                      Object {
+                        "predicate": Object {
+                          "termType": "NamedNode",
+                          "value": "http://example.org/knows",
+                        },
+                        "values": Array [
+                          Object {
+                            "id": "29",
+                            "isInternalLink": true,
+                            "meta": Object {
+                              "graphs": Array [
+                                Object {
+                                  "termType": "NamedNode",
+                                  "value": "http://example.org/note/Alice.md",
+                                },
+                              ],
+                              "types": Array [],
+                            },
+                            "rows": Array [],
+                            "term": Object {
+                              "termType": "NamedNode",
+                              "value": "http://example.org/note/Charlie.md",
                             },
                           },
                         ],
@@ -715,7 +820,7 @@ Array [
     },
   },
   Object {
-    "id": "30",
+    "id": "34",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -738,7 +843,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "31",
+            "id": "35",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -759,7 +864,7 @@ Array [
     },
   },
   Object {
-    "id": "32",
+    "id": "36",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -778,7 +883,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "33",
+            "id": "37",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -815,7 +920,7 @@ TermMap {
         "value": "http://example.org/note/WhiteRabbit.md",
       },
       "value": Array [
-        "69",
+        "78",
       ],
     },
     "<http://pkm-united.org/Note>" => Object {
@@ -824,8 +929,8 @@ TermMap {
         "value": "http://pkm-united.org/Note",
       },
       "value": Array [
-        "70",
-        "88",
+        "79",
+        "99",
       ],
     },
     "\\"WhiteRabbit\\"" => Object {
@@ -839,7 +944,7 @@ TermMap {
         "value": "WhiteRabbit",
       },
       "value": Array [
-        "71",
+        "80",
       ],
     },
     "\\"Conejo blanco\\"@es" => Object {
@@ -853,7 +958,7 @@ TermMap {
         "value": "Conejo blanco",
       },
       "value": Array [
-        "72",
+        "81",
       ],
     },
     "_:n3-4" => Object {
@@ -862,7 +967,7 @@ TermMap {
         "value": "n3-4",
       },
       "value": Array [
-        "73",
+        "82",
       ],
     },
     "<http://pkm-united.org/Block>" => Object {
@@ -871,9 +976,9 @@ TermMap {
         "value": "http://pkm-united.org/Block",
       },
       "value": Array [
-        "74",
-        "82",
-        "91",
+        "83",
+        "92",
+        "103",
       ],
     },
     "<http://example.org/Rabbit>" => Object {
@@ -882,7 +987,7 @@ TermMap {
         "value": "http://example.org/Rabbit",
       },
       "value": Array [
-        "75",
+        "84",
       ],
     },
     "\\"White rabbit\\"" => Object {
@@ -896,8 +1001,8 @@ TermMap {
         "value": "White rabbit",
       },
       "value": Array [
-        "76",
-        "77",
+        "85",
+        "86",
       ],
     },
     "<https://miro.medium.com/max/720/1*HZazTjGg9EBSOoz34IN-tA.jpeg>" => Object {
@@ -906,7 +1011,7 @@ TermMap {
         "value": "https://miro.medium.com/max/720/1*HZazTjGg9EBSOoz34IN-tA.jpeg",
       },
       "value": Array [
-        "78",
+        "87",
       ],
     },
     "_:b2_b4" => Object {
@@ -915,8 +1020,19 @@ TermMap {
         "value": "b2_b4",
       },
       "value": Array [
-        "79",
-        "80",
+        "88",
+        "89",
+      ],
+    },
+    "<http://example.org/note/Charlie.md>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/note/Charlie.md",
+      },
+      "value": Array [
+        "90",
+        "102",
+        "114",
       ],
     },
     "<http://example.org/note/Alice.md>" => Object {
@@ -925,7 +1041,7 @@ TermMap {
         "value": "http://example.org/note/Alice.md",
       },
       "value": Array [
-        "81",
+        "91",
       ],
     },
     "<http://schema.org/Place>" => Object {
@@ -934,7 +1050,7 @@ TermMap {
         "value": "http://schema.org/Place",
       },
       "value": Array [
-        "83",
+        "93",
       ],
     },
     "\\"Wozenderlands\\"" => Object {
@@ -948,8 +1064,8 @@ TermMap {
         "value": "Wozenderlands",
       },
       "value": Array [
-        "84",
-        "85",
+        "94",
+        "95",
       ],
     },
     "\\"4879\\"" => Object {
@@ -963,7 +1079,7 @@ TermMap {
         "value": "4879",
       },
       "value": Array [
-        "86",
+        "96",
       ],
     },
     "\\"5 Wonderland Street\\"" => Object {
@@ -977,7 +1093,21 @@ TermMap {
         "value": "5 Wonderland Street",
       },
       "value": Array [
-        "87",
+        "97",
+      ],
+    },
+    "\\"Charlie\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "Charlie",
+      },
+      "value": Array [
+        "98",
       ],
     },
     "\\"Alice\\"" => Object {
@@ -991,9 +1121,9 @@ TermMap {
         "value": "Alice",
       },
       "value": Array [
-        "89",
-        "92",
-        "93",
+        "100",
+        "104",
+        "105",
       ],
     },
     "_:n3-5" => Object {
@@ -1002,7 +1132,7 @@ TermMap {
         "value": "n3-5",
       },
       "value": Array [
-        "90",
+        "101",
       ],
     },
     "<https://miro.medium.com/max/1100/1*xupcHn3b0jEFPkjvuH5Pbw.jpeg>" => Object {
@@ -1011,7 +1141,7 @@ TermMap {
         "value": "https://miro.medium.com/max/1100/1*xupcHn3b0jEFPkjvuH5Pbw.jpeg",
       },
       "value": Array [
-        "94",
+        "106",
       ],
     },
     "<shared>" => Object {
@@ -1020,7 +1150,7 @@ TermMap {
         "value": "shared",
       },
       "value": Array [
-        "95",
+        "107",
       ],
     },
     "<oh-my>" => Object {
@@ -1029,7 +1159,7 @@ TermMap {
         "value": "oh-my",
       },
       "value": Array [
-        "96",
+        "108",
       ],
     },
     "<http://example.org/property/loves%20to%20drink%20tea%20with>" => Object {
@@ -1038,7 +1168,7 @@ TermMap {
         "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
       },
       "value": Array [
-        "97",
+        "109",
       ],
     },
     "\\"loves to drink tea with\\"" => Object {
@@ -1052,7 +1182,7 @@ TermMap {
         "value": "loves to drink tea with",
       },
       "value": Array [
-        "98",
+        "110",
       ],
     },
     "<http://example.org/s>" => Object {
@@ -1061,7 +1191,7 @@ TermMap {
         "value": "http://example.org/s",
       },
       "value": Array [
-        "99",
+        "111",
       ],
     },
     "<http://example.org/Something>" => Object {
@@ -1070,7 +1200,7 @@ TermMap {
         "value": "http://example.org/Something",
       },
       "value": Array [
-        "100",
+        "112",
       ],
     },
     "<http://example.org/o>" => Object {
@@ -1079,7 +1209,7 @@ TermMap {
         "value": "http://example.org/o",
       },
       "value": Array [
-        "101",
+        "113",
       ],
     },
   },
@@ -1089,7 +1219,7 @@ TermMap {
 exports[`bfs maxDepth = 2 1`] = `
 Array [
   Object {
-    "id": "34",
+    "id": "38",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -1113,7 +1243,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "35",
+            "id": "39",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1134,7 +1264,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "36",
+            "id": "40",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1152,7 +1282,7 @@ Array [
             },
           },
           Object {
-            "id": "37",
+            "id": "41",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1178,7 +1308,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "38",
+            "id": "42",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [
@@ -1206,7 +1336,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "39",
+                    "id": "43",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1219,7 +1349,7 @@ Array [
                     },
                   },
                   Object {
-                    "id": "40",
+                    "id": "44",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1240,7 +1370,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "41",
+                    "id": "45",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1266,7 +1396,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "42",
+                    "id": "46",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1292,7 +1422,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "43",
+                    "id": "47",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1313,7 +1443,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "44",
+                    "id": "48",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -1348,7 +1478,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "45",
+                    "id": "49",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -1379,11 +1509,37 @@ Array [
               Object {
                 "predicate": Object {
                   "termType": "NamedNode",
+                  "value": "http://example.org/knows",
+                },
+                "values": Array [
+                  Object {
+                    "id": "50",
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://example.org/note/Alice.md",
+                        },
+                      ],
+                      "types": Array [],
+                    },
+                    "rows": Array [],
+                    "term": Object {
+                      "termType": "NamedNode",
+                      "value": "http://example.org/note/Charlie.md",
+                    },
+                  },
+                ],
+              },
+              Object {
+                "predicate": Object {
+                  "termType": "NamedNode",
                   "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
                 },
                 "values": Array [
                   Object {
-                    "id": "46",
+                    "id": "51",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [
@@ -1422,7 +1578,7 @@ Array [
     },
   },
   Object {
-    "id": "47",
+    "id": "52",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -1450,7 +1606,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "48",
+            "id": "53",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1463,7 +1619,7 @@ Array [
             },
           },
           Object {
-            "id": "49",
+            "id": "54",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1484,7 +1640,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "50",
+            "id": "55",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1510,7 +1666,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "51",
+            "id": "56",
             "isInternalLink": true,
             "meta": Object {
               "graphs": Array [],
@@ -1536,7 +1692,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "52",
+            "id": "57",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1562,7 +1718,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "53",
+            "id": "58",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1588,7 +1744,7 @@ Array [
     },
   },
   Object {
-    "id": "54",
+    "id": "59",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -1611,7 +1767,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "55",
+            "id": "60",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1632,7 +1788,52 @@ Array [
     },
   },
   Object {
-    "id": "56",
+    "id": "61",
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/Alice.md",
+        },
+      ],
+      "types": Array [],
+    },
+    "rows": Array [
+      Object {
+        "predicate": Object {
+          "termType": "NamedNode",
+          "value": "http://schema.org/name",
+        },
+        "values": Array [
+          Object {
+            "id": "62",
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
+            "rows": Array [],
+            "term": Object {
+              "datatype": Object {
+                "termType": "NamedNode",
+                "value": "http://www.w3.org/2001/XMLSchema#string",
+              },
+              "language": "",
+              "termType": "Literal",
+              "value": "Charlie",
+            },
+          },
+        ],
+      },
+    ],
+    "term": Object {
+      "termType": "NamedNode",
+      "value": "http://example.org/note/Charlie.md",
+    },
+  },
+  Object {
+    "id": "63",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -1656,7 +1857,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "57",
+            "id": "64",
             "isInternalLink": true,
             "meta": Object {
               "graphs": Array [],
@@ -1677,7 +1878,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "58",
+            "id": "65",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1703,7 +1904,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "59",
+            "id": "66",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [
@@ -1727,7 +1928,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "60",
+                    "id": "68",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1748,7 +1949,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "61",
+                    "id": "69",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1774,7 +1975,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "62",
+                    "id": "70",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1800,7 +2001,7 @@ Array [
                 },
                 "values": Array [
                   Object {
-                    "id": "63",
+                    "id": "71",
                     "isInternalLink": false,
                     "meta": Object {
                       "graphs": Array [],
@@ -1822,6 +2023,32 @@ Array [
           },
         ],
       },
+      Object {
+        "predicate": Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/knows",
+        },
+        "values": Array [
+          Object {
+            "id": "67",
+            "isInternalLink": true,
+            "meta": Object {
+              "graphs": Array [
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://example.org/note/Alice.md",
+                },
+              ],
+              "types": Array [],
+            },
+            "rows": Array [],
+            "term": Object {
+              "termType": "NamedNode",
+              "value": "http://example.org/note/Charlie.md",
+            },
+          },
+        ],
+      },
     ],
     "term": Object {
       "termType": "NamedNode",
@@ -1829,7 +2056,7 @@ Array [
     },
   },
   Object {
-    "id": "64",
+    "id": "72",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -1848,7 +2075,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "65",
+            "id": "73",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1874,7 +2101,7 @@ Array [
     },
   },
   Object {
-    "id": "66",
+    "id": "74",
     "isInternalLink": false,
     "meta": Object {
       "graphs": Array [
@@ -1898,7 +2125,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "67",
+            "id": "75",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1919,7 +2146,7 @@ Array [
         },
         "values": Array [
           Object {
-            "id": "68",
+            "id": "76",
             "isInternalLink": false,
             "meta": Object {
               "graphs": Array [],
@@ -1929,6 +2156,32 @@ Array [
             "term": Object {
               "termType": "NamedNode",
               "value": "http://example.org/o",
+            },
+          },
+        ],
+      },
+      Object {
+        "predicate": Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/relatedTo",
+        },
+        "values": Array [
+          Object {
+            "id": "77",
+            "isInternalLink": true,
+            "meta": Object {
+              "graphs": Array [
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://example.org/note/Alice.md",
+                },
+              ],
+              "types": Array [],
+            },
+            "rows": Array [],
+            "term": Object {
+              "termType": "NamedNode",
+              "value": "http://example.org/note/Charlie.md",
             },
           },
         ],

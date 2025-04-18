@@ -24,6 +24,7 @@ const ns = {
   r2rml: rdf.namespace('http://www.w3.org/ns/r2rml#'),
   sh: rdf.namespace('http://www.w3.org/ns/shacl#'),
   epo_shape: rdf.namespace('http://data.europa.eu/a4g/data-shape#'),
+  ex: rdf.namespace('http://example.org/'),
 }
 
 export {

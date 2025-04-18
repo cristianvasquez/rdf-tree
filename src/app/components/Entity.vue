@@ -1,8 +1,8 @@
 <script setup>
-import { ArrowUp } from '@vicons/ionicons5'
-import { NIcon, NPopover } from 'naive-ui'
-import { computed, onMounted, ref, toRaw } from 'vue'
+import { computed, toRaw } from 'vue'
+import { useStore } from '../state.js'
 import { getBackgroundStyle } from './colors.js'
+import EntityHover from './EntityHover.vue'
 import Row from './Row.vue'
 import Term from './Term.vue'
 import ToolIcon from './ToolIcon.vue'
@@ -11,11 +11,7 @@ const props = defineProps({
   pointer: Object,
 })
 
-const inDataset = ref()
-
-onMounted(() => {
-  inDataset.value = !!document.getElementById(`${props.pointer.term.value}`)
-})
+const store = useStore()
 
 const entityStyle = computed(() => {
   return getBackgroundStyle(props.pointer, true)
@@ -23,58 +19,35 @@ const entityStyle = computed(() => {
 
 </script>
 
-<template>
-  <template v-if="pointer.rows.length">
 
-    <div class="entity" :id="pointer.term.value" :style="entityStyle">
-      <div
-          class="entity-header"
-      >
-        <n-popover trigger="hover" :delay="500">
-          <template #trigger>
+<template>
+  <div :id="pointer.id">
+    <template v-if="pointer.rows.length">
+      <!-- Entity with rows -->
+      <div class="entity" :style="entityStyle">
+        <div class="entity-header">
+          <EntityHover :pointer="pointer">
             <Term :term="pointer.term">
               <ToolIcon :term="toRaw(pointer.term)"/>
             </Term>
+          </EntityHover>
+          <slot></slot>
+        </div>
+        <div class="rows">
+          <template v-for="row of pointer.rows">
+            <Row :row="row">
+              <ToolIcon :term="toRaw(row.predicate)"/>
+            </Row>
           </template>
-          <span>
-            <template v-if="pointer.meta">
-            Graphs
-            <ul>
-              <li v-for="graph of pointer.meta.graphs">{{ graph }}</li>
-            </ul>
-            Types
-            <ul>
-              <li v-for="type of pointer.meta.types">{{ type }}</li>
-            </ul>
-            </template>
-
-          </span>
-        </n-popover>
-
-        <slot></slot>
+        </div>
       </div>
-      <div class="rows">
-        <template v-for="row of pointer.rows">
-          <Row :row="row">
-            <ToolIcon :term="toRaw(row.predicate)"/>
-          </Row>
-        </template>
-      </div>
-    </div>
-  </template>
-  <template v-else>
-    <template v-if="pointer.isInternalLink && inDataset">
-      <a :href="`#${pointer.term.value}`">
-        {{ pointer.term.value }}
-        <NIcon>
-          <ArrowUp/>
-        </NIcon>
-      </a>
     </template>
     <template v-else>
-      <Term :term="pointer.term">
-        <ToolIcon :term="toRaw(pointer.term)"/>
-      </Term>
+      <EntityHover :pointer="pointer">
+        <Term :term="pointer.term">
+          <ToolIcon :term="toRaw(pointer.term)"/>
+        </Term>
+      </EntityHover>
     </template>
-  </template>
+  </div>
 </template>
