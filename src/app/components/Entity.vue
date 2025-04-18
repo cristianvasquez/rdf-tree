@@ -1,8 +1,7 @@
 <script setup>
 import { computed, toRaw } from 'vue'
-import { useStore } from '../state.js'
 import { getBackgroundStyle } from './colors.js'
-import EntityHover from './EntityHover.vue'
+import EntityMenu from './EntityMenu.vue'
 import Row from './Row.vue'
 import Term from './Term.vue'
 import ToolIcon from './ToolIcon.vue'
@@ -24,11 +23,11 @@ const entityStyle = computed(() => {
       <!-- Entity with rows -->
       <div class="entity" :style="entityStyle">
         <div class="entity-header">
-          <EntityHover :pointer="pointer">
+          <EntityMenu :pointer="pointer">
             <Term :term="pointer.term">
               <ToolIcon :term="toRaw(pointer.term)"/>
             </Term>
-          </EntityHover>
+          </EntityMenu>
           <slot></slot>
         </div>
         <div class="rows">
@@ -41,11 +40,11 @@ const entityStyle = computed(() => {
       </div>
     </template>
     <template v-else>
-      <EntityHover :pointer="pointer">
+      <EntityMenu :pointer="pointer">
         <Term :term="pointer.term">
           <ToolIcon :term="toRaw(pointer.term)"/>
         </Term>
-      </EntityHover>
+      </EntityMenu>
     </template>
   </div>
 </template>

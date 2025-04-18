@@ -130,7 +130,7 @@ div .bring-down {
 }
 
 .scrolled-to {
-  animation: flash 2s ease-out;
+  animation: flash 5s ease-out;
 }
 
 @keyframes flash {
