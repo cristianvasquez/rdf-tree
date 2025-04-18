@@ -2,13 +2,22 @@
 
 exports[`bfs do not ignore namedGraphs 1`] = `
 Array [
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/note/WhiteRabbit.md",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/WhiteRabbit.md",
+        },
+      ],
+      "types": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://pkm-united.org/Note",
+        },
+      ],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -16,13 +25,12 @@ Array [
           "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -37,13 +45,12 @@ Array [
           "value": "http://schema.org/name",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -55,13 +62,12 @@ Array [
               "value": "WhiteRabbit",
             },
           },
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -81,13 +87,26 @@ Array [
           "value": "http://pkm-united.org/contains",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://example.org/note/WhiteRabbit.md",
+                },
+              ],
+              "types": Array [
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://pkm-united.org/Block",
+                },
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://example.org/Rabbit",
+                },
+              ],
+            },
             "rows": Array [
               Object {
                 "predicate": Object {
@@ -95,26 +114,24 @@ Array [
                   "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "NamedNode",
                       "value": "http://pkm-united.org/Block",
                     },
                   },
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "NamedNode",
@@ -129,13 +146,12 @@ Array [
                   "value": "http://schema.org/name",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "datatype": Object {
@@ -155,14 +171,12 @@ Array [
                   "value": "http://pkm-united.org/selector",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
                     "isInternalLink": true,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "datatype": Object {
@@ -182,13 +196,12 @@ Array [
                   "value": "http://schema.org/image",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "NamedNode",
@@ -203,13 +216,26 @@ Array [
                   "value": "http://pkm-united.org/contains",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://example.org/note/WhiteRabbit.md",
+                        },
+                      ],
+                      "types": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://pkm-united.org/Block",
+                        },
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://schema.org/Place",
+                        },
+                      ],
+                    },
                     "rows": Array [
                       Object {
                         "predicate": Object {
@@ -217,27 +243,24 @@ Array [
                           "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/WhiteRabbit.md",
-                              },
-                            ],
+                          Object {
                             "isInternalLink": true,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "termType": "NamedNode",
                               "value": "http://pkm-united.org/Block",
                             },
                           },
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/WhiteRabbit.md",
-                              },
-                            ],
+                          Object {
+                            "isInternalLink": false,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "termType": "NamedNode",
@@ -252,13 +275,12 @@ Array [
                           "value": "http://schema.org/name",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/WhiteRabbit.md",
-                              },
-                            ],
+                          Object {
+                            "isInternalLink": false,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "datatype": Object {
@@ -278,14 +300,12 @@ Array [
                           "value": "http://pkm-united.org/selector",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/WhiteRabbit.md",
-                              },
-                            ],
+                          Object {
                             "isInternalLink": true,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "datatype": Object {
@@ -305,13 +325,12 @@ Array [
                           "value": "http://schema.org/postalCode",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/WhiteRabbit.md",
-                              },
-                            ],
+                          Object {
+                            "isInternalLink": false,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "datatype": Object {
@@ -331,13 +350,12 @@ Array [
                           "value": "http://schema.org/streetAddress",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/WhiteRabbit.md",
-                              },
-                            ],
+                          Object {
+                            "isInternalLink": false,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "datatype": Object {
@@ -365,14 +383,26 @@ Array [
                   "value": "http://schema.org/address",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
                     "isInternalLink": true,
+                    "meta": Object {
+                      "graphs": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://example.org/note/WhiteRabbit.md",
+                        },
+                      ],
+                      "types": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://pkm-united.org/Block",
+                        },
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://schema.org/Place",
+                        },
+                      ],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "BlankNode",
@@ -387,13 +417,22 @@ Array [
                   "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://example.org/note/Alice.md",
+                        },
+                      ],
+                      "types": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://pkm-united.org/Note",
+                        },
+                      ],
+                    },
                     "rows": Array [
                       Object {
                         "predicate": Object {
@@ -401,14 +440,12 @@ Array [
                           "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/Alice.md",
-                              },
-                            ],
+                          Object {
                             "isInternalLink": true,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "termType": "NamedNode",
@@ -423,13 +460,12 @@ Array [
                           "value": "http://schema.org/name",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/Alice.md",
-                              },
-                            ],
+                          Object {
+                            "isInternalLink": false,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "datatype": Object {
@@ -449,13 +485,22 @@ Array [
                           "value": "http://pkm-united.org/contains",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/Alice.md",
-                              },
-                            ],
+                          Object {
+                            "isInternalLink": false,
+                            "meta": Object {
+                              "graphs": Array [
+                                Object {
+                                  "termType": "NamedNode",
+                                  "value": "http://example.org/note/Alice.md",
+                                },
+                              ],
+                              "types": Array [
+                                Object {
+                                  "termType": "NamedNode",
+                                  "value": "http://pkm-united.org/Block",
+                                },
+                              ],
+                            },
                             "rows": Array [
                               Object {
                                 "predicate": Object {
@@ -463,14 +508,12 @@ Array [
                                   "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
                                 },
                                 "values": Array [
-                                  Entity {
-                                    "graphs": Array [
-                                      Object {
-                                        "termType": "NamedNode",
-                                        "value": "http://example.org/note/Alice.md",
-                                      },
-                                    ],
+                                  Object {
                                     "isInternalLink": true,
+                                    "meta": Object {
+                                      "graphs": Array [],
+                                      "types": Array [],
+                                    },
                                     "rows": Array [],
                                     "term": Object {
                                       "termType": "NamedNode",
@@ -485,14 +528,12 @@ Array [
                                   "value": "http://schema.org/name",
                                 },
                                 "values": Array [
-                                  Entity {
-                                    "graphs": Array [
-                                      Object {
-                                        "termType": "NamedNode",
-                                        "value": "http://example.org/note/Alice.md",
-                                      },
-                                    ],
+                                  Object {
                                     "isInternalLink": true,
+                                    "meta": Object {
+                                      "graphs": Array [],
+                                      "types": Array [],
+                                    },
                                     "rows": Array [],
                                     "term": Object {
                                       "datatype": Object {
@@ -512,14 +553,12 @@ Array [
                                   "value": "http://pkm-united.org/selector",
                                 },
                                 "values": Array [
-                                  Entity {
-                                    "graphs": Array [
-                                      Object {
-                                        "termType": "NamedNode",
-                                        "value": "http://example.org/note/Alice.md",
-                                      },
-                                    ],
+                                  Object {
                                     "isInternalLink": true,
+                                    "meta": Object {
+                                      "graphs": Array [],
+                                      "types": Array [],
+                                    },
                                     "rows": Array [],
                                     "term": Object {
                                       "datatype": Object {
@@ -539,13 +578,12 @@ Array [
                                   "value": "http://schema.org/image",
                                 },
                                 "values": Array [
-                                  Entity {
-                                    "graphs": Array [
-                                      Object {
-                                        "termType": "NamedNode",
-                                        "value": "http://example.org/note/Alice.md",
-                                      },
-                                    ],
+                                  Object {
+                                    "isInternalLink": false,
+                                    "meta": Object {
+                                      "graphs": Array [],
+                                      "types": Array [],
+                                    },
                                     "rows": Array [],
                                     "term": Object {
                                       "termType": "NamedNode",
@@ -584,17 +622,21 @@ Array [
       "value": "http://example.org/note/WhiteRabbit.md",
     },
   },
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/note/WhiteRabbit.md",
-      },
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/note/Alice.md",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/WhiteRabbit.md",
+        },
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/Alice.md",
+        },
+      ],
+      "types": Array [],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -602,17 +644,12 @@ Array [
           "value": "quad",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/Alice.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -627,13 +664,17 @@ Array [
       "value": "shared",
     },
   },
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "DefaultGraph",
-        "value": "",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "DefaultGraph",
+          "value": "",
+        },
+      ],
+      "types": Array [],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -641,13 +682,12 @@ Array [
           "value": "http://schema.org/name",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "DefaultGraph",
-                "value": "",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -667,13 +707,22 @@ Array [
       "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
     },
   },
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "DefaultGraph",
-        "value": "",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "DefaultGraph",
+          "value": "",
+        },
+      ],
+      "types": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/Something",
+        },
+      ],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -681,13 +730,12 @@ Array [
           "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "DefaultGraph",
-                "value": "",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -702,13 +750,12 @@ Array [
           "value": "http://example.org/p",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "DefaultGraph",
-                "value": "",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -728,13 +775,22 @@ Array [
 
 exports[`bfs extracts ex:Something first 1`] = `
 Array [
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "DefaultGraph",
-        "value": "",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "DefaultGraph",
+          "value": "",
+        },
+      ],
+      "types": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/Something",
+        },
+      ],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -742,13 +798,12 @@ Array [
           "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "DefaultGraph",
-                "value": "",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -763,13 +818,12 @@ Array [
           "value": "http://example.org/p",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "DefaultGraph",
-                "value": "",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -784,13 +838,22 @@ Array [
       "value": "http://example.org/s",
     },
   },
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/note/WhiteRabbit.md",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/WhiteRabbit.md",
+        },
+      ],
+      "types": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://pkm-united.org/Note",
+        },
+      ],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -798,13 +861,12 @@ Array [
           "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -819,13 +881,12 @@ Array [
           "value": "http://schema.org/name",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -837,13 +898,12 @@ Array [
               "value": "WhiteRabbit",
             },
           },
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -863,13 +923,26 @@ Array [
           "value": "http://pkm-united.org/contains",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://example.org/note/WhiteRabbit.md",
+                },
+              ],
+              "types": Array [
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://pkm-united.org/Block",
+                },
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://example.org/Rabbit",
+                },
+              ],
+            },
             "rows": Array [
               Object {
                 "predicate": Object {
@@ -877,26 +950,24 @@ Array [
                   "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "NamedNode",
                       "value": "http://pkm-united.org/Block",
                     },
                   },
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "NamedNode",
@@ -911,13 +982,12 @@ Array [
                   "value": "http://schema.org/name",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "datatype": Object {
@@ -937,14 +1007,12 @@ Array [
                   "value": "http://pkm-united.org/selector",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
                     "isInternalLink": true,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "datatype": Object {
@@ -964,13 +1032,12 @@ Array [
                   "value": "http://schema.org/image",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "NamedNode",
@@ -985,13 +1052,26 @@ Array [
                   "value": "http://pkm-united.org/contains",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://example.org/note/WhiteRabbit.md",
+                        },
+                      ],
+                      "types": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://pkm-united.org/Block",
+                        },
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://schema.org/Place",
+                        },
+                      ],
+                    },
                     "rows": Array [
                       Object {
                         "predicate": Object {
@@ -999,27 +1079,24 @@ Array [
                           "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/WhiteRabbit.md",
-                              },
-                            ],
+                          Object {
                             "isInternalLink": true,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "termType": "NamedNode",
                               "value": "http://pkm-united.org/Block",
                             },
                           },
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/WhiteRabbit.md",
-                              },
-                            ],
+                          Object {
+                            "isInternalLink": false,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "termType": "NamedNode",
@@ -1034,13 +1111,12 @@ Array [
                           "value": "http://schema.org/name",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/WhiteRabbit.md",
-                              },
-                            ],
+                          Object {
+                            "isInternalLink": false,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "datatype": Object {
@@ -1060,14 +1136,12 @@ Array [
                           "value": "http://pkm-united.org/selector",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/WhiteRabbit.md",
-                              },
-                            ],
+                          Object {
                             "isInternalLink": true,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "datatype": Object {
@@ -1087,13 +1161,12 @@ Array [
                           "value": "http://schema.org/postalCode",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/WhiteRabbit.md",
-                              },
-                            ],
+                          Object {
+                            "isInternalLink": false,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "datatype": Object {
@@ -1113,13 +1186,12 @@ Array [
                           "value": "http://schema.org/streetAddress",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/WhiteRabbit.md",
-                              },
-                            ],
+                          Object {
+                            "isInternalLink": false,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "datatype": Object {
@@ -1147,14 +1219,26 @@ Array [
                   "value": "http://schema.org/address",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
                     "isInternalLink": true,
+                    "meta": Object {
+                      "graphs": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://example.org/note/WhiteRabbit.md",
+                        },
+                      ],
+                      "types": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://pkm-united.org/Block",
+                        },
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://schema.org/Place",
+                        },
+                      ],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "BlankNode",
@@ -1169,13 +1253,22 @@ Array [
                   "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://example.org/note/Alice.md",
+                        },
+                      ],
+                      "types": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://pkm-united.org/Note",
+                        },
+                      ],
+                    },
                     "rows": Array [
                       Object {
                         "predicate": Object {
@@ -1183,14 +1276,12 @@ Array [
                           "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/Alice.md",
-                              },
-                            ],
+                          Object {
                             "isInternalLink": true,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "termType": "NamedNode",
@@ -1205,13 +1296,12 @@ Array [
                           "value": "http://schema.org/name",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/Alice.md",
-                              },
-                            ],
+                          Object {
+                            "isInternalLink": false,
+                            "meta": Object {
+                              "graphs": Array [],
+                              "types": Array [],
+                            },
                             "rows": Array [],
                             "term": Object {
                               "datatype": Object {
@@ -1231,13 +1321,22 @@ Array [
                           "value": "http://pkm-united.org/contains",
                         },
                         "values": Array [
-                          Entity {
-                            "graphs": Array [
-                              Object {
-                                "termType": "NamedNode",
-                                "value": "http://example.org/note/Alice.md",
-                              },
-                            ],
+                          Object {
+                            "isInternalLink": false,
+                            "meta": Object {
+                              "graphs": Array [
+                                Object {
+                                  "termType": "NamedNode",
+                                  "value": "http://example.org/note/Alice.md",
+                                },
+                              ],
+                              "types": Array [
+                                Object {
+                                  "termType": "NamedNode",
+                                  "value": "http://pkm-united.org/Block",
+                                },
+                              ],
+                            },
                             "rows": Array [
                               Object {
                                 "predicate": Object {
@@ -1245,14 +1344,12 @@ Array [
                                   "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
                                 },
                                 "values": Array [
-                                  Entity {
-                                    "graphs": Array [
-                                      Object {
-                                        "termType": "NamedNode",
-                                        "value": "http://example.org/note/Alice.md",
-                                      },
-                                    ],
+                                  Object {
                                     "isInternalLink": true,
+                                    "meta": Object {
+                                      "graphs": Array [],
+                                      "types": Array [],
+                                    },
                                     "rows": Array [],
                                     "term": Object {
                                       "termType": "NamedNode",
@@ -1267,14 +1364,12 @@ Array [
                                   "value": "http://schema.org/name",
                                 },
                                 "values": Array [
-                                  Entity {
-                                    "graphs": Array [
-                                      Object {
-                                        "termType": "NamedNode",
-                                        "value": "http://example.org/note/Alice.md",
-                                      },
-                                    ],
+                                  Object {
                                     "isInternalLink": true,
+                                    "meta": Object {
+                                      "graphs": Array [],
+                                      "types": Array [],
+                                    },
                                     "rows": Array [],
                                     "term": Object {
                                       "datatype": Object {
@@ -1294,14 +1389,12 @@ Array [
                                   "value": "http://pkm-united.org/selector",
                                 },
                                 "values": Array [
-                                  Entity {
-                                    "graphs": Array [
-                                      Object {
-                                        "termType": "NamedNode",
-                                        "value": "http://example.org/note/Alice.md",
-                                      },
-                                    ],
+                                  Object {
                                     "isInternalLink": true,
+                                    "meta": Object {
+                                      "graphs": Array [],
+                                      "types": Array [],
+                                    },
                                     "rows": Array [],
                                     "term": Object {
                                       "datatype": Object {
@@ -1321,13 +1414,12 @@ Array [
                                   "value": "http://schema.org/image",
                                 },
                                 "values": Array [
-                                  Entity {
-                                    "graphs": Array [
-                                      Object {
-                                        "termType": "NamedNode",
-                                        "value": "http://example.org/note/Alice.md",
-                                      },
-                                    ],
+                                  Object {
+                                    "isInternalLink": false,
+                                    "meta": Object {
+                                      "graphs": Array [],
+                                      "types": Array [],
+                                    },
                                     "rows": Array [],
                                     "term": Object {
                                       "termType": "NamedNode",
@@ -1366,17 +1458,21 @@ Array [
       "value": "http://example.org/note/WhiteRabbit.md",
     },
   },
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/note/WhiteRabbit.md",
-      },
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/note/Alice.md",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/WhiteRabbit.md",
+        },
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/Alice.md",
+        },
+      ],
+      "types": Array [],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -1384,17 +1480,12 @@ Array [
           "value": "quad",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/Alice.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -1409,13 +1500,17 @@ Array [
       "value": "shared",
     },
   },
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "DefaultGraph",
-        "value": "",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "DefaultGraph",
+          "value": "",
+        },
+      ],
+      "types": Array [],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -1423,13 +1518,12 @@ Array [
           "value": "http://schema.org/name",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "DefaultGraph",
-                "value": "",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -1454,13 +1548,22 @@ Array [
 
 exports[`bfs maxDepth = 2 1`] = `
 Array [
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/note/WhiteRabbit.md",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/WhiteRabbit.md",
+        },
+      ],
+      "types": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://pkm-united.org/Note",
+        },
+      ],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -1468,13 +1571,12 @@ Array [
           "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -1489,13 +1591,12 @@ Array [
           "value": "http://schema.org/name",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -1507,13 +1608,12 @@ Array [
               "value": "WhiteRabbit",
             },
           },
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -1533,13 +1633,26 @@ Array [
           "value": "http://pkm-united.org/contains",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://example.org/note/WhiteRabbit.md",
+                },
+              ],
+              "types": Array [
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://pkm-united.org/Block",
+                },
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://example.org/Rabbit",
+                },
+              ],
+            },
             "rows": Array [
               Object {
                 "predicate": Object {
@@ -1547,26 +1660,24 @@ Array [
                   "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "NamedNode",
                       "value": "http://pkm-united.org/Block",
                     },
                   },
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "NamedNode",
@@ -1581,13 +1692,12 @@ Array [
                   "value": "http://schema.org/name",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "datatype": Object {
@@ -1607,13 +1717,12 @@ Array [
                   "value": "http://pkm-united.org/selector",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "datatype": Object {
@@ -1633,13 +1742,12 @@ Array [
                   "value": "http://schema.org/image",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "NamedNode",
@@ -1654,13 +1762,26 @@ Array [
                   "value": "http://pkm-united.org/contains",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://example.org/note/WhiteRabbit.md",
+                        },
+                      ],
+                      "types": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://pkm-united.org/Block",
+                        },
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://schema.org/Place",
+                        },
+                      ],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "BlankNode",
@@ -1675,13 +1796,26 @@ Array [
                   "value": "http://schema.org/address",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://example.org/note/WhiteRabbit.md",
+                        },
+                      ],
+                      "types": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://pkm-united.org/Block",
+                        },
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://schema.org/Place",
+                        },
+                      ],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "BlankNode",
@@ -1696,13 +1830,22 @@ Array [
                   "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/WhiteRabbit.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://example.org/note/Alice.md",
+                        },
+                      ],
+                      "types": Array [
+                        Object {
+                          "termType": "NamedNode",
+                          "value": "http://pkm-united.org/Note",
+                        },
+                      ],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "NamedNode",
@@ -1725,13 +1868,26 @@ Array [
       "value": "http://example.org/note/WhiteRabbit.md",
     },
   },
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/note/WhiteRabbit.md",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/WhiteRabbit.md",
+        },
+      ],
+      "types": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://pkm-united.org/Block",
+        },
+        Object {
+          "termType": "NamedNode",
+          "value": "http://schema.org/Place",
+        },
+      ],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -1739,26 +1895,24 @@ Array [
           "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
               "value": "http://pkm-united.org/Block",
             },
           },
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -1773,13 +1927,12 @@ Array [
           "value": "http://schema.org/name",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -1799,14 +1952,12 @@ Array [
           "value": "http://pkm-united.org/selector",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
             "isInternalLink": true,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -1826,13 +1977,12 @@ Array [
           "value": "http://schema.org/postalCode",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -1852,13 +2002,12 @@ Array [
           "value": "http://schema.org/streetAddress",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -1878,17 +2027,21 @@ Array [
       "value": "b2_b4",
     },
   },
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/note/WhiteRabbit.md",
-      },
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/note/Alice.md",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/WhiteRabbit.md",
+        },
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/Alice.md",
+        },
+      ],
+      "types": Array [],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -1896,17 +2049,12 @@ Array [
           "value": "quad",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/WhiteRabbit.md",
-              },
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/Alice.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -1921,13 +2069,22 @@ Array [
       "value": "shared",
     },
   },
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "NamedNode",
-        "value": "http://example.org/note/Alice.md",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/Alice.md",
+        },
+      ],
+      "types": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://pkm-united.org/Note",
+        },
+      ],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -1935,14 +2092,12 @@ Array [
           "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/Alice.md",
-              },
-            ],
+          Object {
             "isInternalLink": true,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -1957,13 +2112,12 @@ Array [
           "value": "http://schema.org/name",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/Alice.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -1983,13 +2137,22 @@ Array [
           "value": "http://pkm-united.org/contains",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "NamedNode",
-                "value": "http://example.org/note/Alice.md",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://example.org/note/Alice.md",
+                },
+              ],
+              "types": Array [
+                Object {
+                  "termType": "NamedNode",
+                  "value": "http://pkm-united.org/Block",
+                },
+              ],
+            },
             "rows": Array [
               Object {
                 "predicate": Object {
@@ -1997,13 +2160,12 @@ Array [
                   "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/Alice.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "NamedNode",
@@ -2018,13 +2180,12 @@ Array [
                   "value": "http://schema.org/name",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/Alice.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "datatype": Object {
@@ -2044,13 +2205,12 @@ Array [
                   "value": "http://pkm-united.org/selector",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/Alice.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "datatype": Object {
@@ -2070,13 +2230,12 @@ Array [
                   "value": "http://schema.org/image",
                 },
                 "values": Array [
-                  Entity {
-                    "graphs": Array [
-                      Object {
-                        "termType": "NamedNode",
-                        "value": "http://example.org/note/Alice.md",
-                      },
-                    ],
+                  Object {
+                    "isInternalLink": false,
+                    "meta": Object {
+                      "graphs": Array [],
+                      "types": Array [],
+                    },
                     "rows": Array [],
                     "term": Object {
                       "termType": "NamedNode",
@@ -2099,13 +2258,17 @@ Array [
       "value": "http://example.org/note/Alice.md",
     },
   },
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "DefaultGraph",
-        "value": "",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "DefaultGraph",
+          "value": "",
+        },
+      ],
+      "types": Array [],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -2113,13 +2276,12 @@ Array [
           "value": "http://schema.org/name",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "DefaultGraph",
-                "value": "",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "datatype": Object {
@@ -2139,13 +2301,22 @@ Array [
       "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
     },
   },
-  Entity {
-    "graphs": Array [
-      Object {
-        "termType": "DefaultGraph",
-        "value": "",
-      },
-    ],
+  Object {
+    "isInternalLink": false,
+    "meta": Object {
+      "graphs": Array [
+        Object {
+          "termType": "DefaultGraph",
+          "value": "",
+        },
+      ],
+      "types": Array [
+        Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/Something",
+        },
+      ],
+    },
     "rows": Array [
       Object {
         "predicate": Object {
@@ -2153,13 +2324,12 @@ Array [
           "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "DefaultGraph",
-                "value": "",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
@@ -2174,13 +2344,12 @@ Array [
           "value": "http://example.org/p",
         },
         "values": Array [
-          Entity {
-            "graphs": Array [
-              Object {
-                "termType": "DefaultGraph",
-                "value": "",
-              },
-            ],
+          Object {
+            "isInternalLink": false,
+            "meta": Object {
+              "graphs": Array [],
+              "types": Array [],
+            },
             "rows": Array [],
             "term": Object {
               "termType": "NamedNode",
