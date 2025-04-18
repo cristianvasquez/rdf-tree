@@ -1,11 +1,11 @@
 <script setup>
 import { useFileDialog } from '@vueuse/core'
-import { lightTheme, NButton, NCard, NConfigProvider, NSpace, NCheckbox } from 'naive-ui'
+import { lightTheme, NButton, NCard, NConfigProvider, NSpace } from 'naive-ui'
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
-import EntityList from './components/EntityList.vue'
-import { parseTurtle } from '../io/rdf-parser.js'
 import { Readable } from 'readable-stream'
+import { ref } from 'vue'
+import { parseTurtle } from '../io/rdf-parser.js'
+import EntityList from './components/EntityList.vue'
 import { useStore } from './state.js'
 
 const store = useStore()
@@ -51,13 +51,15 @@ const name = ref()
           Select turtle or Trig
         </n-button>
         {{ name }}
-        <n-button v-if="currentFocus" @click="store.reset()">{{currentFocus}}</n-button>
+        <n-button v-if="currentFocus" @click="store.reset()">{{ currentFocus }}</n-button>
       </n-space>
     </n-card>
+
     {{ parseError }}
     <div class="entity-container">
       <EntityList :entities="entities"/>
     </div>
+
   </n-config-provider>
 </template>
 <style>

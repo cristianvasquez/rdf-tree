@@ -1,21 +1,11 @@
 import rdf from 'rdf-ext'
+import { createMeta } from './meta.js'
+import { createEntity } from './schemas.js'
 
-class Entity {
-  constructor (term) {
-    this.term = term
-    this.rows = []
-  }
-}
-const unique = (arr) => [...rdf.termSet(arr)]
+function bfsEntity (pointer, { visited = rdf.termMap(), maxDepth = Infinity }) {
 
-function bfsEntity (pointer, { visited = new Set(), maxDepth = Infinity }) {
-
-  const rootEntity = new Entity(pointer.term)
-
-  // Append graphs for the root entity (@TODO, refactor - make this optional)
-  rootEntity.graphs = unique(
-    [...pointer.out().quads()].map(x => x.graph),
-  )
+  const rootEntity = createEntity(pointer.term)
+  rootEntity.meta = createMeta(pointer)
 
   // Queue for BFS traversal
   const queue = [{ entity: rootEntity, depth: 0 }]
@@ -26,11 +16,13 @@ function bfsEntity (pointer, { visited = new Set(), maxDepth = Infinity }) {
 
     // Check for internal links
     if (visited.has(term)) {
-      currentEntity.isInternalLink = true
+      // Add this entity's ID to the list for this term
+      visited.get(term).push(currentEntity.id)
       continue
     }
 
-    visited.add(term)
+    // Initialize the list of IDs for this term
+    visited.set(term, [currentEntity.id])
 
     // Get outgoing quads for the current term
     const outgoingQuads = [...pointer.node(term).out().quads()]
@@ -49,12 +41,9 @@ function bfsEntity (pointer, { visited = new Set(), maxDepth = Infinity }) {
 
       // Process unique terms for this predicate
       for (const term of unique(terms)) {
-        const childEntity = new Entity(term)
+        const childEntity = createEntity(term)
 
-        // Append graphs for the values (@TODO, refactor - make this optional)
-        childEntity.graphs = unique(
-          outgoingQuads.filter(x => x.object.equals(term)).map(x => x.graph),
-        )
+        childEntity.meta = createMeta(pointer.node(term))
 
         row.values.push(childEntity)
 
@@ -69,5 +58,7 @@ function bfsEntity (pointer, { visited = new Set(), maxDepth = Infinity }) {
 
   return { entity: rootEntity, visited }
 }
+
+const unique = (arr) => [...rdf.termSet(arr)]
 
 export { bfsEntity }

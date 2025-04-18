@@ -1,9 +1,9 @@
 import { expect } from 'expect'
 import toMatchSnapshot from 'expect-mocha-snapshot'
 import { describe, it } from 'mocha'
-import { getRabbitDataset } from './support/dataset.js'
-import { getEntities } from '../src/traversers/entities.js'
 import rdf from 'rdf-ext'
+import { getEntities } from '../src/traversers/entities.js'
+import { getRabbitDataset } from './support/dataset.js'
 
 expect.extend({ toMatchSnapshot })
 
@@ -25,15 +25,20 @@ describe('bfs', () => {
         {},
       ],
     }
-    const entities = getEntities(dataset, options)
+    const { entities } = getEntities(dataset, options)
     expect(entities).toMatchSnapshot(this)
   })
-  it(`do not ignore namedGraphs`, function () {
+
+  it(`extracts only alice graph`, function () {
     const dataset = getRabbitDataset()
     const options = {
-      ignoreNamedGraphs: false,
+      matchers: [
+        {
+          graph: rdf.namedNode('http://example.org/note/Alice.md'),
+        },
+      ],
     }
-    const entities = getEntities(dataset, options)
+    const { entities } = getEntities(dataset, options)
     expect(entities).toMatchSnapshot(this)
   })
 
@@ -42,7 +47,13 @@ describe('bfs', () => {
     const options = {
       maxDepth: 2,
     }
-    const entities = getEntities(dataset, options)
+    const { entities } = getEntities(dataset, options)
     expect(entities).toMatchSnapshot(this)
+  })
+
+  it(`maps URIs to their corresponding IDs`, function () {
+    const dataset = getRabbitDataset()
+    const { uriToIds } = getEntities(dataset)
+    expect(uriToIds).toMatchSnapshot(this)
   })
 })

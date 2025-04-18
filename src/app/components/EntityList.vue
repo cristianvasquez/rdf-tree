@@ -10,11 +10,12 @@ const props = defineProps({
 
 <template>
   <div class="entities">
-    <template v-for="ptr in entities" :key="ptr.term.value">
+    <template v-for="ptr in entities" :key="ptr.id">
       <Entity :pointer="ptr"/>
     </template>
   </div>
 </template>
+
 
 <style>
 body {
@@ -127,5 +128,15 @@ div .bring-down {
   font-size: 0.7rem;
   margin-left: 4px;
 }
+
+.scrolled-to {
+  animation: flash 5s ease-out;
+}
+
+@keyframes flash {
+  0% { background-color: rgba(255, 255, 100, 0.5); }
+  100% { background-color: transparent; }
+}
+
 
 </style>

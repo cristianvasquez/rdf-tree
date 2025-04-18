@@ -17,6 +17,7 @@
                      schema:image <https://miro.medium.com/max/720/1*HZazTjGg9EBSOoz34IN-tA.jpeg> ;
                      dot:contains _:b4 ;
                      schema:address _:b4 ;
+                     ex:knows <http://example.org/note/Charlie.md> ;
                      <http://example.org/property/loves%20to%20drink%20tea%20with> <http://example.org/note/Alice.md> ;
                  ] .
 
@@ -32,8 +33,11 @@ _:b4 a dot:Block, schema:Place ;
 
 <http://example.org/note/Alice.md> {
 
+<http://example.org/note/Charlie.md> schema:name "Charlie" .
+
 <http://example.org/note/Alice.md> schema:name "Alice" ;
        a dot:Note ;
+       ex:knows <http://example.org/note/Charlie.md> ;
        dot:contains [
                schema:name "Alice" ;
                dot:selector "Alice" ;
@@ -45,6 +49,7 @@ _:b4 a dot:Block, schema:Place ;
 }
 
 ex:s ex:p ex:o ;
-    a ex:Something .
+    a ex:Something ;
+    ex:relatedTo <http://example.org/note/Charlie.md> .
 
 <http://example.org/property/loves%20to%20drink%20tea%20with> schema:name "loves to drink tea with" .

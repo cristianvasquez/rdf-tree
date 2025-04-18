@@ -3,10 +3,9 @@ import { ref } from 'vue'
 import { ns } from '../namespaces.js'
 import { getEntities } from '../traversers/entities.js'
 
-const tools = {
+const facets = {
   typeOf: (type) => {
     return {
-      ignoreNamedGraphs: false,
       matchers: [
         { // Priority for entities of type
           predicate: ns.rdf.type,
@@ -18,7 +17,6 @@ const tools = {
   },
   focusOn: (term) => {
     return {
-      ignoreNamedGraphs: false,
       maxDepth: 1,
       matchers: [
         {
@@ -39,6 +37,7 @@ const tools = {
 export const useStore = defineStore('state', () => {
 
   const entities = ref([])
+  const uriToIds = ref()
   const currentDataset = ref()
   const currentFocus = ref()
 
@@ -50,18 +49,32 @@ export const useStore = defineStore('state', () => {
 
   function reset () {
     currentFocus.value = undefined
-    const options = tools.typeOf(ns.epo.Notice)
-    entities.value = getEntities(currentDataset.value, options)
+    const options = facets.typeOf(ns.epo.Notice)
+    traverseDataset(options)
   }
 
   function focusOn (term) {
-    const options = tools.focusOn(term)
     currentFocus.value = term
-    entities.value = getEntities(currentDataset.value, options)
+    const options = facets.focusOn(term)
+    traverseDataset(options)
+  }
+
+  function traverseDataset (options) {
+    const result = getEntities(currentDataset.value, options)
+    entities.value = result.entities
+    uriToIds.value = result.uriToIds
+  }
+
+  function getIdsForTerm (term) {
+    if (!uriToIds.value || !uriToIds.value.has(term)) {
+      return []
+    }
+    return [...uriToIds.value.get(term)]
   }
 
   return {
     entities,
+    getIdsForTerm,
     setDataset,
     focusOn,
     reset,
