@@ -11,8 +11,6 @@ const props = defineProps({
   pointer: Object,
 })
 
-const store = useStore()
-
 const entityStyle = computed(() => {
   return getBackgroundStyle(props.pointer, true)
 })

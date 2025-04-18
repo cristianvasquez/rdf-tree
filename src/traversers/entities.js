@@ -21,8 +21,8 @@ function getEntities (dataset, options) {
   // Changed from termSet to termMap for the URI -> ID mapping
   let visited = rdf.termMap()
 
-  for (const { subject, predicate, object } of matchers) {
-    const batch = [...dataset.match(subject, predicate, object)].map(
+  for (const { subject, predicate, object, graph } of matchers) {
+    const batch = [...dataset.match(subject, predicate, object, graph)].map(
       x => x.subject).filter(subject => !visited.has(subject))
 
     const batchResult = batch.reduce((acc, term) => {

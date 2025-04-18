@@ -29,6 +29,19 @@ describe('bfs', () => {
     expect(entities).toMatchSnapshot(this)
   })
 
+  it(`extracts only alice graph`, function () {
+    const dataset = getRabbitDataset()
+    const options = {
+      matchers: [
+        {
+          graph: rdf.namedNode('http://example.org/note/Alice.md'),
+        },
+      ],
+    }
+    const { entities } = getEntities(dataset, options)
+    expect(entities).toMatchSnapshot(this)
+  })
+
   it(`maxDepth = 2`, function () {
     const dataset = getRabbitDataset()
     const options = {

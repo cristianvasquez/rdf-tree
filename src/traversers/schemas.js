@@ -18,7 +18,6 @@ const EntitySchema = z.object({
   term: z.any(), // RDF term object
   rows: z.array(RowSchema),
   meta: MetaSchema.optional(),
-  isInternalLink: z.boolean().optional(),
 })
 
 // Helper function to create an entity
@@ -26,7 +25,6 @@ function createEntity (term) {
   return EntitySchema.parse({
     term,
     rows: [],
-    isInternalLink: false,
   })
 }
 

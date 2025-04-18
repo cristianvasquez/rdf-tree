@@ -16,7 +16,6 @@ function bfsEntity (pointer, { visited = rdf.termMap(), maxDepth = Infinity }) {
 
     // Check for internal links
     if (visited.has(term)) {
-      currentEntity.isInternalLink = true
       // Add this entity's ID to the list for this term
       visited.get(term).push(currentEntity.id)
       continue

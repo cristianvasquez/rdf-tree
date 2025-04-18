@@ -1,6 +1,8 @@
 <script setup>
-import { NPopover } from 'naive-ui'
+import { NDropdown, NButton } from 'naive-ui'
+import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
+import { ns } from '../../namespaces.js'
 import { useStore } from '../state.js'
 
 const props = defineProps({
@@ -8,56 +10,93 @@ const props = defineProps({
 })
 
 const store = useStore()
+
 const relatedEntities = computed(() => {
   return store.getIdsForTerm(props.pointer.term).filter(id => id !== props.pointer.id)
 })
 
-function scrollToElement (id, event) {
-  event.preventDefault()
-  const element = document.getElementById(id)
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    // Add highlight class
-    element.classList.add('scrolled-to')
-    // Remove it after animation
-    setTimeout(() => {
-      element.classList.remove('scrolled-to')
-    }, 2000)
-  } else {
-    console.warn(`Element with id ${id} not found`)
+const menuOptions = computed(() => {
+  const options = []
+
+  relatedEntities.value.forEach(id => {
+    options.push({
+      label: `${id}`,
+      key: `entity-${id}`,
+    })
+  })
+
+  // Add divider if we have both related entities and metadata
+  if (relatedEntities.value.length &&
+      (props.pointer.meta?.types?.length || props.pointer.meta?.graphs?.length)) {
+    options.push({
+      type: 'divider',
+      key: 'divider',
+    })
+  }
+
+  // Add Types submenu if exists
+  // if (props.pointer.meta?.types?.length) {
+  //   options.push({
+  //     label: 'Types',
+  //     key: 'types',
+  //     children: props.pointer.meta.types.map(type => ({
+  //       label: type.value,
+  //       key: `type-${type}`
+  //     }))
+  //   })
+  // }
+
+  // Add Graphs submenu if exists
+  if (props.pointer.meta?.graphs?.length) {
+    options.push({
+      label: 'Graphs',
+      key: 'graphs',
+      children: props.pointer.meta.graphs.map(graph => ({
+        label: graph.value,
+        key: `graph-${graph}`,
+      })),
+    })
+  }
+
+  return options
+})
+
+function handleSelect (key) {
+  if (key.startsWith('entity-')) {
+    const id = key.replace('entity-', '')
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      element.classList.add('scrolled-to')
+      setTimeout(() => {
+        element.classList.remove('scrolled-to')
+      }, 2000)
+    }
+  }
+
+  if (key.startsWith('graph-')) {
+    const id = key.replace('graph-', '')
+    const graph = props.pointer.meta.graphs.find(x => x.value === id)
+
+    console.log('select', graph)
   }
 }
 </script>
 
 <template>
-  <n-popover trigger="hover" :delay="500">
-    <template #trigger>
-      <slot></slot>
-    </template>
-    <span>
-    <template v-if="pointer.meta">
-      <template v-if="pointer.meta.graphs">
-      Graphs
-      <ul>
-        <li v-for="graph of pointer.meta.graphs">{{ graph }}</li>
-      </ul>
-      </template>
-      <template v-if="pointer.meta.types">
-      Types
-      <ul>
-        <li v-for="type of pointer.meta.types">{{ type }}</li>
-      </ul>
-      </template>
-    </template>
-    <template v-if="relatedEntities.length">
-      Related entities:
-      <ul>
-        <li v-for="id of relatedEntities" :key="id">
-          <a href="#" @click="(e) => scrollToElement(id, e)">{{ id }}</a>
-        </li>
-      </ul>
-    </template>
-  </span>
-  </n-popover>
+  <template v-if="menuOptions.length">
+    <n-dropdown
+        :options="menuOptions"
+        placement="right"
+        trigger="hover"
+        @select="handleSelect"
+    >
+      <n-button>
+        <slot></slot>
+      </n-button>
+    </n-dropdown>
+  </template>
+  <template v-else>
+    <slot></slot>
+  </template>
 </template>
-
