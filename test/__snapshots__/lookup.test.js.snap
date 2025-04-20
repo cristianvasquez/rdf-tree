@@ -2,6 +2,46 @@
 
 exports[`lookup gets Related ids for an entity 1`] = `
 Object {
+  "graphs": Array [
+    "http://example.org/note/WhiteRabbit.md",
+    "http://example.org/note/Alice.md",
+  ],
+  "idToGraphs": Map {
+    "132" => Array [
+      "http://example.org/note/WhiteRabbit.md",
+    ],
+    "141" => Array [
+      "http://example.org/note/Alice.md",
+      "http://example.org/note/WhiteRabbit.md",
+    ],
+    "129" => Array [
+      "http://example.org/note/Alice.md",
+    ],
+    "149" => Array [
+      "http://example.org/note/Alice.md",
+    ],
+    "150" => Array [
+      "http://example.org/note/Alice.md",
+    ],
+    "154" => Array [
+      "http://example.org/note/Alice.md",
+    ],
+    "155" => Array [
+      "http://example.org/note/Alice.md",
+    ],
+    "151" => Array [
+      "http://example.org/note/Alice.md",
+    ],
+    "140" => Array [
+      "http://example.org/note/Alice.md",
+    ],
+    "152" => Array [
+      "http://example.org/note/Alice.md",
+    ],
+    "164" => Array [
+      "http://example.org/note/Alice.md",
+    ],
+  },
   "incoming": Array [
     "132",
   ],
