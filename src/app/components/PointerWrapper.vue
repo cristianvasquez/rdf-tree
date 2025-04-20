@@ -1,7 +1,8 @@
 <script setup>
 import { NDropdown, NButton } from 'naive-ui'
-import { ref } from 'vue'
+import { ref, toRaw } from 'vue'
 import { useStore } from '../state.js'
+import ToolIcon from './ToolIcon.vue'
 
 const props = defineProps({
   pointer: Object,
@@ -10,7 +11,6 @@ const props = defineProps({
 const store = useStore()
 const menuOptions = ref([])
 const currentRelated = ref(null)
-
 
 function loadOptions ({ incoming, same, outgoing }) {
   const options = []
@@ -68,14 +68,7 @@ function loadOptions ({ incoming, same, outgoing }) {
 function handleSelect (key) {
   if (key.startsWith('entity-')) {
     const id = key.replace('entity-', '')
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      element.classList.add('scrolled-to')
-      setTimeout(() => {
-        element.classList.remove('scrolled-to')
-      }, 2000)
-    }
+    goTo(id)
   }
 
   if (key.startsWith('graph-')) {
@@ -85,52 +78,76 @@ function handleSelect (key) {
   }
 }
 
-const applyClass = (clazz) => (id) => {
+function goTo (id) {
+  console.log('go to', id)
   const element = document.getElementById(id)
   if (element) {
-    element.classList.add(clazz)
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    element.classList.add('scrolled-to')
+    setTimeout(() => {
+      element.classList.remove('scrolled-to')
+    }, 2000)
   }
 }
 
-const removeClass = (clazz) => (id) => {
-  const element = document.getElementById(id)
-  if (element) {
-    element.classList.remove(clazz)
+function highlightRelated (related) {
+  const applyClass = (clazz) => (id) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.classList.add(clazz)
+    }
   }
-}
 
-function highlightRelated(related) {
   const { incoming, same, outgoing } = related
   incoming.forEach(applyClass('incoming-highlight'))
   same.forEach(applyClass('same-highlight'))
   outgoing.forEach(applyClass('outgoing-highlight'))
 }
 
-function removeHighlight(related) {
+function removeHighlight (related) {
+
+  const removeClass = (clazz) => (id) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.classList.remove(clazz)
+    }
+  }
+
   const { incoming, same, outgoing } = related
   incoming.forEach(removeClass('incoming-highlight'))
   same.forEach(removeClass('same-highlight'))
   outgoing.forEach(removeClass('outgoing-highlight'))
 }
 
+function handleMouseClick () {
+  if (currentRelated.value) {
+    const { same } = currentRelated.value
+    const myId = props.pointer.id
+    const sorted = same.sort()
+    const currentIndex = same.indexOf(myId)
+    const nextIndex = currentIndex === sorted.length - 1 ? 0 : currentIndex + 1
+    const id = sorted[nextIndex]
+    goTo(id)
+  }
+}
 
-function handleMouseEnter() {
+function handleMouseEnter () {
   currentRelated.value = store.getRelated(props.pointer.term)
   loadOptions(currentRelated.value)
   highlightRelated(currentRelated.value)
 }
 
-function handleMouseLeave() {
+function handleMouseLeave () {
   if (currentRelated.value) {
     removeHighlight(currentRelated.value)
   }
 }
 
 
-
 </script>
 
 <template>
+  <ToolIcon :term="toRaw(pointer.term)"/>
   <n-dropdown
       :options="menuOptions"
       placement="right"
@@ -138,6 +155,7 @@ function handleMouseLeave() {
       @select="handleSelect"
   >
     <n-button
+        @click="handleMouseClick"
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave"
     >
@@ -158,5 +176,19 @@ function handleMouseLeave() {
 .outgoing-highlight {
   outline: 1px solid rgb(70, 56, 56);
 }
+
+.scrolled-to {
+  animation: flash 5s ease-out;
+}
+
+@keyframes flash {
+  0% {
+    background-color: rgba(255, 255, 100, 0.5);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
 
 </style>

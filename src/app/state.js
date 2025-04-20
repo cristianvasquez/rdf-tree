@@ -66,13 +66,6 @@ export const useStore = defineStore('state', () => {
     uriToIds.value = result.uriToIds
   }
 
-  function getIdsForTerm (term) {
-    if (!uriToIds.value || !uriToIds.value.has(term)) {
-      return []
-    }
-    return [...uriToIds.value.get(term)]
-  }
-
   function getRelated (term) {
     return getRelatedIds(currentDataset.value, term, uriToIds.value)
   }
