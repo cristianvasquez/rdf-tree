@@ -10,7 +10,9 @@ const props = defineProps({
 })
 
 const entityStyle = computed(() => {
-  return getBackgroundStyle(props.pointer, true)
+  const graphValues = (props.pointer.meta?.graphs ?? []).map(x => x.value)
+  // return getBackgroundStyle(graphValues, true)
+  return {}
 })
 </script>
 

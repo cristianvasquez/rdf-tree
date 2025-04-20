@@ -2,6 +2,7 @@
 import { NDropdown, NButton } from 'naive-ui'
 import { h, ref, toRaw } from 'vue'
 import { useStore } from '../state.js'
+import { getBackgroundStyle } from './colors.js'
 import ToolIcon from './ToolIcon.vue'
 
 const props = defineProps({
@@ -93,32 +94,68 @@ function goTo (id) {
 }
 
 function highlightRelated (related) {
-  const applyClass = (clazz) => (id) => {
+  const { incoming, same, outgoing, idToGraphs } = related
+
+  const applyHighlight = (relationClass) => (id) => {
     const element = document.getElementById(id)
     if (element) {
-      element.classList.add(clazz)
+      // Add border highlight class
+      element.classList.add(`${relationClass}-highlight`)
+
+      // Apply graph background if available
+      if (idToGraphs && idToGraphs.has(id)) {
+        const graphValues = idToGraphs.get(id)
+        const backgroundStyle = getBackgroundStyle(graphValues, false)
+
+        // Apply all style properties from backgroundStyle to the element
+        Object.assign(element.style, {
+          // Store original background to restore later
+          '--original-background': element.style.background || 'transparent',
+          '--original-backgroundImage': element.style.backgroundImage || 'none',
+          // Apply new background
+          ...backgroundStyle,
+        })
+
+        // Add a data attribute to track which elements have had backgrounds applied
+        element.setAttribute('data-highlighted-graphs', 'true')
+      }
     }
   }
 
-  const { incoming, same, outgoing } = related
-  incoming.forEach(applyClass('incoming-highlight'))
-  same.forEach(applyClass('same-highlight'))
-  outgoing.forEach(applyClass('outgoing-highlight'))
+  incoming.forEach(applyHighlight('incoming'))
+  same.forEach(applyHighlight('same'))
+  outgoing.forEach(applyHighlight('outgoing'))
 }
 
 function removeHighlight (related) {
+  const { incoming, same, outgoing } = related
 
-  const removeClass = (clazz) => (id) => {
+  const removeHighlighting = (relationClass) => (id) => {
     const element = document.getElementById(id)
     if (element) {
-      element.classList.remove(clazz)
+      // Remove border highlight class
+      element.classList.remove(`${relationClass}-highlight`)
+
+      // Restore original background if we applied graph highlighting
+      if (element.getAttribute('data-highlighted-graphs') === 'true') {
+        // Restore original background
+        element.style.background = element.style.getPropertyValue('--original-background') || ''
+        element.style.backgroundImage = element.style.getPropertyValue('--original-backgroundImage') || ''
+
+        // Clean up custom properties
+        element.style.removeProperty('--original-background')
+        element.style.removeProperty('--original-backgroundImage')
+        element.style.isolation = ''
+
+        // Remove tracking attribute
+        element.removeAttribute('data-highlighted-graphs')
+      }
     }
   }
 
-  const { incoming, same, outgoing } = related
-  incoming.forEach(removeClass('incoming-highlight'))
-  same.forEach(removeClass('same-highlight'))
-  outgoing.forEach(removeClass('outgoing-highlight'))
+  incoming.forEach(removeHighlighting('incoming'))
+  same.forEach(removeHighlighting('same'))
+  outgoing.forEach(removeHighlighting('outgoing'))
 }
 
 function handleMouseClick () {
