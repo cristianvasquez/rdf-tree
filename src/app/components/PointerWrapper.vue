@@ -1,5 +1,4 @@
 <script setup>
-import { ArrowDownOutline, ArrowUpOutline, LinkOutline } from '@vicons/ionicons5'
 import { NDropdown, NButton } from 'naive-ui'
 import { h, ref, toRaw } from 'vue'
 import { useStore } from '../state.js'

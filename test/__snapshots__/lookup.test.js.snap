@@ -1,0 +1,328 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lookup gets Related ids for an entity 1`] = `
+Object {
+  "incoming": Array [
+    "132",
+  ],
+  "outgoing": Array [
+    "129",
+    "149",
+    "150",
+    "154",
+    "155",
+    "151",
+    "140",
+    "152",
+    "164",
+  ],
+  "same": Array [
+    "141",
+  ],
+}
+`;
+
+exports[`lookup maps URIs to their corresponding IDs 1`] = `
+TermMap {
+  "index": Map {
+    "<http://example.org/note/WhiteRabbit.md>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/note/WhiteRabbit.md",
+      },
+      "value": Array [
+        "91",
+      ],
+    },
+    "<http://pkm-united.org/Note>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://pkm-united.org/Note",
+      },
+      "value": Array [
+        "92",
+        "112",
+      ],
+    },
+    "\\"WhiteRabbit\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "WhiteRabbit",
+      },
+      "value": Array [
+        "93",
+      ],
+    },
+    "\\"Conejo blanco\\"@es" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+        },
+        "language": "es",
+        "termType": "Literal",
+        "value": "Conejo blanco",
+      },
+      "value": Array [
+        "94",
+      ],
+    },
+    "_:n3-6" => Object {
+      "term": Object {
+        "termType": "BlankNode",
+        "value": "n3-6",
+      },
+      "value": Array [
+        "95",
+      ],
+    },
+    "<http://pkm-united.org/Block>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://pkm-united.org/Block",
+      },
+      "value": Array [
+        "96",
+        "105",
+        "116",
+      ],
+    },
+    "<http://example.org/Rabbit>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/Rabbit",
+      },
+      "value": Array [
+        "97",
+      ],
+    },
+    "\\"White rabbit\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "White rabbit",
+      },
+      "value": Array [
+        "98",
+        "99",
+      ],
+    },
+    "<https://miro.medium.com/max/720/1*HZazTjGg9EBSOoz34IN-tA.jpeg>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "https://miro.medium.com/max/720/1*HZazTjGg9EBSOoz34IN-tA.jpeg",
+      },
+      "value": Array [
+        "100",
+      ],
+    },
+    "_:b3_b4" => Object {
+      "term": Object {
+        "termType": "BlankNode",
+        "value": "b3_b4",
+      },
+      "value": Array [
+        "101",
+        "102",
+      ],
+    },
+    "<http://example.org/note/Charlie.md>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/note/Charlie.md",
+      },
+      "value": Array [
+        "103",
+        "115",
+        "127",
+      ],
+    },
+    "<http://example.org/note/Alice.md>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/note/Alice.md",
+      },
+      "value": Array [
+        "104",
+      ],
+    },
+    "<http://schema.org/Place>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://schema.org/Place",
+      },
+      "value": Array [
+        "106",
+      ],
+    },
+    "\\"Wozenderlands\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "Wozenderlands",
+      },
+      "value": Array [
+        "107",
+        "108",
+      ],
+    },
+    "\\"4879\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "4879",
+      },
+      "value": Array [
+        "109",
+      ],
+    },
+    "\\"5 Wonderland Street\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "5 Wonderland Street",
+      },
+      "value": Array [
+        "110",
+      ],
+    },
+    "\\"Charlie\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "Charlie",
+      },
+      "value": Array [
+        "111",
+      ],
+    },
+    "\\"Alice\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "Alice",
+      },
+      "value": Array [
+        "113",
+        "117",
+        "118",
+      ],
+    },
+    "_:n3-7" => Object {
+      "term": Object {
+        "termType": "BlankNode",
+        "value": "n3-7",
+      },
+      "value": Array [
+        "114",
+      ],
+    },
+    "<https://miro.medium.com/max/1100/1*xupcHn3b0jEFPkjvuH5Pbw.jpeg>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "https://miro.medium.com/max/1100/1*xupcHn3b0jEFPkjvuH5Pbw.jpeg",
+      },
+      "value": Array [
+        "119",
+      ],
+    },
+    "<shared>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "shared",
+      },
+      "value": Array [
+        "120",
+      ],
+    },
+    "<oh-my>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "oh-my",
+      },
+      "value": Array [
+        "121",
+      ],
+    },
+    "<http://example.org/property/loves%20to%20drink%20tea%20with>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/property/loves%20to%20drink%20tea%20with",
+      },
+      "value": Array [
+        "122",
+      ],
+    },
+    "\\"loves to drink tea with\\"" => Object {
+      "term": Object {
+        "datatype": Object {
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "language": "",
+        "termType": "Literal",
+        "value": "loves to drink tea with",
+      },
+      "value": Array [
+        "123",
+      ],
+    },
+    "<http://example.org/s>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/s",
+      },
+      "value": Array [
+        "124",
+      ],
+    },
+    "<http://example.org/Something>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/Something",
+      },
+      "value": Array [
+        "125",
+      ],
+    },
+    "<http://example.org/o>" => Object {
+      "term": Object {
+        "termType": "NamedNode",
+        "value": "http://example.org/o",
+      },
+      "value": Array [
+        "126",
+      ],
+    },
+  },
+}
+`;

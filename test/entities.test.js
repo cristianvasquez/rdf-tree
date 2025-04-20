@@ -51,9 +51,4 @@ describe('bfs', () => {
     expect(entities).toMatchSnapshot(this)
   })
 
-  it(`maps URIs to their corresponding IDs`, function () {
-    const dataset = getRabbitDataset()
-    const { uriToIds } = getEntities(dataset)
-    expect(uriToIds).toMatchSnapshot(this)
-  })
 })
