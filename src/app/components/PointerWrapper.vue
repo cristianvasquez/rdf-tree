@@ -13,34 +13,13 @@ const store = useStore()
 const menuOptions = ref([])
 const currentRelated = ref(null)
 
-function loadOptions ({ incoming, same, outgoing, incomingTerms, outgoingTerms, graphs }) {
+function loadOptions ({ same, incomingTerms, outgoingTerms, graphs }) {
   const myId = props.pointer.id
   const options = []
 
-  // const termChildren = (term) =>
-  //     [
-  //       {
-  //         type: 'divider',
-  //         key: 'divider',
-  //       },
-  //       ...store.getTermIds(term).flatMap(id => ({
-  //         label: id === myId ? `${id} (current)` : `${id}`,
-  //         key: `entity-${id}`,
-  //       })),
-  //     ]
-  //
-  // if (outgoingTerms.length) {
-  //   options.push({
-  //         label: `(${outgoingTerms.length}) ➡️`,
-  //         key: 'outgoing',
-  //         children: outgoingTerms.flatMap(termChildren),
-  //       },
-  //   )
-  // }
-
   if (outgoingTerms.length) {
     options.push({
-      label: `(${outgoingTerms.length}) ➡️`,
+      label: `🠖 (${outgoingTerms.length}) ➡️`,
       key: 'outgoing',
       children: outgoingTerms.map(term => ({
         label: term.value,
@@ -55,7 +34,7 @@ function loadOptions ({ incoming, same, outgoing, incomingTerms, outgoingTerms, 
 
   if (incomingTerms.length) {
     options.push({
-      label: `➡️ (${incomingTerms.length})`,
+      label: `➡️ (${incomingTerms.length}) 🠖`,
       key: 'incoming',
       children: incomingTerms.map(term => ({
         label: term.value,
