@@ -9,18 +9,14 @@ const props = defineProps({
   pointer: Object,
 })
 
-const entityStyle = computed(() => {
-  const graphValues = (props.pointer.meta?.graphs ?? []).map(x => x.value)
-  // return getBackgroundStyle(graphValues, true)
-  return {}
-})
+
 </script>
 
 <template>
   <div :id="pointer.id">
     <template v-if="pointer.rows.length">
       <!-- Entity with rows -->
-      <div class="entity" :style="entityStyle">
+      <div class="entity">
         <div class="entity-header">
           <PointerWrapper :pointer="pointer">
             <Term :term="pointer.term"/>

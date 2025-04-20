@@ -13,7 +13,7 @@ const store = useStore()
 const menuOptions = ref([])
 const currentRelated = ref(null)
 
-function loadOptions ({ incoming, same, outgoing }) {
+function loadOptions ({ incoming, same, outgoing, graphs }) {
   const myId = props.pointer.id
   const options = []
 
@@ -51,17 +51,17 @@ function loadOptions ({ incoming, same, outgoing }) {
     })
   }
 
-  if (props.pointer.meta?.graphs?.length) {
+  if (graphs?.length) {
     options.push({
       type: 'divider',
       key: 'divider',
     })
     options.push({
-      label: 'Graphs',
+      label: `G (${graphs.length})`,
       key: 'graphs',
-      children: props.pointer.meta.graphs.map(graph => ({
-        label: graph.value,
-        key: `graph-${graph.value}`,
+      children: graphs.map(graph => ({
+        label: graph,
+        key: `graph-${graph}`,
       })),
     })
   }

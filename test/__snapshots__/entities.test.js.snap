@@ -5,12 +5,6 @@ Array [
   Object {
     "id": "1",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "DefaultGraph",
-          "value": "",
-        },
-      ],
       "types": Array [
         Object {
           "termType": "NamedNode",
@@ -28,7 +22,6 @@ Array [
           Object {
             "id": "2",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -48,7 +41,6 @@ Array [
           Object {
             "id": "3",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -68,12 +60,6 @@ Array [
           Object {
             "id": "4",
             "meta": Object {
-              "graphs": Array [
-                Object {
-                  "termType": "NamedNode",
-                  "value": "http://example.org/note/Alice.md",
-                },
-              ],
               "types": Array [],
             },
             "rows": Array [
@@ -86,7 +72,6 @@ Array [
                   Object {
                     "id": "5",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -119,12 +104,6 @@ Array [
   Object {
     "id": "6",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/WhiteRabbit.md",
-        },
-      ],
       "types": Array [
         Object {
           "termType": "NamedNode",
@@ -142,7 +121,6 @@ Array [
           Object {
             "id": "7",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -162,7 +140,6 @@ Array [
           Object {
             "id": "8",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -179,7 +156,6 @@ Array [
           Object {
             "id": "9",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -204,12 +180,6 @@ Array [
           Object {
             "id": "10",
             "meta": Object {
-              "graphs": Array [
-                Object {
-                  "termType": "NamedNode",
-                  "value": "http://example.org/note/WhiteRabbit.md",
-                },
-              ],
               "types": Array [
                 Object {
                   "termType": "NamedNode",
@@ -231,7 +201,6 @@ Array [
                   Object {
                     "id": "11",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -243,7 +212,6 @@ Array [
                   Object {
                     "id": "12",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -263,7 +231,6 @@ Array [
                   Object {
                     "id": "13",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -288,7 +255,6 @@ Array [
                   Object {
                     "id": "14",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -313,7 +279,6 @@ Array [
                   Object {
                     "id": "15",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -333,12 +298,6 @@ Array [
                   Object {
                     "id": "16",
                     "meta": Object {
-                      "graphs": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://example.org/note/WhiteRabbit.md",
-                        },
-                      ],
                       "types": Array [
                         Object {
                           "termType": "NamedNode",
@@ -360,7 +319,6 @@ Array [
                           Object {
                             "id": "20",
                             "meta": Object {
-                              "graphs": Array [],
                               "types": Array [],
                             },
                             "rows": Array [],
@@ -372,7 +330,6 @@ Array [
                           Object {
                             "id": "21",
                             "meta": Object {
-                              "graphs": Array [],
                               "types": Array [],
                             },
                             "rows": Array [],
@@ -392,7 +349,6 @@ Array [
                           Object {
                             "id": "22",
                             "meta": Object {
-                              "graphs": Array [],
                               "types": Array [],
                             },
                             "rows": Array [],
@@ -417,7 +373,6 @@ Array [
                           Object {
                             "id": "23",
                             "meta": Object {
-                              "graphs": Array [],
                               "types": Array [],
                             },
                             "rows": Array [],
@@ -442,7 +397,6 @@ Array [
                           Object {
                             "id": "24",
                             "meta": Object {
-                              "graphs": Array [],
                               "types": Array [],
                             },
                             "rows": Array [],
@@ -467,7 +421,6 @@ Array [
                           Object {
                             "id": "25",
                             "meta": Object {
-                              "graphs": Array [],
                               "types": Array [],
                             },
                             "rows": Array [],
@@ -500,12 +453,6 @@ Array [
                   Object {
                     "id": "17",
                     "meta": Object {
-                      "graphs": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://example.org/note/WhiteRabbit.md",
-                        },
-                      ],
                       "types": Array [
                         Object {
                           "termType": "NamedNode",
@@ -534,12 +481,6 @@ Array [
                   Object {
                     "id": "18",
                     "meta": Object {
-                      "graphs": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://example.org/note/Alice.md",
-                        },
-                      ],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -559,12 +500,6 @@ Array [
                   Object {
                     "id": "19",
                     "meta": Object {
-                      "graphs": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://example.org/note/Alice.md",
-                        },
-                      ],
                       "types": Array [
                         Object {
                           "termType": "NamedNode",
@@ -582,7 +517,6 @@ Array [
                           Object {
                             "id": "26",
                             "meta": Object {
-                              "graphs": Array [],
                               "types": Array [],
                             },
                             "rows": Array [],
@@ -602,7 +536,6 @@ Array [
                           Object {
                             "id": "27",
                             "meta": Object {
-                              "graphs": Array [],
                               "types": Array [],
                             },
                             "rows": Array [],
@@ -627,12 +560,6 @@ Array [
                           Object {
                             "id": "28",
                             "meta": Object {
-                              "graphs": Array [
-                                Object {
-                                  "termType": "NamedNode",
-                                  "value": "http://example.org/note/Alice.md",
-                                },
-                              ],
                               "types": Array [
                                 Object {
                                   "termType": "NamedNode",
@@ -650,7 +577,6 @@ Array [
                                   Object {
                                     "id": "30",
                                     "meta": Object {
-                                      "graphs": Array [],
                                       "types": Array [],
                                     },
                                     "rows": Array [],
@@ -670,7 +596,6 @@ Array [
                                   Object {
                                     "id": "31",
                                     "meta": Object {
-                                      "graphs": Array [],
                                       "types": Array [],
                                     },
                                     "rows": Array [],
@@ -695,7 +620,6 @@ Array [
                                   Object {
                                     "id": "32",
                                     "meta": Object {
-                                      "graphs": Array [],
                                       "types": Array [],
                                     },
                                     "rows": Array [],
@@ -720,7 +644,6 @@ Array [
                                   Object {
                                     "id": "33",
                                     "meta": Object {
-                                      "graphs": Array [],
                                       "types": Array [],
                                     },
                                     "rows": Array [],
@@ -748,12 +671,6 @@ Array [
                           Object {
                             "id": "29",
                             "meta": Object {
-                              "graphs": Array [
-                                Object {
-                                  "termType": "NamedNode",
-                                  "value": "http://example.org/note/Alice.md",
-                                },
-                              ],
                               "types": Array [],
                             },
                             "rows": Array [],
@@ -789,16 +706,6 @@ Array [
   Object {
     "id": "34",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/WhiteRabbit.md",
-        },
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/Alice.md",
-        },
-      ],
       "types": Array [],
     },
     "rows": Array [
@@ -811,7 +718,6 @@ Array [
           Object {
             "id": "35",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -831,12 +737,6 @@ Array [
   Object {
     "id": "36",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "DefaultGraph",
-          "value": "",
-        },
-      ],
       "types": Array [],
     },
     "rows": Array [
@@ -849,7 +749,6 @@ Array [
           Object {
             "id": "37",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -879,12 +778,6 @@ Array [
   Object {
     "id": "38",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/Alice.md",
-        },
-      ],
       "types": Array [],
     },
     "rows": Array [
@@ -897,7 +790,6 @@ Array [
           Object {
             "id": "39",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -922,12 +814,6 @@ Array [
   Object {
     "id": "40",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/Alice.md",
-        },
-      ],
       "types": Array [
         Object {
           "termType": "NamedNode",
@@ -945,7 +831,6 @@ Array [
           Object {
             "id": "41",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -965,7 +850,6 @@ Array [
           Object {
             "id": "42",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -990,12 +874,6 @@ Array [
           Object {
             "id": "43",
             "meta": Object {
-              "graphs": Array [
-                Object {
-                  "termType": "NamedNode",
-                  "value": "http://example.org/note/Alice.md",
-                },
-              ],
               "types": Array [
                 Object {
                   "termType": "NamedNode",
@@ -1013,7 +891,6 @@ Array [
                   Object {
                     "id": "45",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1033,7 +910,6 @@ Array [
                   Object {
                     "id": "46",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1058,7 +934,6 @@ Array [
                   Object {
                     "id": "47",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1083,7 +958,6 @@ Array [
                   Object {
                     "id": "48",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1111,12 +985,6 @@ Array [
           Object {
             "id": "44",
             "meta": Object {
-              "graphs": Array [
-                Object {
-                  "termType": "NamedNode",
-                  "value": "http://example.org/note/Alice.md",
-                },
-              ],
               "types": Array [],
             },
             "rows": Array [],
@@ -1136,16 +1004,6 @@ Array [
   Object {
     "id": "49",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/WhiteRabbit.md",
-        },
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/Alice.md",
-        },
-      ],
       "types": Array [],
     },
     "rows": Array [
@@ -1158,7 +1016,6 @@ Array [
           Object {
             "id": "50",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1183,12 +1040,6 @@ Array [
   Object {
     "id": "51",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/WhiteRabbit.md",
-        },
-      ],
       "types": Array [
         Object {
           "termType": "NamedNode",
@@ -1206,7 +1057,6 @@ Array [
           Object {
             "id": "52",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1226,7 +1076,6 @@ Array [
           Object {
             "id": "53",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1243,7 +1092,6 @@ Array [
           Object {
             "id": "54",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1268,12 +1116,6 @@ Array [
           Object {
             "id": "55",
             "meta": Object {
-              "graphs": Array [
-                Object {
-                  "termType": "NamedNode",
-                  "value": "http://example.org/note/WhiteRabbit.md",
-                },
-              ],
               "types": Array [
                 Object {
                   "termType": "NamedNode",
@@ -1295,7 +1137,6 @@ Array [
                   Object {
                     "id": "56",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1307,7 +1148,6 @@ Array [
                   Object {
                     "id": "57",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1327,7 +1167,6 @@ Array [
                   Object {
                     "id": "58",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1352,7 +1191,6 @@ Array [
                   Object {
                     "id": "59",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1377,7 +1215,6 @@ Array [
                   Object {
                     "id": "60",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1397,12 +1234,6 @@ Array [
                   Object {
                     "id": "61",
                     "meta": Object {
-                      "graphs": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://example.org/note/WhiteRabbit.md",
-                        },
-                      ],
                       "types": Array [
                         Object {
                           "termType": "NamedNode",
@@ -1431,12 +1262,6 @@ Array [
                   Object {
                     "id": "62",
                     "meta": Object {
-                      "graphs": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://example.org/note/WhiteRabbit.md",
-                        },
-                      ],
                       "types": Array [
                         Object {
                           "termType": "NamedNode",
@@ -1465,12 +1290,6 @@ Array [
                   Object {
                     "id": "63",
                     "meta": Object {
-                      "graphs": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://example.org/note/Alice.md",
-                        },
-                      ],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1490,12 +1309,6 @@ Array [
                   Object {
                     "id": "64",
                     "meta": Object {
-                      "graphs": Array [
-                        Object {
-                          "termType": "NamedNode",
-                          "value": "http://example.org/note/Alice.md",
-                        },
-                      ],
                       "types": Array [
                         Object {
                           "termType": "NamedNode",
@@ -1528,12 +1341,6 @@ Array [
   Object {
     "id": "65",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/WhiteRabbit.md",
-        },
-      ],
       "types": Array [
         Object {
           "termType": "NamedNode",
@@ -1555,7 +1362,6 @@ Array [
           Object {
             "id": "66",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1567,7 +1373,6 @@ Array [
           Object {
             "id": "67",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1587,7 +1392,6 @@ Array [
           Object {
             "id": "68",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1612,7 +1416,6 @@ Array [
           Object {
             "id": "69",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1637,7 +1440,6 @@ Array [
           Object {
             "id": "70",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1662,7 +1464,6 @@ Array [
           Object {
             "id": "71",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1687,16 +1488,6 @@ Array [
   Object {
     "id": "72",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/WhiteRabbit.md",
-        },
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/Alice.md",
-        },
-      ],
       "types": Array [],
     },
     "rows": Array [
@@ -1709,7 +1500,6 @@ Array [
           Object {
             "id": "73",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1729,12 +1519,6 @@ Array [
   Object {
     "id": "74",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/Alice.md",
-        },
-      ],
       "types": Array [],
     },
     "rows": Array [
@@ -1747,7 +1531,6 @@ Array [
           Object {
             "id": "75",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1772,12 +1555,6 @@ Array [
   Object {
     "id": "76",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "NamedNode",
-          "value": "http://example.org/note/Alice.md",
-        },
-      ],
       "types": Array [
         Object {
           "termType": "NamedNode",
@@ -1795,7 +1572,6 @@ Array [
           Object {
             "id": "77",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1815,7 +1591,6 @@ Array [
           Object {
             "id": "78",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -1840,12 +1615,6 @@ Array [
           Object {
             "id": "79",
             "meta": Object {
-              "graphs": Array [
-                Object {
-                  "termType": "NamedNode",
-                  "value": "http://example.org/note/Alice.md",
-                },
-              ],
               "types": Array [
                 Object {
                   "termType": "NamedNode",
@@ -1863,7 +1632,6 @@ Array [
                   Object {
                     "id": "81",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1883,7 +1651,6 @@ Array [
                   Object {
                     "id": "82",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1908,7 +1675,6 @@ Array [
                   Object {
                     "id": "83",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1933,7 +1699,6 @@ Array [
                   Object {
                     "id": "84",
                     "meta": Object {
-                      "graphs": Array [],
                       "types": Array [],
                     },
                     "rows": Array [],
@@ -1961,12 +1726,6 @@ Array [
           Object {
             "id": "80",
             "meta": Object {
-              "graphs": Array [
-                Object {
-                  "termType": "NamedNode",
-                  "value": "http://example.org/note/Alice.md",
-                },
-              ],
               "types": Array [],
             },
             "rows": Array [],
@@ -1986,12 +1745,6 @@ Array [
   Object {
     "id": "85",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "DefaultGraph",
-          "value": "",
-        },
-      ],
       "types": Array [],
     },
     "rows": Array [
@@ -2004,7 +1757,6 @@ Array [
           Object {
             "id": "86",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -2029,12 +1781,6 @@ Array [
   Object {
     "id": "87",
     "meta": Object {
-      "graphs": Array [
-        Object {
-          "termType": "DefaultGraph",
-          "value": "",
-        },
-      ],
       "types": Array [
         Object {
           "termType": "NamedNode",
@@ -2052,7 +1798,6 @@ Array [
           Object {
             "id": "88",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -2072,7 +1817,6 @@ Array [
           Object {
             "id": "89",
             "meta": Object {
-              "graphs": Array [],
               "types": Array [],
             },
             "rows": Array [],
@@ -2092,12 +1836,6 @@ Array [
           Object {
             "id": "90",
             "meta": Object {
-              "graphs": Array [
-                Object {
-                  "termType": "NamedNode",
-                  "value": "http://example.org/note/Alice.md",
-                },
-              ],
               "types": Array [],
             },
             "rows": Array [],

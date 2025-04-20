@@ -3,7 +3,6 @@ import { z } from 'zod'
 // Define the schemas
 const MetaSchema = z.object({
   types: z.array(z.any()),  // RDF term objects
-  graphs: z.array(z.any()), // RDF term objects
 })
 
 
