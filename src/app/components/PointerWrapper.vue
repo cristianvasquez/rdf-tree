@@ -2,7 +2,7 @@
 import { NDropdown, NButton } from 'naive-ui'
 import { h, ref, toRaw } from 'vue'
 import { useStore } from '../state.js'
-import { getBackgroundStyle } from './colors.js'
+import { getBackgroundStyle } from '../utils/colors.js'
 import ToolIcon from './ToolIcon.vue'
 
 const props = defineProps({
@@ -13,7 +13,7 @@ const store = useStore()
 const menuOptions = ref([])
 const currentRelated = ref(null)
 
-function loadOptions ({ same, incomingTerms, outgoingTerms, graphs }) {
+function loadOptions ({ incomingTerms, outgoingTerms, graphs }) {
   const myId = props.pointer.id
   const options = []
 
@@ -27,8 +27,8 @@ function loadOptions ({ same, incomingTerms, outgoingTerms, graphs }) {
         children: store.getTermIds(term).map(id => ({
           label: id === myId ? `${id} (current)` : `${id}`,
           key: `entity-${id}`,
-        }))
-      }))
+        })),
+      })),
     })
   }
 
@@ -42,11 +42,12 @@ function loadOptions ({ same, incomingTerms, outgoingTerms, graphs }) {
         children: store.getTermIds(term).map(id => ({
           label: id === myId ? `${id} (current)` : `${id}`,
           key: `entity-${id}`,
-        }))
-      }))
+        })),
+      })),
     })
   }
 
+  const same = store.getTermIds(props.pointer.term)
   const _same = same.filter(id => id !== myId)
   if (_same.length) {
     options.push({
@@ -67,7 +68,7 @@ function loadOptions ({ same, incomingTerms, outgoingTerms, graphs }) {
     options.push({
       label: `G (${graphs.length})`,
       key: 'graphs',
-      children: graphs.map(graph => ({
+      children: graphs.map(x => x.value || 'Default').map(graph => ({
         label: graph,
         key: `graph-${graph}`,
       })),
@@ -85,8 +86,7 @@ function handleSelect (key) {
 
   if (key.startsWith('graph-')) {
     const id = key.replace('graph-', '')
-    const graph = props.pointer.meta.graphs.find(x => x.value === id)
-    console.log('select', graph)
+    console.log('selected graph', id)
   }
 }
 
@@ -102,19 +102,16 @@ function goTo (id) {
 }
 
 function highlightRelated (related) {
-  const { incoming, same, outgoing, idToGraphs } = related
+  const { incomingTerms, outgoingTerms, termToGraphs } = related
 
-  const applyHighlight = (relationClass) => (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      // Add border highlight class
-      element.classList.add(`${relationClass}-highlight`)
-
-      // Apply graph background if available
-      if (idToGraphs && idToGraphs.has(id)) {
-        const graphValues = idToGraphs.get(id)
-        const backgroundStyle = getBackgroundStyle(graphValues, false)
-
+  const applyHighlight = (relationClass) => (term) => {
+    const graphValues = [...termToGraphs.get(term) ?? []].map(x => x.value || 'Default')
+    const backgroundStyle = getBackgroundStyle(graphValues, false)
+    for (const id of store.getTermIds(term)) {
+      const element = document.getElementById(id)
+      if (element) {
+        // Add border highlight class
+        element.classList.add(`${relationClass}-highlight`)
         // Apply all style properties from backgroundStyle to the element
         Object.assign(element.style, {
           // Store original background to restore later
@@ -123,52 +120,52 @@ function highlightRelated (related) {
           // Apply new background
           ...backgroundStyle,
         })
-
         // Add a data attribute to track which elements have had backgrounds applied
         element.setAttribute('data-highlighted-graphs', 'true')
       }
     }
   }
-
-  incoming.forEach(applyHighlight('incoming'))
-  same.forEach(applyHighlight('same'))
-  outgoing.forEach(applyHighlight('outgoing'))
+  incomingTerms?.forEach(applyHighlight('incoming'))
+  applyHighlight('same')(props.pointer.term)
+  outgoingTerms?.forEach(applyHighlight('outgoing'))
 }
 
 function removeHighlight (related) {
-  const { incoming, same, outgoing } = related
+  const { incomingTerms, outgoingTerms } = related
 
-  const removeHighlighting = (relationClass) => (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      // Remove border highlight class
-      element.classList.remove(`${relationClass}-highlight`)
+  const removeHighlighting = (relationClass) => (term) => {
+    for (const id of store.getTermIds(term)) {
+      const element = document.getElementById(id)
+      if (element) {
+        // Remove border highlight class
+        element.classList.remove(`${relationClass}-highlight`)
 
-      // Restore original background if we applied graph highlighting
-      if (element.getAttribute('data-highlighted-graphs') === 'true') {
-        // Restore original background
-        element.style.background = element.style.getPropertyValue('--original-background') || ''
-        element.style.backgroundImage = element.style.getPropertyValue('--original-backgroundImage') || ''
+        // Restore original background if we applied graph highlighting
+        if (element.getAttribute('data-highlighted-graphs') === 'true') {
+          // Restore original background
+          element.style.background = element.style.getPropertyValue('--original-background') || ''
+          element.style.backgroundImage = element.style.getPropertyValue('--original-backgroundImage') || ''
 
-        // Clean up custom properties
-        element.style.removeProperty('--original-background')
-        element.style.removeProperty('--original-backgroundImage')
-        element.style.isolation = ''
+          // Clean up custom properties
+          element.style.removeProperty('--original-background')
+          element.style.removeProperty('--original-backgroundImage')
+          element.style.isolation = ''
 
-        // Remove tracking attribute
-        element.removeAttribute('data-highlighted-graphs')
+          // Remove tracking attribute
+          element.removeAttribute('data-highlighted-graphs')
+        }
       }
     }
   }
 
-  incoming.forEach(removeHighlighting('incoming'))
-  same.forEach(removeHighlighting('same'))
-  outgoing.forEach(removeHighlighting('outgoing'))
+  incomingTerms.forEach(removeHighlighting('incoming'))
+  removeHighlighting('same')(props.pointer.term)
+  outgoingTerms.forEach(removeHighlighting('outgoing'))
 }
 
 function handleMouseClick () {
   if (currentRelated.value) {
-    const { same } = currentRelated.value
+    const same = store.getTermIds(props.pointer.term)
     const myId = props.pointer.id
     const sorted = same.sort()
     const currentIndex = same.indexOf(myId)

@@ -1,6 +1,4 @@
 <script setup>
-import { computed, toRaw } from 'vue'
-import { getBackgroundStyle } from './colors.js'
 import PointerWrapper from './PointerWrapper.vue'
 import Row from './Row.vue'
 import Term from './Term.vue'
