@@ -53,18 +53,4 @@ const getBackgroundStyle = (pointer, ignoreParents = false) => {
   }
 }
 
-function getAllTerms (parentGraphs, termArr) {
-  return [
-    ...new Set([
-      ...parentGraphs, ...termArr.map(x => x.value),
-    ])]
-}
-
-// Get the graphs that are in childGraphs but not in parentGraphs
-function getNewTerms (parentGraphs, termArr) {
-  if (!termArr) return []
-  const parentSet = new Set(parentGraphs)
-  return termArr.map(x => x.value).filter(value => !parentSet.has(value))
-}
-
-export { getBackgroundStyle, getAllTerms, getNewTerms }
+export { getBackgroundStyle }

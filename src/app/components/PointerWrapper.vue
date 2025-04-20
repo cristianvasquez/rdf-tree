@@ -15,6 +15,18 @@ const currentRelated = ref(null)
 function loadOptions ({ incoming, same, outgoing }) {
   const myId = props.pointer.id
   const options = []
+
+  if (outgoing.length) {
+    options.push({
+      label: `(${outgoing.length}) ➡️`,
+      key: 'outgoing',
+      children: outgoing.map(id => ({
+        label: id === myId ? `${id} (current)` : `${id}`,
+        key: `entity-${id}`,
+      })),
+    })
+  }
+
   if (incoming.length) {
     options.push({
       label: `➡️ (${incoming.length})`,
@@ -26,22 +38,12 @@ function loadOptions ({ incoming, same, outgoing }) {
     })
   }
 
-  if (same.length) {
+  const _same = same.filter(id => id !== myId)
+  if (_same.length) {
     options.push({
       label: `🔗 (${same.length})`,
       key: 'same',
-      children: same.map(id => ({
-        label: id === myId ? `${id} (current)` : `${id}`,
-        key: `entity-${id}`,
-      })),
-    })
-  }
-
-  if (outgoing.length) {
-    options.push({
-      label: `(${outgoing.length}) ➡️`,
-      key: 'outgoing',
-      children: outgoing.map(id => ({
+      children: _same.map(id => ({
         label: id === myId ? `${id} (current)` : `${id}`,
         key: `entity-${id}`,
       })),
