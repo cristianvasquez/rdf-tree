@@ -22,7 +22,7 @@ function toggle () {
     <ul class="property">
       <li>
         <div style="display: flex; align-items: center">
-          <slot></slot>
+
           <template v-if="row.values.length > 1">
             <template v-if="show">
               <NIcon @click="toggle">
@@ -35,7 +35,7 @@ function toggle () {
               </NIcon>
             </template>
           </template>
-          <Term :term="row.predicate"></Term>
+          <slot></slot>
         </div>
       </li>
     </ul>

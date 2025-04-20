@@ -29,7 +29,9 @@ const entityStyle = computed(() => {
         </div>
         <div class="rows">
           <template v-for="row of pointer.rows">
-            <Row :row="row"/>
+            <Row :row="row">
+              <Term :term="row.predicate"></Term>
+            </Row>
           </template>
         </div>
       </div>
