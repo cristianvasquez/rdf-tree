@@ -31,15 +31,13 @@ const getGraphColor = (graphValue) => {
 }
 
 // Generate background style for graphs
-const getBackgroundStyle = (pointer, ignoreParents = false) => {
+const getBackgroundStyle = (graphValues, ignoreParents = false) => {
 
-  const graphs = (pointer.meta?.graphs ?? []).map(x => x.value)
+  if (!graphValues || graphValues.length === 0) return {}
 
-  if (!graphs || graphs.length === 0) return {}
-
-  // Multiple graphs - create layered background
-  if (graphs.length > 1) {
-    const backgroundLayers = graphs.map(graph => getGraphColor(graph))
+  // Multiple graphs - create a layered background
+  if (graphValues.length > 1) {
+    const backgroundLayers = graphValues.map(graph => getGraphColor(graph))
     return {
       backgroundImage: `linear-gradient(45deg, ${backgroundLayers.join(', ')})`,
       isolation: ignoreParents ? 'isolate' : 'auto',
@@ -48,23 +46,9 @@ const getBackgroundStyle = (pointer, ignoreParents = false) => {
 
   // Single graph - return its color
   return {
-    background: getGraphColor(graphs[0]),
+    background: getGraphColor(graphValues[0]),
     isolation: ignoreParents ? 'isolate' : 'auto',
   }
 }
 
-function getAllTerms (parentGraphs, termArr) {
-  return [
-    ...new Set([
-      ...parentGraphs, ...termArr.map(x => x.value),
-    ])]
-}
-
-// Get the graphs that are in childGraphs but not in parentGraphs
-function getNewTerms (parentGraphs, termArr) {
-  if (!termArr) return []
-  const parentSet = new Set(parentGraphs)
-  return termArr.map(x => x.value).filter(value => !parentSet.has(value))
-}
-
-export { getBackgroundStyle, getAllTerms, getNewTerms }
+export { getBackgroundStyle }

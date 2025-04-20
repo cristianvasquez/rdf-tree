@@ -7,13 +7,10 @@ const props = defineProps({
   term: Object,
 })
 
-// A Term can come with {{pointer.graphs}}
-
 function getDatatype (term) {
   function shrink (x) {
     return x ? x.split('#').pop() : 'NONE'
   }
-
   return term.datatype ? shrink(term.datatype.value) : ''
 }
 

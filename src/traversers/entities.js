@@ -28,7 +28,7 @@ function getEntities (dataset, options) {
     const batchResult = batch.reduce((acc, term) => {
 
       if (acc.visited.has(term)) {
-        // If it was visited, ignore it from batch
+        // If it was visited, ignore it from the batch
         return { entities: acc.entities, visited: acc.visited }
       }
 
