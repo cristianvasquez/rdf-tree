@@ -13,29 +13,58 @@ const store = useStore()
 const menuOptions = ref([])
 const currentRelated = ref(null)
 
-function loadOptions ({ incoming, same, outgoing, graphs }) {
+function loadOptions ({ incoming, same, outgoing, incomingTerms, outgoingTerms, graphs }) {
   const myId = props.pointer.id
   const options = []
 
-  if (outgoing.length) {
+  // const termChildren = (term) =>
+  //     [
+  //       {
+  //         type: 'divider',
+  //         key: 'divider',
+  //       },
+  //       ...store.getTermIds(term).flatMap(id => ({
+  //         label: id === myId ? `${id} (current)` : `${id}`,
+  //         key: `entity-${id}`,
+  //       })),
+  //     ]
+  //
+  // if (outgoingTerms.length) {
+  //   options.push({
+  //         label: `(${outgoingTerms.length}) ➡️`,
+  //         key: 'outgoing',
+  //         children: outgoingTerms.flatMap(termChildren),
+  //       },
+  //   )
+  // }
+
+  if (outgoingTerms.length) {
     options.push({
-      label: `(${outgoing.length}) ➡️`,
+      label: `(${outgoingTerms.length}) ➡️`,
       key: 'outgoing',
-      children: outgoing.map(id => ({
-        label: id === myId ? `${id} (current)` : `${id}`,
-        key: `entity-${id}`,
-      })),
+      children: outgoingTerms.map(term => ({
+        label: term.value,
+        key: `term-${term.value}`,
+        children: store.getTermIds(term).map(id => ({
+          label: id === myId ? `${id} (current)` : `${id}`,
+          key: `entity-${id}`,
+        }))
+      }))
     })
   }
 
-  if (incoming.length) {
+  if (incomingTerms.length) {
     options.push({
-      label: `➡️ (${incoming.length})`,
+      label: `➡️ (${incomingTerms.length})`,
       key: 'incoming',
-      children: incoming.map(id => ({
-        label: id === myId ? `${id} (current)` : `${id}`,
-        key: `entity-${id}`,
-      })),
+      children: incomingTerms.map(term => ({
+        label: term.value,
+        key: `term-${term.value}`,
+        children: store.getTermIds(term).map(id => ({
+          label: id === myId ? `${id} (current)` : `${id}`,
+          key: `entity-${id}`,
+        }))
+      }))
     })
   }
 

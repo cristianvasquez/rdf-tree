@@ -70,8 +70,13 @@ export const useStore = defineStore('state', () => {
     return getRelatedIds(currentDataset.value, term, uriToIds.value)
   }
 
+  function getTermIds (term) {
+    return uriToIds.value.get(term)
+  }
+
   return {
     entities,
+    getTermIds,
     getRelated,
     setDataset,
     focusOn,
