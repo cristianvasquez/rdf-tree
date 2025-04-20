@@ -24,7 +24,7 @@
     "@vitejs/plugin-vue": "^5.2.3",
     "@vueuse/core": "^13.1.0",
     "expect": "^29.7.0",
-    "expect-mocha-snapshot": "^1.0.1",
+    "expect-mocha-snapshot": "^2.1.5",
     "mocha": "^11.1.0",
     "pinia": "^3.0.2",
     "vite": "^6.3.2",
