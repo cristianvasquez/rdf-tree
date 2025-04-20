@@ -13,7 +13,7 @@ describe('lookup', () => {
   it(`maps URIs to their corresponding IDs`, function () {
     const dataset = getRabbitDataset()
     const { uriToIds } = getEntities(dataset)
-    expect(uriToIds).toMatchSnapshot(this)
+    expect(uriToIds). toMatchSnapshot(this)
   })
 
   it(`gets Related ids for an entity`, function () {
