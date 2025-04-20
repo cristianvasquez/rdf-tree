@@ -12,9 +12,7 @@ const props = defineProps({
 const entityStyle = computed(() => {
   return getBackgroundStyle(props.pointer, true)
 })
-
 </script>
-
 
 <template>
   <div :id="pointer.id">
@@ -25,12 +23,11 @@ const entityStyle = computed(() => {
           <PointerWrapper :pointer="pointer">
             <Term :term="pointer.term"/>
           </PointerWrapper>
-          <slot></slot>
         </div>
         <div class="rows">
           <template v-for="row of pointer.rows">
             <Row :row="row">
-              <Term :term="row.predicate"></Term>
+              <Term :term="row.predicate"/>
             </Row>
           </template>
         </div>

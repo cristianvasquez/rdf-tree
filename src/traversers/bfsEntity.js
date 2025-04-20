@@ -1,6 +1,6 @@
 import rdf from 'rdf-ext'
 import { createMeta } from './meta.js'
-import { createEntity } from './schemas.js'
+import { createEntity, createRow } from '../schemas.js'
 
 function bfsEntity (pointer, { visited = rdf.termMap(), maxDepth = Infinity }) {
 
@@ -34,10 +34,7 @@ function bfsEntity (pointer, { visited = rdf.termMap(), maxDepth = Infinity }) {
       const terms = pointer.node(term).out(predicate).terms
 
       // One row for each unique predicate
-      const row = {
-        predicate,
-        values: [],
-      }
+      const row = createRow(predicate)
 
       // Process unique terms for this predicate
       for (const term of unique(terms)) {

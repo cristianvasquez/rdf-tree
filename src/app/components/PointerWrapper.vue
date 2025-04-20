@@ -1,6 +1,7 @@
 <script setup>
+import { ArrowDownOutline, ArrowUpOutline, LinkOutline } from '@vicons/ionicons5'
 import { NDropdown, NButton } from 'naive-ui'
-import { ref, toRaw } from 'vue'
+import { h, ref, toRaw } from 'vue'
 import { useStore } from '../state.js'
 import ToolIcon from './ToolIcon.vue'
 
@@ -13,13 +14,14 @@ const menuOptions = ref([])
 const currentRelated = ref(null)
 
 function loadOptions ({ incoming, same, outgoing }) {
+  const myId = props.pointer.id
   const options = []
   if (incoming.length) {
     options.push({
-      label: 'Incoming',
+      label: `➡️ (${incoming.length})`,
       key: 'incoming',
       children: incoming.map(id => ({
-        label: `${id}`,
+        label: id === myId ? `${id} (current)` : `${id}`,
         key: `entity-${id}`,
       })),
     })
@@ -27,10 +29,10 @@ function loadOptions ({ incoming, same, outgoing }) {
 
   if (same.length) {
     options.push({
-      label: 'Same',
+      label: `🔗 (${same.length})`,
       key: 'same',
       children: same.map(id => ({
-        label: `${id}`,
+        label: id === myId ? `${id} (current)` : `${id}`,
         key: `entity-${id}`,
       })),
     })
@@ -38,10 +40,10 @@ function loadOptions ({ incoming, same, outgoing }) {
 
   if (outgoing.length) {
     options.push({
-      label: 'Outgoing',
+      label: `(${outgoing.length}) ➡️`,
       key: 'outgoing',
       children: outgoing.map(id => ({
-        label: `${id}`,
+        label: id === myId ? `${id} (current)` : `${id}`,
         key: `entity-${id}`,
       })),
     })
@@ -79,7 +81,6 @@ function handleSelect (key) {
 }
 
 function goTo (id) {
-  console.log('go to', id)
   const element = document.getElementById(id)
   if (element) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -155,7 +156,7 @@ function handleMouseLeave () {
       @select="handleSelect"
   >
     <n-button
-        @click="handleMouseClick"
+        @click.prevent="handleMouseClick"
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave"
     >

@@ -4,7 +4,6 @@ import { ChevronDown, ChevronForwardOutline } from '@vicons/ionicons5'
 import { NIcon } from 'naive-ui'
 import { ref } from 'vue'
 import Entity from './Entity.vue'
-import Term from './Term.vue'
 
 const props = defineProps({
   row: Object,
@@ -22,7 +21,6 @@ function toggle () {
     <ul class="property">
       <li>
         <div style="display: flex; align-items: center">
-
           <template v-if="row.values.length > 1">
             <template v-if="show">
               <NIcon @click="toggle">
