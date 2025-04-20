@@ -1,6 +1,6 @@
 <script setup>
 import { NDropdown, NButton } from 'naive-ui'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { useStore } from '../state.js'
 
 const props = defineProps({
@@ -8,33 +8,50 @@ const props = defineProps({
 })
 
 const store = useStore()
+const menuOptions = ref([])
+const currentRelated = ref(null)
 
-const relatedEntities = computed(() => {
-  return store.getIdsForTerm(props.pointer.term)
-})
-const otherRelatedEntities = computed(() => {
-  return relatedEntities.value.filter(id => id !== props.pointer.id)
-})
 
-const menuOptions = computed(() => {
+function loadOptions ({ incoming, same, outgoing }) {
   const options = []
-
-  otherRelatedEntities.value.forEach(id => {
+  if (incoming.length) {
     options.push({
-      label: `${id}`,
-      key: `entity-${id}`,
+      label: 'Incoming',
+      key: 'incoming',
+      children: incoming.map(id => ({
+        label: `${id}`,
+        key: `entity-${id}`,
+      })),
     })
-  })
+  }
 
-  if (otherRelatedEntities.value.length &&
-      (props.pointer.meta?.types?.length || props.pointer.meta?.graphs?.length)) {
+  if (same.length) {
     options.push({
-      type: 'divider',
-      key: 'divider',
+      label: 'Same',
+      key: 'same',
+      children: same.map(id => ({
+        label: `${id}`,
+        key: `entity-${id}`,
+      })),
+    })
+  }
+
+  if (outgoing.length) {
+    options.push({
+      label: 'Outgoing',
+      key: 'outgoing',
+      children: outgoing.map(id => ({
+        label: `${id}`,
+        key: `entity-${id}`,
+      })),
     })
   }
 
   if (props.pointer.meta?.graphs?.length) {
+    options.push({
+      type: 'divider',
+      key: 'divider',
+    })
     options.push({
       label: 'Graphs',
       key: 'graphs',
@@ -45,8 +62,8 @@ const menuOptions = computed(() => {
     })
   }
 
-  return options
-})
+  menuOptions.value = options
+}
 
 function handleSelect (key) {
   if (key.startsWith('entity-')) {
@@ -68,49 +85,78 @@ function handleSelect (key) {
   }
 }
 
-function highlightRelated () {
-  relatedEntities.value.forEach(id => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.classList.add('related-highlight')
-    }
-  })
+const applyClass = (clazz) => (id) => {
+  const element = document.getElementById(id)
+  if (element) {
+    element.classList.add(clazz)
+  }
 }
 
-function removeHighlight () {
-  relatedEntities.value.forEach(id => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.classList.remove('related-highlight')
-    }
-  })
+const removeClass = (clazz) => (id) => {
+  const element = document.getElementById(id)
+  if (element) {
+    element.classList.remove(clazz)
+  }
 }
+
+function highlightRelated(related) {
+  const { incoming, same, outgoing } = related
+  incoming.forEach(applyClass('incoming-highlight'))
+  same.forEach(applyClass('same-highlight'))
+  outgoing.forEach(applyClass('outgoing-highlight'))
+}
+
+function removeHighlight(related) {
+  const { incoming, same, outgoing } = related
+  incoming.forEach(removeClass('incoming-highlight'))
+  same.forEach(removeClass('same-highlight'))
+  outgoing.forEach(removeClass('outgoing-highlight'))
+}
+
+
+function handleMouseEnter() {
+  currentRelated.value = store.getRelated(props.pointer.term)
+  loadOptions(currentRelated.value)
+  highlightRelated(currentRelated.value)
+}
+
+function handleMouseLeave() {
+  if (currentRelated.value) {
+    removeHighlight(currentRelated.value)
+  }
+}
+
+
+
 </script>
 
 <template>
-  <template v-if="menuOptions.length">
-    <n-dropdown
-        :options="menuOptions"
-        placement="right"
-        trigger="hover"
-        @select="handleSelect"
+  <n-dropdown
+      :options="menuOptions"
+      placement="right"
+      trigger="hover"
+      @select="handleSelect"
+  >
+    <n-button
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave"
     >
-      <n-button
-          @mouseenter="highlightRelated"
-          @mouseleave="removeHighlight"
-      >
-        <slot></slot>
-      </n-button>
-    </n-dropdown>
-  </template>
-  <template v-else>
-    <slot></slot>
-  </template>
+      <slot></slot>
+    </n-button>
+  </n-dropdown>
 </template>
-
 <style>
-.related-highlight {
-  outline: 2px solid #2080f0;
-  background-color: rgba(32, 128, 240, 0.1);
+
+.incoming-highlight {
+  outline: 1px solid rgb(70, 56, 56);
 }
+
+.same-highlight {
+  outline: 2px solid rgb(21, 51, 231);
+}
+
+.outgoing-highlight {
+  outline: 1px solid rgb(70, 56, 56);
+}
+
 </style>
