@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, toRaw } from 'vue'
 import { ns } from '../namespaces.js'
 import { getEntities } from '../traversers/entities.js'
-import { getRelatedIds } from './lookup.js'
+import { getRelatedTerms } from './components/interaction/lookup.js'
 
 const facets = {
   typeOf: (type) => {
@@ -67,11 +67,16 @@ export const useStore = defineStore('state', () => {
   }
 
   function getRelated (term) {
-    return getRelatedIds(currentDataset.value, term, uriToIds.value)
+    return getRelatedTerms(currentDataset.value, term)
+  }
+
+  function getTermIds (term) {
+    return uriToIds.value.get(term)
   }
 
   return {
     entities,
+    getTermIds,
     getRelated,
     setDataset,
     focusOn,

@@ -3,62 +3,140 @@
 exports[`lookup gets Related ids for an entity 1`] = `
 Object {
   "graphs": Array [
-    "http://example.org/note/WhiteRabbit.md",
-    "http://example.org/note/Alice.md",
+    Object {
+      "termType": "NamedNode",
+      "value": "http://example.org/note/WhiteRabbit.md",
+    },
+    Object {
+      "termType": "NamedNode",
+      "value": "http://example.org/note/Alice.md",
+    },
   ],
-  "idToGraphs": Map {
-    "132" => Array [
-      "http://example.org/note/WhiteRabbit.md",
-    ],
-    "141" => Array [
-      "http://example.org/note/Alice.md",
-      "http://example.org/note/WhiteRabbit.md",
-    ],
-    "129" => Array [
-      "http://example.org/note/Alice.md",
-    ],
-    "149" => Array [
-      "http://example.org/note/Alice.md",
-    ],
-    "150" => Array [
-      "http://example.org/note/Alice.md",
-    ],
-    "154" => Array [
-      "http://example.org/note/Alice.md",
-    ],
-    "155" => Array [
-      "http://example.org/note/Alice.md",
-    ],
-    "151" => Array [
-      "http://example.org/note/Alice.md",
-    ],
-    "140" => Array [
-      "http://example.org/note/Alice.md",
-    ],
-    "152" => Array [
-      "http://example.org/note/Alice.md",
-    ],
-    "164" => Array [
-      "http://example.org/note/Alice.md",
-    ],
+  "incomingTerms": Array [
+    Object {
+      "termType": "BlankNode",
+      "value": "n3-8",
+    },
+  ],
+  "outgoingTerms": Array [
+    Object {
+      "termType": "NamedNode",
+      "value": "http://pkm-united.org/Note",
+    },
+    Object {
+      "datatype": Object {
+        "termType": "NamedNode",
+        "value": "http://www.w3.org/2001/XMLSchema#string",
+      },
+      "language": "",
+      "termType": "Literal",
+      "value": "Alice",
+    },
+    Object {
+      "termType": "BlankNode",
+      "value": "n3-9",
+    },
+    Object {
+      "termType": "NamedNode",
+      "value": "http://example.org/note/Charlie.md",
+    },
+  ],
+  "termToGraphs": TermMap {
+    "index": Map {
+      "_:n3-8" => Object {
+        "term": Object {
+          "termType": "BlankNode",
+          "value": "n3-8",
+        },
+        "value": TermSet {
+          "index": Map {
+            "<http://example.org/note/WhiteRabbit.md>" => Object {
+              "termType": "NamedNode",
+              "value": "http://example.org/note/WhiteRabbit.md",
+            },
+          },
+        },
+      },
+      "<http://pkm-united.org/Note>" => Object {
+        "term": Object {
+          "termType": "NamedNode",
+          "value": "http://pkm-united.org/Note",
+        },
+        "value": TermSet {
+          "index": Map {
+            "<http://example.org/note/Alice.md>" => Object {
+              "termType": "NamedNode",
+              "value": "http://example.org/note/Alice.md",
+            },
+          },
+        },
+      },
+      "\\"Alice\\"" => Object {
+        "term": Object {
+          "datatype": Object {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/2001/XMLSchema#string",
+          },
+          "language": "",
+          "termType": "Literal",
+          "value": "Alice",
+        },
+        "value": TermSet {
+          "index": Map {
+            "<http://example.org/note/Alice.md>" => Object {
+              "termType": "NamedNode",
+              "value": "http://example.org/note/Alice.md",
+            },
+          },
+        },
+      },
+      "_:n3-9" => Object {
+        "term": Object {
+          "termType": "BlankNode",
+          "value": "n3-9",
+        },
+        "value": TermSet {
+          "index": Map {
+            "<http://example.org/note/Alice.md>" => Object {
+              "termType": "NamedNode",
+              "value": "http://example.org/note/Alice.md",
+            },
+          },
+        },
+      },
+      "<http://example.org/note/Charlie.md>" => Object {
+        "term": Object {
+          "termType": "NamedNode",
+          "value": "http://example.org/note/Charlie.md",
+        },
+        "value": TermSet {
+          "index": Map {
+            "<http://example.org/note/Alice.md>" => Object {
+              "termType": "NamedNode",
+              "value": "http://example.org/note/Alice.md",
+            },
+          },
+        },
+      },
+      "<http://example.org/note/Alice.md>" => Object {
+        "term": NamedNode {
+          "value": "http://example.org/note/Alice.md",
+        },
+        "value": TermSet {
+          "index": Map {
+            "<http://example.org/note/WhiteRabbit.md>" => Object {
+              "termType": "NamedNode",
+              "value": "http://example.org/note/WhiteRabbit.md",
+            },
+            "<http://example.org/note/Alice.md>" => Object {
+              "termType": "NamedNode",
+              "value": "http://example.org/note/Alice.md",
+            },
+          },
+        },
+      },
+    },
   },
-  "incoming": Array [
-    "132",
-  ],
-  "outgoing": Array [
-    "129",
-    "149",
-    "150",
-    "154",
-    "155",
-    "151",
-    "140",
-    "152",
-    "164",
-  ],
-  "same": Array [
-    "141",
-  ],
 }
 `;
 
