@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, toRaw } from 'vue'
 import { ns } from '../namespaces.js'
 import { getEntities } from '../traversers/entities.js'
-import { getRelatedTerms } from './utils/lookup.js'
+import { getRelatedTerms } from './components/interaction/lookup.js'
 
 const facets = {
   typeOf: (type) => {

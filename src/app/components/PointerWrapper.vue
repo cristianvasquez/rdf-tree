@@ -2,7 +2,7 @@
 import { NDropdown, NButton } from 'naive-ui'
 import { h, ref, toRaw } from 'vue'
 import { useStore } from '../state.js'
-import { getBackgroundStyle } from '../utils/colors.js'
+import { highlightRelated, removeHighlight } from './interaction/highlight.js'
 import ToolIcon from './ToolIcon.vue'
 
 const props = defineProps({
@@ -101,68 +101,6 @@ function goTo (id) {
   }
 }
 
-function highlightRelated (related) {
-  const { incomingTerms, outgoingTerms, termToGraphs } = related
-
-  const applyHighlight = (relationClass) => (term) => {
-    const graphValues = [...termToGraphs.get(term) ?? []].map(x => x.value || 'Default')
-    const backgroundStyle = getBackgroundStyle(graphValues, false)
-    for (const id of store.getTermIds(term)) {
-      const element = document.getElementById(id)
-      if (element) {
-        // Add border highlight class
-        element.classList.add(`${relationClass}-highlight`)
-        // Apply all style properties from backgroundStyle to the element
-        Object.assign(element.style, {
-          // Store original background to restore later
-          '--original-background': element.style.background || 'transparent',
-          '--original-backgroundImage': element.style.backgroundImage || 'none',
-          // Apply new background
-          ...backgroundStyle,
-        })
-        // Add a data attribute to track which elements have had backgrounds applied
-        element.setAttribute('data-highlighted-graphs', 'true')
-      }
-    }
-  }
-  incomingTerms?.forEach(applyHighlight('incoming'))
-  applyHighlight('same')(props.pointer.term)
-  outgoingTerms?.forEach(applyHighlight('outgoing'))
-}
-
-function removeHighlight (related) {
-  const { incomingTerms, outgoingTerms } = related
-
-  const removeHighlighting = (relationClass) => (term) => {
-    for (const id of store.getTermIds(term)) {
-      const element = document.getElementById(id)
-      if (element) {
-        // Remove border highlight class
-        element.classList.remove(`${relationClass}-highlight`)
-
-        // Restore original background if we applied graph highlighting
-        if (element.getAttribute('data-highlighted-graphs') === 'true') {
-          // Restore original background
-          element.style.background = element.style.getPropertyValue('--original-background') || ''
-          element.style.backgroundImage = element.style.getPropertyValue('--original-backgroundImage') || ''
-
-          // Clean up custom properties
-          element.style.removeProperty('--original-background')
-          element.style.removeProperty('--original-backgroundImage')
-          element.style.isolation = ''
-
-          // Remove tracking attribute
-          element.removeAttribute('data-highlighted-graphs')
-        }
-      }
-    }
-  }
-
-  incomingTerms.forEach(removeHighlighting('incoming'))
-  removeHighlighting('same')(props.pointer.term)
-  outgoingTerms.forEach(removeHighlighting('outgoing'))
-}
-
 function handleMouseClick () {
   if (currentRelated.value) {
     const same = store.getTermIds(props.pointer.term)
@@ -178,12 +116,12 @@ function handleMouseClick () {
 function handleMouseEnter () {
   currentRelated.value = store.getRelated(props.pointer.term)
   loadOptions(currentRelated.value)
-  highlightRelated(currentRelated.value)
+  highlightRelated(props.pointer.term, currentRelated.value, store.getTermIds)
 }
 
 function handleMouseLeave () {
   if (currentRelated.value) {
-    removeHighlight(currentRelated.value)
+    removeHighlight(props.pointer.term, currentRelated.value, store.getTermIds)
   }
 }
 

@@ -2,7 +2,7 @@ import { expect } from 'expect'
 import toMatchSnapshot from 'expect-mocha-snapshot'
 import { describe, it } from 'mocha'
 import rdf from 'rdf-ext'
-import { getRelatedTerms } from '../src/app/utils/lookup.js'
+import { getRelatedTerms } from '../src/app/components/interaction/lookup.js'
 import { getEntities } from '../src/traversers/entities.js'
 import { getRabbitDataset } from './support/dataset.js'
 
