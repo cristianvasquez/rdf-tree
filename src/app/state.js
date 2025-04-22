@@ -75,22 +75,22 @@ export const useStore = defineStore('state', () => {
       isLoading.value = false
     }
   }
-
+  
   function getRelated(term) {
     return getRelatedTerms(currentDataset.value, term)
   }
-
+ 
   function getTermIds(term) {
     return uriToIds.value.get(term)
   }
-
+ 
   function clearDataset() {
     currentDataset.value = undefined
     currentFocus.value = undefined
     entities.value = []
     uriToIds.value = undefined
   }
-
+  
   return {
     clearDataset,
     entities,
