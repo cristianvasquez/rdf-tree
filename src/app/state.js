@@ -11,7 +11,6 @@ export const useStore = defineStore('state', () => {
   const currentFocus = ref()
   const isLoading = ref(false)
 
-  // This code smells, TODO refactor
   async function setDataset (dataset) {
     currentDataset.value = dataset
     await defaultFacet()
@@ -54,15 +53,14 @@ export const useStore = defineStore('state', () => {
     isLoading.value = true
 
     try {
-      // Use setTimeout to allow UI to update before starting heavy computation
-      setTimeout(() => {
-        const result = getEntities(currentDataset.value, options)
-        entities.value = result.entities
-        uriToIds.value = result.uriToIds
-        isLoading.value = false
-      }, 50)
+      // Optional delay to let UI show loading spinner
+      await new Promise(resolve => setTimeout(resolve, 50))
+      const result = getEntities(currentDataset.value, options)
+      entities.value = result.entities
+      uriToIds.value = result.uriToIds
     } catch (error) {
       console.error('Error traversing dataset:', error)
+    } finally {
       isLoading.value = false
     }
   }
@@ -72,7 +70,11 @@ export const useStore = defineStore('state', () => {
   }
 
   function getTermIds (term) {
-    return uriToIds.value.get(term)
+    if (!term || !uriToIds.value || typeof uriToIds.value.get !== 'function') {
+      return []
+    }
+    const result = uriToIds.value.get(term)
+    return Array.isArray(result) ? result : []
   }
 
   function clearDataset () {

@@ -1,5 +1,5 @@
 <script setup>
-import { NDropdown, NButton } from 'naive-ui'
+import { NDropdown } from 'naive-ui'
 import { h, ref, toRaw } from 'vue'
 import { useStore } from '../state.js'
 import { highlightRelated, removeHighlight } from './interaction/highlight.js'
@@ -13,72 +13,63 @@ const store = useStore()
 const menuOptions = ref([])
 const currentRelated = ref(null)
 
-function loadOptions ({ incomingTerms, outgoingTerms, graphs }) {
+function safeGetTermIds (term) {
+  try {
+    const result = store.getTermIds(term)
+    return Array.isArray(result) ? result : []
+  } catch {
+    return []
+  }
+}
 
-  const myId = props.pointer.id
+function termToDropdown (term, myId) {
+  const ids = safeGetTermIds(term)
+  return ids.map(id => ({
+    label: id === myId ? `${id} (current)` : id,
+    key: `entity-${id}`,
+  }))
+}
+
+function loadOptions ({ incomingTerms = [], outgoingTerms = [], graphs = [] }) {
+  const myId = props.pointer?.id
   const options = []
 
-  if (outgoingTerms.length) {
-    options.push({
-      label: `outgoing (${outgoingTerms.length})`,
-      key: 'outgoing',
-      children: outgoingTerms.map(term => ({
-        label: term.value,
-        key: `term-${term.value}`,
-        children: store.getTermIds(term).map(id => ({
-          label: id === myId ? `${id} (current)` : `${id}`,
-          key: `entity-${id}`,
-        })),
-      })),
-    })
-  }
+  const buildTermSection = (terms, label) => ({
+    label: `${label} (${terms.length})`,
+    key: label,
+    children: terms.map(term => ({
+      label: term?.value || '[unknown]',
+      key: `term-${term?.value}`,
+      children: termToDropdown(term, myId),
+    })),
+  })
 
-  if (incomingTerms.length) {
-    options.push({
-      label: `incoming (${incomingTerms.length})`,
-      key: 'incoming',
-      children: incomingTerms.map(term => ({
-        label: term.value,
-        key: `term-${term.value}`,
-        children: store.getTermIds(term).map(id => ({
-          label: id === myId ? `${id} (current)` : `${id}`,
-          key: `entity-${id}`,
-        })),
-      })),
-    })
-  }
+  if (outgoingTerms.length) options.push(buildTermSection(outgoingTerms, 'outgoing'))
+  if (incomingTerms.length) options.push(buildTermSection(incomingTerms, 'incoming'))
 
-  const same = store.getTermIds(props.pointer.term)
+  const same = safeGetTermIds(props.pointer?.term)
   const _same = same.filter(id => id !== myId)
   if (_same.length) {
     options.push({
-      label: `🔗 (${same.length})`,
+      label: `🔗 (${_same.length})`,
       key: 'same',
-      children: _same.map(id => ({
-        label: id === myId ? `${id} (current)` : `${id}`,
-        key: `entity-${id}`,
+      children: termToDropdown(props.pointer.term, myId),
+    })
+  }
+
+  if (graphs.length > 1) {
+    options.push({ type: 'divider', key: 'divider' })
+    options.push({
+      label: `G (${graphs.length})`,
+      key: 'graphs',
+      children: graphs.map(g => ({
+        label: g.value || 'Default',
+        key: `graph-${g.value || 'default'}`,
       })),
     })
   }
 
-  if (graphs?.length > 1) {
-    options.push({
-      type: 'divider',
-      key: 'divider',
-    })
-    options.push({
-      label: `G (${graphs.length})`,
-      key: 'graphs',
-      children: graphs.map(x => x.value || 'Default').map(graph => ({
-        label: graph,
-        key: `graph-${graph}`,
-      })),
-    })
-  }
-  options.push({
-    label: 'select',
-    key: 'select',
-  })
+  options.push({ label: 'select', key: 'select' })
   menuOptions.value = options
 }
 
@@ -86,13 +77,9 @@ function handleSelect (key) {
   if (key.startsWith('entity-')) {
     const id = key.replace('entity-', '')
     goTo(id)
-  }
-
-  if (key.startsWith('select')) {
-    store.termFacet(props.pointer.term)
-  }
-
-  if (key.startsWith('graph-')) {
+  } else if (key === 'select') {
+    store.termFacet(props.pointer?.term)
+  } else if (key.startsWith('graph-')) {
     const id = key.replace('graph-', '')
     console.log('selected graph', id)
   }
@@ -110,31 +97,31 @@ function goTo (id) {
 }
 
 function handleMouseClick () {
-  if (currentRelated.value) {
-    const same = store.getTermIds(props.pointer.term)
-    const myId = props.pointer.id
-    const sorted = same.sort()
-    const currentIndex = same.indexOf(myId)
-    const nextIndex = currentIndex === sorted.length - 1 ? 0 : currentIndex + 1
-    const id = sorted[nextIndex]
-    goTo(id)
-  }
+  const myId = props.pointer?.id
+  const same = safeGetTermIds(props.pointer?.term)
+  if (!myId || !same.length) return
+
+  const sorted = [...same].sort()
+  const currentIndex = sorted.indexOf(myId)
+  const nextIndex = (currentIndex + 1) % sorted.length
+  goTo(sorted[nextIndex])
 }
 
 function handleMouseEnter () {
-  currentRelated.value = store.getRelated(props.pointer.term)
+  const term = props.pointer?.term
+  if (!term) return
+  currentRelated.value = store.getRelated(term)
   loadOptions(currentRelated.value)
-  highlightRelated(props.pointer.term, currentRelated.value, store.getTermIds)
+  highlightRelated(term, currentRelated.value, store.getTermIds)
 }
 
 function handleMouseLeave () {
-  if (currentRelated.value) {
-    removeHighlight(props.pointer.term, currentRelated.value, store.getTermIds)
-  }
+  const term = props.pointer?.term
+  if (!term || !currentRelated.value) return
+  removeHighlight(term, currentRelated.value, store.getTermIds)
 }
-
-
 </script>
+
 
 <template>
 

@@ -53,7 +53,7 @@ async function handleUpload() {
 
     // Process all files (works for single or multiple)
     const mergedDataset = await processFiles(fileList.value.map(item => item.file))
-    store.setDataset(mergedDataset)
+    await store.setDataset(mergedDataset)
   } catch (e) {
     parseError.value = `Upload failed: ${e.message}`
     store.entities = []
