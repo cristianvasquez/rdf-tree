@@ -14,12 +14,13 @@ const menuOptions = ref([])
 const currentRelated = ref(null)
 
 function loadOptions ({ incomingTerms, outgoingTerms, graphs }) {
+
   const myId = props.pointer.id
   const options = []
 
   if (outgoingTerms.length) {
     options.push({
-      label: `🠖 (${outgoingTerms.length}) ➡️`,
+      label: `outgoing (${outgoingTerms.length})`,
       key: 'outgoing',
       children: outgoingTerms.map(term => ({
         label: term.value,
@@ -34,7 +35,7 @@ function loadOptions ({ incomingTerms, outgoingTerms, graphs }) {
 
   if (incomingTerms.length) {
     options.push({
-      label: `➡️ (${incomingTerms.length}) 🠖`,
+      label: `incoming (${incomingTerms.length})`,
       key: 'incoming',
       children: incomingTerms.map(term => ({
         label: term.value,
@@ -60,7 +61,7 @@ function loadOptions ({ incomingTerms, outgoingTerms, graphs }) {
     })
   }
 
-  if (graphs?.length) {
+  if (graphs?.length > 1) {
     options.push({
       type: 'divider',
       key: 'divider',
@@ -74,7 +75,10 @@ function loadOptions ({ incomingTerms, outgoingTerms, graphs }) {
       })),
     })
   }
-
+  options.push({
+    label: 'select',
+    key: 'select',
+  })
   menuOptions.value = options
 }
 
@@ -82,6 +86,10 @@ function handleSelect (key) {
   if (key.startsWith('entity-')) {
     const id = key.replace('entity-', '')
     goTo(id)
+  }
+
+  if (key.startsWith('select')) {
+    store.termFacet(props.pointer.term)
   }
 
   if (key.startsWith('graph-')) {
@@ -129,21 +137,24 @@ function handleMouseLeave () {
 </script>
 
 <template>
-  <ToolIcon :term="toRaw(pointer.term)"/>
+
   <n-dropdown
       :options="menuOptions"
       placement="right"
       trigger="hover"
       @select="handleSelect"
   >
-    <n-button
+    <div
         @click.prevent="handleMouseClick"
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave"
     >
+
       <slot></slot>
-    </n-button>
+    </div>
+
   </n-dropdown>
+  <ToolIcon :term="toRaw(pointer.term)"/>
 </template>
 <style>
 

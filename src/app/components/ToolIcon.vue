@@ -9,23 +9,18 @@ const props = defineProps({
 })
 const store = useStore()
 const { currentFocus } = storeToRefs(store)
-
-function focusOn (term) {
-  store.focusOn(term)
-}
-
 </script>
 
 <template>
   <template v-if="currentFocus && currentFocus.equals(term)">
-    <NIcon size="30" style="color: green;" @click="store.reset()">
-      <CheckmarkOutline />
+    <NIcon size="30" style="color: green;" @click="store.defaultFacet()">
+      <CheckmarkOutline/>
     </NIcon>
   </template>
   <template v-else>
-    <NIcon size="20" @click="()=>focusOn(term)">
-      <ScanOutline></ScanOutline>
-    </NIcon>
+    <!--    <NIcon size="20" @click="()=>focusOn(term)">-->
+    <!--      <ScanOutline></ScanOutline>-->
+    <!--    </NIcon>-->
   </template>
 </template>
 
