@@ -2,3 +2,5 @@ node_modules
 assets
 /.idea
 dist
+/public/*.trig
+/public/*.ttl

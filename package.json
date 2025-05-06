@@ -5,6 +5,15 @@
   "description": "Visualizes a (small) RDF dataset",
   "author": "",
   "license": "MIT",
+  "bin": {
+    "rdf-display": "./rdf-display.js"
+  },
+  "files": [
+    "rdf-display.js",
+    "vite.config.js",
+    "src/**/*",
+    "public/**/*"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",

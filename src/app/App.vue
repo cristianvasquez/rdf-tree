@@ -2,7 +2,7 @@
 import { lightTheme, NButton, NCard, NConfigProvider, NSpace, NUpload, NSpin } from 'naive-ui'
 import { storeToRefs } from 'pinia'
 import { Readable } from 'readable-stream'
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { parseTurtle } from '../io/rdf-parser.js'
 import EntityList from './components/EntityList.vue'
 import { useStore } from './state.js'
@@ -15,6 +15,23 @@ const uploadRef = ref(null)
 const fileList = ref([])
 const parseError = ref()
 const isProcessing = ref(false)
+const isExternalResource = ref(false)
+
+// Move initial dataset loading to onMounted
+onMounted(async () => {
+  if (import.meta.env.VITE_INITIAL_RDF_FILE) {
+    try {
+      isExternalResource.value = true
+      const response = await fetch(import.meta.env.VITE_INITIAL_RDF_FILE)
+      const fileContent = await response.text()
+      const strStream = Readable.from(fileContent)
+      const dataset = await parseTurtle(strStream)
+      await store.setDataset(dataset)
+    } catch (e) {
+      parseError.value = `Failed to load file: ${e.message}`
+    }
+  }
+})
 
 // Compute the number of files in the list
 const fileListLength = computed(() => fileList.value.length)
@@ -37,11 +54,11 @@ watch(fileList, async (newFileList) => {
   }
 }, { deep: true })
 
-function handleChange(data) {
+function handleChange (data) {
   fileList.value = data.fileList
 }
 
-async function handleUpload() {
+async function handleUpload () {
   parseError.value = undefined
 
   if (fileList.value.length === 0) {
@@ -62,7 +79,7 @@ async function handleUpload() {
   }
 }
 
-function readFileAsText(file) {
+function readFileAsText (file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
     reader.onload = (e) => resolve(e.target.result)
@@ -71,7 +88,7 @@ function readFileAsText(file) {
   })
 }
 
-async function processFiles(files) {
+async function processFiles (files) {
   const mergedDataset = rdf.dataset()
 
   // Process each file
@@ -91,7 +108,7 @@ async function processFiles(files) {
           subject: quad.subject,
           predicate: quad.predicate,
           object: quad.object,
-          graph: graphName
+          graph: graphName,
         })
       }
     } catch (e) {
@@ -108,9 +125,10 @@ async function processFiles(files) {
 
 <template>
   <n-config-provider :theme="lightTheme">
-    <n-card>
+    <n-card v-if="!isExternalResource">
       <n-space vertical>
         <n-space>
+
           <n-upload
               ref="uploadRef"
               :default-upload="false"
@@ -120,10 +138,9 @@ async function processFiles(files) {
           >
             <n-button>Select turtle or Trig files</n-button>
           </n-upload>
-
           <span v-if="uploadedFilesDisplay">{{ uploadedFilesDisplay }}</span>
 
-          <n-spin size="small" v-if="isProcessing" />
+          <n-spin size="small" v-if="isProcessing"/>
 
           <n-button v-if="currentFocus" @click="store.reset()">
             {{ currentFocus }}
