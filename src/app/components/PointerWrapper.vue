@@ -22,6 +22,34 @@ function safeGetTermIds (term) {
   }
 }
 
+
+function buildTermSection(terms, label, myId) {
+  return {
+    label: `${label} (${terms.length})`,
+    key: label,
+    children: terms.map(term => {
+      const termLabel = term?.value || '[unknown]';
+      const ids = safeGetTermIds(term);
+
+      // If there's only one ID, don't create a nested structure
+      if (ids.length === 1) {
+        const id = ids[0];
+        return {
+          label: `${termLabel} - ${id === myId ? `${id} (current)` : id}`,
+          key: `entity-${id}`,
+        };
+      }
+
+      // If multiple IDs, use the nested structure
+      return {
+        label: termLabel,
+        key: `term-${termLabel}`,
+        children: termToDropdown(term, myId),
+      };
+    }),
+  };
+}
+
 function termToDropdown (term, myId) {
   const ids = safeGetTermIds(term)
   return ids.map(id => ({
@@ -30,22 +58,13 @@ function termToDropdown (term, myId) {
   }))
 }
 
+
 function loadOptions ({ incomingTerms = [], outgoingTerms = [], graphs = [] }) {
   const myId = props.pointer?.id
   const options = []
 
-  const buildTermSection = (terms, label) => ({
-    label: `${label} (${terms.length})`,
-    key: label,
-    children: terms.map(term => ({
-      label: term?.value || '[unknown]',
-      key: `term-${term?.value}`,
-      children: termToDropdown(term, myId),
-    })),
-  })
-
-  if (outgoingTerms.length) options.push(buildTermSection(outgoingTerms, 'outgoing'))
-  if (incomingTerms.length) options.push(buildTermSection(incomingTerms, 'incoming'))
+  if (outgoingTerms.length) options.push(buildTermSection(outgoingTerms, 'outgoing', myId))
+  if (incomingTerms.length) options.push(buildTermSection(incomingTerms, 'incoming', myId))
 
   const same = safeGetTermIds(props.pointer?.term)
   const _same = same.filter(id => id !== myId)
@@ -73,7 +92,8 @@ function loadOptions ({ incomingTerms = [], outgoingTerms = [], graphs = [] }) {
   menuOptions.value = options
 }
 
-function handleSelect (key) {
+// TODO refactor
+function handleSelect (key, option) {
   if (key.startsWith('entity-')) {
     const id = key.replace('entity-', '')
     goTo(id)
