@@ -113,9 +113,11 @@ div .bring-down {
   font-size: 0.8rem;
 }
 
+/*
 .vocab::after {
   content: ':';
 }
+*/
 
 .language {
   color: var(--metadata);
