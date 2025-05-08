@@ -76,7 +76,7 @@ function loadOptions ({ incomingTerms = [], outgoingTerms = [], graphs = [] }) {
     })
   }
 
-  if (graphs.length > 1) {
+  if (graphs.length > 0) {
     options.push({ type: 'divider', key: 'divider' })
     options.push({
       label: `G (${graphs.length})`,
@@ -147,7 +147,7 @@ function handleMouseLeave () {
 
   <n-dropdown
       :options="menuOptions"
-      placement="right"
+      placement="bottom-start"
       trigger="hover"
       @select="handleSelect"
   >
