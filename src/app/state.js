@@ -22,6 +22,10 @@ export const useStore = defineStore('state', () => {
       matchers: [
         { // Priority for entities of type
           predicate: ns.rdf.type,
+          object: ns.epo.Procedure,
+        },
+        { // Priority for entities of type
+          predicate: ns.rdf.type,
           object: ns.epo.Notice,
         },
         {}, // Everything else

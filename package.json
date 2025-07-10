@@ -2,31 +2,39 @@
   "name": "rdf-tree",
   "type": "module",
   "version": "0.1.0",
-  "description": "Visualizes a (small) RDF dataset",
+  "description": "Vue.js component library for visualizing RDF datasets",
   "author": "",
   "license": "MIT",
-  "bin": {
-    "rdf-display": "./rdf-display.js"
+  "main": "dist/rdf-tree.js",
+  "module": "dist/rdf-tree.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/rdf-tree.es.js",
+      "require": "./dist/rdf-tree.js"
+    },
+    "./dist/rdf-tree.css": "./dist/rdf-tree.css"
   },
   "files": [
-    "rdf-display.js",
-    "vite.config.js",
-    "src/**/*",
-    "public/**/*"
+    "dist/**/*",
+    "src/**/*"
   ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "snapshot": "mocha"
+    "build:lib": "vite build --mode lib",
+    "snapshot": "mocha",
+    "test": "mocha"
   },
   "dependencies": {
     "@rdfjs/parser-n3": "^2.1.0",
     "grapoi": "^1.1.3",
     "n3": "^1.25.2",
-    "naive-ui": "^2.41.0",
     "rdf-ext": "^2.5.2",
-    "readable-stream": "^4.7.0",
     "zod": "^3.24.3"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0",
+    "naive-ui": "^2.40.0"
   },
   "devDependencies": {
     "@vicons/ionicons5": "^0.13.0",
@@ -35,7 +43,9 @@
     "expect": "^29.7.0",
     "expect-mocha-snapshot": "^2.1.5",
     "mocha": "^11.1.0",
+    "naive-ui": "^2.41.0",
     "pinia": "^3.0.2",
+    "readable-stream": "^4.7.0",
     "vite": "^6.3.2",
     "vite-plugin-node-polyfills": "^0.23.0",
     "vue": "^3.5.13"

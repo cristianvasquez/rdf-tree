@@ -34,7 +34,6 @@ body {
   display: flex;
   flex-direction: column;
   border-top: 1px solid var(--border);
-
   border-left: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }

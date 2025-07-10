@@ -8,6 +8,18 @@ import EntityList from './components/EntityList.vue'
 import { useStore } from './state.js'
 import rdf from 'rdf-ext'
 
+// Props
+const props = defineProps({
+  initialFile: {
+    type: String,
+    default: null
+  },
+  showUpload: {
+    type: Boolean,
+    default: true
+  }
+})
+
 const store = useStore()
 const { entities, currentFocus, isLoading } = storeToRefs(store)
 
@@ -19,10 +31,11 @@ const isExternalResource = ref(false)
 
 // Move initial dataset loading to onMounted
 onMounted(async () => {
-  if (import.meta.env.VITE_INITIAL_RDF_FILE) {
+  const initialFileUrl = props.initialFile || import.meta.env.VITE_INITIAL_RDF_FILE
+  if (initialFileUrl) {
     try {
       isExternalResource.value = true
-      const response = await fetch(import.meta.env.VITE_INITIAL_RDF_FILE)
+      const response = await fetch(initialFileUrl)
       const fileContent = await response.text()
       const strStream = Readable.from(fileContent)
       const dataset = await parseTurtle(strStream)
@@ -125,7 +138,7 @@ async function processFiles (files) {
 
 <template>
   <n-config-provider :theme="lightTheme">
-    <n-card v-if="!isExternalResource">
+    <n-card v-if="!isExternalResource && showUpload">
       <n-space vertical>
         <n-space>
 
