@@ -1,5 +1,5 @@
 <script setup>
-import { lightTheme, NButton, NCard, NConfigProvider, NSpace, NUpload, NSpin } from 'naive-ui'
+import { lightTheme, NButton, NConfigProvider, NSpin } from 'naive-ui'
 import { storeToRefs } from 'pinia'
 import { Readable } from 'readable-stream'
 import { ref, computed, watch, onMounted } from 'vue'
@@ -14,155 +14,86 @@ const props = defineProps({
     type: String,
     default: null
   },
-  showUpload: {
-    type: Boolean,
-    default: true
+  initialFiles: {
+    type: Array,
+    default: null
   }
 })
 
 const store = useStore()
 const { entities, currentFocus, isLoading } = storeToRefs(store)
 
-const uploadRef = ref(null)
-const fileList = ref([])
 const parseError = ref()
-const isProcessing = ref(false)
 const isExternalResource = ref(false)
 
 // Move initial dataset loading to onMounted
 onMounted(async () => {
-  const initialFileUrl = props.initialFile || import.meta.env.VITE_INITIAL_RDF_FILE
-  if (initialFileUrl) {
+  // Handle multiple files (new format) or single file (legacy)
+  let filesToLoad = []
+  
+  if (props.initialFiles && props.initialFiles.length > 0) {
+    filesToLoad = props.initialFiles
+  } else if (props.initialFile) {
+    filesToLoad = [props.initialFile]
+  } else if (import.meta.env.VITE_INITIAL_RDF_FILES) {
+    filesToLoad = import.meta.env.VITE_INITIAL_RDF_FILES
+  } else if (import.meta.env.VITE_INITIAL_RDF_FILE) {
+    filesToLoad = [import.meta.env.VITE_INITIAL_RDF_FILE]
+  }
+  
+  if (filesToLoad.length > 0) {
     try {
       isExternalResource.value = true
-      const response = await fetch(initialFileUrl)
-      const fileContent = await response.text()
-      const strStream = Readable.from(fileContent)
-      const dataset = await parseTurtle(strStream)
-      await store.setDataset(dataset)
-    } catch (e) {
-      parseError.value = `Failed to load file: ${e.message}`
-    }
-  }
-})
+      
+      // Process multiple files using existing logic
+      const mergedDataset = rdf.dataset()
+      
+      for (const fileUrl of filesToLoad) {
+        try {
+          const response = await fetch(fileUrl)
+          const fileContent = await response.text()
+          const strStream = Readable.from(fileContent)
+          const dataset = await parseTurtle(strStream)
+          
+          // Extract filename from URL for graph naming
+          const fileName = fileUrl.split('/').pop()
+          
+          // Add each quad to merged dataset with filename as graph for default graphs
+          for (const quad of dataset) {
+            const graphName = quad.graph.termType === 'DefaultGraph'
+                ? { termType: 'NamedNode', value: fileName }
+                : quad.graph
 
-// Compute the number of files in the list
-const fileListLength = computed(() => fileList.value.length)
-
-// Compute display text for selected files
-const uploadedFilesDisplay = computed(() => {
-  if (fileListLength.value === 0) return ''
-  if (fileListLength.value === 1) return fileList.value[0].name
-  return `${fileListLength.value} files uploaded`
-})
-
-// Watch for changes in fileList and automatically process files
-watch(fileList, async (newFileList) => {
-  if (newFileList.length > 0 && !isProcessing.value) {
-    await handleUpload()
-  } else if (newFileList.length === 0) {
-    // Clear the dataset when all files are removed
-    store.clearDataset()
-    parseError.value = undefined
-  }
-}, { deep: true })
-
-function handleChange (data) {
-  fileList.value = data.fileList
-}
-
-async function handleUpload () {
-  parseError.value = undefined
-
-  if (fileList.value.length === 0) {
-    return
-  }
-
-  try {
-    isProcessing.value = true
-
-    // Process all files (works for single or multiple)
-    const mergedDataset = await processFiles(fileList.value.map(item => item.file))
-    await store.setDataset(mergedDataset)
-  } catch (e) {
-    parseError.value = `Upload failed: ${e.message}`
-    store.entities = []
-  } finally {
-    isProcessing.value = false
-  }
-}
-
-function readFileAsText (file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader()
-    reader.onload = (e) => resolve(e.target.result)
-    reader.onerror = reject
-    reader.readAsText(file)
-  })
-}
-
-async function processFiles (files) {
-  const mergedDataset = rdf.dataset()
-
-  // Process each file
-  for (const file of files) {
-    try {
-      const fileContent = await readFileAsText(file)
-      const strStream = Readable.from(fileContent)
-      const dataset = await parseTurtle(strStream)
-
-      // Add each quad to the merged dataset, rewriting default graph to use filename
-      for (const quad of dataset) {
-        const graphName = quad.graph.termType === 'DefaultGraph'
-            ? { termType: 'NamedNode', value: file.name }
-            : quad.graph
-
-        mergedDataset.add({
-          subject: quad.subject,
-          predicate: quad.predicate,
-          object: quad.object,
-          graph: graphName,
-        })
+            mergedDataset.add({
+              subject: quad.subject,
+              predicate: quad.predicate,
+              object: quad.object,
+              graph: graphName,
+            })
+          }
+        } catch (e) {
+          console.error(`Error processing ${fileUrl}:`, e)
+          parseError.value = `Failed to load ${fileUrl}: ${e.message}`
+        }
       }
+      
+      await store.setDataset(mergedDataset)
     } catch (e) {
-      // Handle error for this specific file
-      parseError.value = `Error processing ${file.name}: ${e}`
-      console.error(`Error processing ${file.name}:`, e)
-      // Continue with other files
+      parseError.value = `Failed to load files: ${e.message}`
     }
   }
-
-  return mergedDataset
-}
+})
 </script>
 
 <template>
   <n-config-provider :theme="lightTheme">
-    <n-card v-if="!isExternalResource && showUpload">
-      <n-space vertical>
-        <n-space>
+    <div v-if="currentFocus" style="padding: 10px 0;">
+      <n-button @click="store.reset()">
+        {{ currentFocus }}
+      </n-button>
+    </div>
 
-          <n-upload
-              ref="uploadRef"
-              :default-upload="false"
-              :accept="'.ttl, .trig'"
-              multiple
-              @change="handleChange"
-          >
-            <n-button>Select turtle or Trig files</n-button>
-          </n-upload>
-          <span v-if="uploadedFilesDisplay">{{ uploadedFilesDisplay }}</span>
-
-          <n-spin size="small" v-if="isProcessing"/>
-
-          <n-button v-if="currentFocus" @click="store.reset()">
-            {{ currentFocus }}
-          </n-button>
-        </n-space>
-
-        <div v-if="parseError" class="error">{{ parseError }}</div>
-      </n-space>
-    </n-card>
+    <div v-if="parseError" class="error">{{ parseError }}</div>
 
     <div class="entity-container">
       <n-spin :show="isLoading">
