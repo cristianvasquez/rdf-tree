@@ -9,26 +9,24 @@ import { useEntityNavigation } from './composables/useEntityNavigation.js'
 const props = defineProps({
   pointer: {
     type: Object,
-    required: true
+    required: true,
   },
   enableHighlighting: {
     type: Boolean,
-    default: true
+    default: true,
   },
   enableRightClick: {
     type: Boolean,
-    default: true
+    default: true,
   },
   termComponent: {
     type: [Object, String],
-    default: null
-  }
+    default: null,
+  },
 })
 
 const store = useRdfState()
 const { entities, currentFocus, isLoading } = store
-
-const parseError = ref()
 
 // Create navigation composable and provide it to child components
 const navigation = useEntityNavigation(store)
@@ -46,11 +44,7 @@ provide('termComponent', toRef(props, 'termComponent'))
 
 // Initialize with provided pointer
 onMounted(async () => {
-  try {
-    await store.setPointer(props.pointer)
-  } catch (e) {
-    parseError.value = `Failed to initialize with pointer: ${e.message}`
-  }
+  await store.setPointer(props.pointer)
 })
 </script>
 
@@ -61,14 +55,11 @@ onMounted(async () => {
         {{ currentFocus }}
       </n-button>
     </div>
-    <div v-if="parseError" class="error">{{ parseError }}</div>
-
     <div class="entity-container">
       <n-spin :show="isLoading">
         <EntityList :entities="entities"/>
       </n-spin>
     </div>
-
   </n-config-provider>
 </template>
 
@@ -81,15 +72,6 @@ body {
 .entity-container {
   background-color: white;
   min-height: 100px;
-}
-
-.error {
-  color: red;
-  white-space: pre-wrap;
-  padding: 1rem;
-  background-color: #ffeeee;
-  border: 1px solid #ffcccc;
-  margin: 1rem 0;
 }
 
 .entities {
@@ -120,15 +102,6 @@ body {
   flex-direction: column;
 }
 
-.rows > :nth-child(n) {
-  border-top: 1px solid var(--border);
-}
-
-.rows > :nth-child(2n) {
-  border-top: 1px solid var(--border);
-  background: #00000003;
-}
-
 .rows > .row {
   display: flex;
   flex-direction: row;
@@ -137,7 +110,7 @@ body {
 
 .row > .property {
   align-self: flex-start;
-  min-width: 200px;
+  min-width: 100px;
   word-wrap: break-word;
   margin: .5rem .5rem .5rem 1%;
 }
@@ -170,9 +143,7 @@ ol {
   padding-left: 5px;
 }
 
-div .bring-down {
-  color: var(--metadata);
-}
+/** Used by Term **/
 
 .vocab {
   color: var(--metadata);
@@ -184,6 +155,8 @@ div .bring-down {
   font-size: .7rem;
   margin-left: 4px;
 }
+
+/** Used by Composables **/
 
 .incoming-highlight {
   outline: 1px solid rgba(70, 56, 56, 0.4);

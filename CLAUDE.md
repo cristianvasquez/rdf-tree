@@ -76,9 +76,16 @@ App.vue
 - Loading states and error handling
 
 ### Component API
-- `RdfTree` component accepts `initialFile` and `showUpload` props
+- `RdfTree` component accepts `pointer` prop (required grapoi pointer object)
+- Optional props: `enableHighlighting`, `enableRightClick`, `termComponent`
 - Self-contained with Pinia store management
 - Supports both programmatic usage and plugin installation
+
+### RdfTree Props
+- **`pointer`** (Object, required): grapoi pointer with dataset, term, and factory
+- **`enableHighlighting`** (Boolean, default: true): hover highlighting
+- **`enableRightClick`** (Boolean, default: true): context menus
+- **`termComponent`** (Component, optional): custom term renderer
 
 ## Testing
 

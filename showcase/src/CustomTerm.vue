@@ -10,6 +10,10 @@ const props = defineProps({
     type: Object,
     default: null
   },
+  row: {
+    type: Object,
+    default: null
+  },
   context: {
     type: String,
     default: 'unknown' // 'subject', 'predicate', 'object'
@@ -63,14 +67,14 @@ const contextStyle = computed(() => {
     <!-- URI display -->
     <template v-if="termDisplay.type === 'uri'">
       <div class="custom-term__container">
-        <span 
-          class="custom-term__badge" 
+        <span
+          class="custom-term__badge"
           :class="{ 'custom-term__badge--external': termDisplay.isExternal }"
         >
           {{ termDisplay.isExternal ? 'EXT' : 'LOC' }}
         </span>
-        <a 
-          :href="termDisplay.full" 
+        <a
+          :href="termDisplay.full"
           class="custom-term__link"
           target="_blank"
           :title="termDisplay.full"

@@ -103,10 +103,6 @@ ol {
   padding-left: 5px;
 }
 
-div .bring-down {
-  color: var(--metadata);
-}
-
 .vocab {
   color: var(--metadata);
   font-size: 0.8rem;
