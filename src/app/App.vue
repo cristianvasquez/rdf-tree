@@ -18,6 +18,10 @@ const props = defineProps({
   enableRightClick: {
     type: Boolean,
     default: true
+  },
+  termComponent: {
+    type: [Object, String],
+    default: null
   }
 })
 
@@ -36,6 +40,9 @@ provide('rdfStore', store)
 // Provide reactive configuration options to child components
 provide('enableHighlighting', toRef(props, 'enableHighlighting'))
 provide('enableRightClick', toRef(props, 'enableRightClick'))
+
+// Provide custom term component to child components
+provide('termComponent', toRef(props, 'termComponent'))
 
 // Initialize with provided pointer
 onMounted(async () => {

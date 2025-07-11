@@ -2,6 +2,20 @@
   <div>
     <h1>🌳 RDF-Tree Vue.js component for visualizing RDF datasets</h1>
 
+
+    <div v-if="error" class="error">
+      {{ error }}
+    </div>
+    <div v-else-if="!rootPointer" class="loading">
+      Creating sample RDF data...
+    </div>
+    <RdfTree
+      v-else
+      :pointer="rootPointer"
+      :enableHighlighting="enableHighlighting"
+      :enableRightClick="enableRightClick"
+      :termComponent="useCustomTerm ? CustomTerm : null"
+    />
     <!-- Configuration Demo Section -->
     <details class="config-demo">
       <summary>🛠️ Configuration Options Demo</summary>
@@ -15,23 +29,15 @@
           <input type="checkbox" v-model="enableRightClick" />
           Enable right-click context menus
         </label>
+        <label>
+          <input type="checkbox" v-model="useCustomTerm" />
+          Use custom term component (with badges and styling)
+        </label>
         <p class="config-note">
-          Toggle these options to test the component's configurable features.
+          Toggle these options to test the component's configurable features. The custom term component shows a completely different visual approach with badges and context-based styling.
         </p>
       </div>
     </details>
-    <div v-if="error" class="error">
-      {{ error }}
-    </div>
-    <div v-else-if="!rootPointer" class="loading">
-      Creating sample RDF data...
-    </div>
-    <RdfTree
-      v-else
-      :pointer="rootPointer"
-      :enableHighlighting="enableHighlighting"
-      :enableRightClick="enableRightClick"
-    />
   </div>
 </template>
 
@@ -40,11 +46,13 @@ import { ref, onMounted } from 'vue'
 import { RdfTree } from '../../src/index.js' // Direct relative import
 import rdf from 'rdf-ext'
 import grapoi from 'grapoi'
+import CustomTerm from './CustomTerm.vue'
 
 const rootPointer = ref(null)
 const error = ref(null)
 const enableHighlighting = ref(false)
 const enableRightClick = ref(false)
+const useCustomTerm = ref(true)
 
 onMounted(async () => {
   try {

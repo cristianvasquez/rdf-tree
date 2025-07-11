@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted, inject } from 'vue'
+import { ref, onMounted, onUnmounted, inject, computed } from 'vue'
 import PointerWrapper from './PointerWrapper.vue'
 import Row from './Row.vue'
 import Term from './Term.vue'
@@ -12,6 +12,14 @@ const entityRef = ref(null)
 
 // Try to inject navigation composable (may not be available in all contexts)
 const navigation = inject('entityNavigation', null)
+
+// Inject custom term component (with fallback to default Term)
+const customTermComponentRef = inject('termComponent', ref(null))
+
+// Compute the actual term component to use
+const TermComponent = computed(() => {
+  return customTermComponentRef.value || Term
+})
 
 onMounted(() => {
   // Register this entity element with the navigation system
@@ -35,13 +43,13 @@ onUnmounted(() => {
       <div class="entity">
         <div class="entity-header">
           <PointerWrapper :pointer="pointer">
-            <Term :term="pointer.term"/>
+            <component :is="TermComponent" :term="pointer.term" :pointer="pointer" context="subject"/>
           </PointerWrapper>
         </div>
         <div class="rows">
           <template v-for="row of pointer.rows">
             <Row :row="row">
-              <Term :term="row.predicate"/>
+              <component :is="TermComponent" :term="row.predicate" :row="row" context="predicate"/>
             </Row>
           </template>
         </div>
@@ -49,7 +57,7 @@ onUnmounted(() => {
     </template>
     <template v-else>
       <PointerWrapper :pointer="pointer">
-        <Term :term="pointer.term"/>
+        <component :is="TermComponent" :term="pointer.term" :pointer="pointer" context="object"/>
       </PointerWrapper>
     </template>
   </div>
