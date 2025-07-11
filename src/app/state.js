@@ -7,12 +7,12 @@ import { getRelatedTerms } from './components/interaction/lookup.js'
 export const useStore = defineStore('state', () => {
   const entities = ref([])
   const uriToIds = ref()
-  const currentDataset = ref()
+  const currentPointer = ref()
   const currentFocus = ref()
   const isLoading = ref(false)
 
-  async function setDataset (dataset) {
-    currentDataset.value = dataset
+  async function setPointer (pointer) {
+    currentPointer.value = pointer
     await defaultFacet()
   }
 
@@ -20,6 +20,10 @@ export const useStore = defineStore('state', () => {
     currentFocus.value = undefined
     const options = {
       matchers: [
+        { // Priority for entities of type
+          predicate: ns.rdf.type,
+          object: ns.epo.Procedure,
+        },
         { // Priority for entities of type
           predicate: ns.rdf.type,
           object: ns.epo.Notice,
@@ -55,7 +59,7 @@ export const useStore = defineStore('state', () => {
     try {
       // Optional delay to let UI show loading spinner
       await new Promise(resolve => setTimeout(resolve, 50))
-      const result = getEntities(currentDataset.value, options)
+      const result = getEntities(currentPointer.value.dataset, options)
       entities.value = result.entities
       uriToIds.value = result.uriToIds
     } catch (error) {
@@ -66,7 +70,7 @@ export const useStore = defineStore('state', () => {
   }
 
   function getRelated (term) {
-    return getRelatedTerms(currentDataset.value, term)
+    return getRelatedTerms(currentPointer.value.dataset, term)
   }
 
   function getTermIds (term) {
@@ -77,21 +81,29 @@ export const useStore = defineStore('state', () => {
     return Array.isArray(result) ? result : []
   }
 
-  function clearDataset () {
-    currentDataset.value = undefined
+  function clearPointer () {
+    currentPointer.value = undefined
     currentFocus.value = undefined
     entities.value = []
     uriToIds.value = undefined
   }
 
+  function reset () {
+    if (currentPointer.value) {
+      currentFocus.value = undefined
+      defaultFacet()
+    }
+  }
+
   return {
-    clearDataset,
+    clearPointer,
     entities,
     getTermIds,
     getRelated,
-    setDataset,
+    setPointer,
     termFacet,
     defaultFacet,
+    reset,
     currentFocus,
     isLoading,
   }

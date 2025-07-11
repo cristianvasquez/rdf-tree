@@ -1,8 +1,10 @@
 <script setup>
 import { NDropdown } from 'naive-ui'
-import { h, ref, toRaw } from 'vue'
+import { computed, toRaw, ref } from 'vue'
 import { useStore } from '../state.js'
-import { highlightRelated, removeHighlight } from './interaction/highlight.js'
+import { useEntityNavigation } from '../composables/useEntityNavigation.js'
+import { useDropdownMenu } from '../composables/useDropdownMenu.js'
+import { useEntityHighlighting } from '../composables/useEntityHighlighting.js'
 import ToolIcon from './ToolIcon.vue'
 
 const props = defineProps({
@@ -10,184 +12,110 @@ const props = defineProps({
 })
 
 const store = useStore()
-const menuOptions = ref([])
-const currentRelated = ref(null)
 
-function safeGetTermIds (term) {
-  try {
-    const result = store.getTermIds(term)
-    return Array.isArray(result) ? result : []
-  } catch {
-    return []
+// Use composables for clean separation of concerns
+const { scrollToEntity, cycleSameEntities, isScrollHighlighted } = useEntityNavigation(store)
+const { menuOptions, updateMenu, clearMenu, parseMenuKey } = useDropdownMenu(store)
+const { highlightRelated, removeAllHighlighting, getHighlightClasses } = useEntityHighlighting(store)
+
+// Dropdown state
+const showDropdown = ref(false)
+
+
+// Compute CSS classes for this entity
+const entityClasses = computed(() => {
+  const classes = []
+  
+  // Add highlight classes
+  if (props.pointer?.id) {
+    classes.push(...getHighlightClasses(props.pointer.id))
   }
-}
-
-
-function buildTermSection(terms, label, myId) {
-  return {
-    label: `${label} (${terms.length})`,
-    key: label,
-    children: terms.map(term => {
-      const termLabel = term?.value || '[unknown]';
-      const ids = safeGetTermIds(term);
-
-      // If there's only one ID, don't create a nested structure
-      if (ids.length === 1) {
-        const id = ids[0];
-        return {
-          label: `${termLabel} - ${id === myId ? `${id} (current)` : id}`,
-          key: `entity-${id}`,
-        };
-      }
-
-      // If multiple IDs, use the nested structure
-      return {
-        label: termLabel,
-        key: `term-${termLabel}`,
-        children: termToDropdown(term, myId),
-      };
-    }),
-  };
-}
-
-function termToDropdown (term, myId) {
-  const ids = safeGetTermIds(term)
-  return ids.map(id => ({
-    label: id === myId ? `${id} (current)` : id,
-    key: `entity-${id}`,
-  }))
-}
-
-
-function loadOptions ({ incomingTerms = [], outgoingTerms = [], graphs = [] }) {
-  const myId = props.pointer?.id
-  const options = []
-
-  if (outgoingTerms.length) options.push(buildTermSection(outgoingTerms, 'outgoing', myId))
-  if (incomingTerms.length) options.push(buildTermSection(incomingTerms, 'incoming', myId))
-
-  const same = safeGetTermIds(props.pointer?.term)
-  const _same = same.filter(id => id !== myId)
-  if (_same.length) {
-    options.push({
-      label: `🔗 (${_same.length})`,
-      key: 'same',
-      children: termToDropdown(props.pointer.term, myId),
-    })
+  
+  // Add scroll highlight class
+  if (props.pointer?.id && isScrollHighlighted(props.pointer.id)) {
+    classes.push('scrolled-to')
   }
+  
+  return classes
+})
 
-  if (graphs.length > 1) {
-    options.push({ type: 'divider', key: 'divider' })
-    options.push({
-      label: `G (${graphs.length})`,
-      key: 'graphs',
-      children: graphs.map(g => ({
-        label: g.value || 'Default',
-        key: `graph-${g.value || 'default'}`,
-      })),
-    })
+function handleSelect(key, option) {
+  const parsed = parseMenuKey(key)
+  
+  switch (parsed.type) {
+    case 'entity':
+      scrollToEntity(parsed.value)
+      break
+    case 'select':
+      store.termFacet(props.pointer?.term)
+      break
+    case 'graph':
+      console.log('selected graph', parsed.value)
+      break
+    default:
+      console.warn('Unknown menu selection:', key)
   }
-
-  options.push({ label: 'select', key: 'select' })
-  menuOptions.value = options
+  
+  // Close dropdown and clear menu after selection
+  showDropdown.value = false
+  clearMenu()
 }
 
-// TODO refactor
-function handleSelect (key, option) {
-  if (key.startsWith('entity-')) {
-    const id = key.replace('entity-', '')
-    goTo(id)
-  } else if (key === 'select') {
-    store.termFacet(props.pointer?.term)
-  } else if (key.startsWith('graph-')) {
-    const id = key.replace('graph-', '')
-    console.log('selected graph', id)
-  }
+function handleMouseClick() {
+  cycleSameEntities(props.pointer)
 }
 
-function goTo (id) {
-  const element = document.getElementById(id)
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    element.classList.add('scrolled-to')
-    setTimeout(() => {
-      element.classList.remove('scrolled-to')
-    }, 2000)
-  }
-}
-
-function handleMouseClick () {
-  const myId = props.pointer?.id
-  const same = safeGetTermIds(props.pointer?.term)
-  if (!myId || !same.length) return
-
-  const sorted = [...same].sort()
-  const currentIndex = sorted.indexOf(myId)
-  const nextIndex = (currentIndex + 1) % sorted.length
-  goTo(sorted[nextIndex])
-}
-
-function handleMouseEnter () {
+function handleMouseEnter() {
   const term = props.pointer?.term
   if (!term) return
-  currentRelated.value = store.getRelated(term)
-  loadOptions(currentRelated.value)
-  highlightRelated(term, currentRelated.value, store.getTermIds)
+  
+  const related = store.getRelated(term)
+  updateMenu(props.pointer, related)
+  highlightRelated(term, related)
 }
 
-function handleMouseLeave () {
+function handleMouseLeave() {
   const term = props.pointer?.term
-  if (!term || !currentRelated.value) return
-  removeHighlight(term, currentRelated.value, store.getTermIds)
+  if (!term) return
+  
+  removeAllHighlighting()
+  // Don't clear menu when using manual trigger - let clickoutside handle it
+}
+
+function handleRightClick() {
+  const term = props.pointer?.term
+  if (!term) return
+  
+  const related = store.getRelated(term)
+  updateMenu(props.pointer, related)
+  showDropdown.value = true
+}
+
+function handleClickOutside() {
+  showDropdown.value = false
+  clearMenu()
 }
 </script>
 
 
 <template>
-
   <n-dropdown
-      :options="menuOptions"
-      placement="right"
-      trigger="hover"
-      @select="handleSelect"
+    :options="menuOptions"
+    placement="bottom-start"
+    trigger="manual"
+    :show="showDropdown"
+    @select="handleSelect"
+    @clickoutside="handleClickOutside"
   >
     <div
-        @click.prevent="handleMouseClick"
-        @mouseenter="handleMouseEnter"
-        @mouseleave="handleMouseLeave"
+      :class="entityClasses"
+      @click="handleMouseClick"
+      @contextmenu.prevent="handleRightClick"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
     >
-
       <slot></slot>
     </div>
-
   </n-dropdown>
   <ToolIcon :term="toRaw(pointer.term)"/>
 </template>
-<style>
-
-.incoming-highlight {
-  outline: 1px solid rgb(70, 56, 56);
-}
-
-.same-highlight {
-  outline: 2px solid rgb(21, 51, 231);
-}
-
-.outgoing-highlight {
-  outline: 1px solid rgb(70, 56, 56);
-}
-
-.scrolled-to {
-  animation: flash 5s ease-out;
-}
-
-@keyframes flash {
-  0% {
-    background-color: rgba(255, 255, 100, 0.5);
-  }
-  100% {
-    background-color: transparent;
-  }
-}
-
-</style>

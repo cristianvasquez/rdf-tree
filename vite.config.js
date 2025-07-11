@@ -1,28 +1,66 @@
 import vue from '@vitejs/plugin-vue'
-
 import { defineConfig } from 'vite'
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import path from 'path'
 
+export default defineConfig(({ mode }) => {
+  if (mode === 'lib') {
+    // Library build configuration
+    return {
+      plugins: [
+        vue(),
+        nodePolyfills({
+          include: ['path', 'stream', 'util'],
+          exclude: ['http'],
+          globals: {
+            Buffer: true,
+            global: true,
+            process: true,
+          },
+          overrides: {
+            fs: 'memfs',
+          },
+          protocolImports: true,
+        })
+      ],
+      build: {
+        lib: {
+          entry: path.resolve(__dirname, 'src/index.js'),
+          name: 'RdfTree',
+          fileName: (format) => `rdf-tree.${format}.js`
+        },
+        rollupOptions: {
+          external: ['vue', 'naive-ui', 'pinia'],
+          output: {
+            globals: {
+              vue: 'Vue',
+              'naive-ui': 'NaiveUI',
+              pinia: 'Pinia'
+            }
+          }
+        }
+      }
+    }
+  }
 
-export default defineConfig({
-  base: './', // Ensure assets use relative paths
-  // server: {
-  //   proxy: {
-  //     '/sparql': {
-  //       target: 'https://endpoint-with-cors/sparql',
-  //       changeOrigin: true,
-  //       secure: false,
-  //       rewrite: (path) => path.replace(/^\/sparql/, '')
-  //     },
-  //   },
-  // },
-  plugins: [
-    vue(), nodePolyfills({
-      include: ['path', 'stream', 'util'], exclude: ['http'], globals: {
-        Buffer: true, global: true, process: true,
-      }, overrides: {
-        fs: 'memfs',
-      }, protocolImports: true,
-    })],
+  // Development configuration
+  return {
+    base: './',
+    plugins: [
+      vue(),
+      nodePolyfills({
+        include: ['path', 'stream', 'util'],
+        exclude: ['http'],
+        globals: {
+          Buffer: true,
+          global: true,
+          process: true,
+        },
+        overrides: {
+          fs: 'memfs',
+        },
+        protocolImports: true,
+      })
+    ]
+  }
 })
-
