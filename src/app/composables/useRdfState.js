@@ -1,22 +1,25 @@
-import { defineStore } from 'pinia'
-import { ref, toRaw } from 'vue'
-import { ns } from '../namespaces.js'
-import { getEntities } from '../traversers/entities.js'
-import { getRelatedTerms } from './components/interaction/lookup.js'
+import { ref } from 'vue'
+import { ns } from '../../namespaces.js'
+import { getEntities } from '../../traversers/entities.js'
+import { getRelatedTerms } from '../components/interaction/lookup.js'
 
-export const useStore = defineStore('state', () => {
+/**
+ * RDF State composable - replaces Pinia store
+ * Maintains identical API for backward compatibility
+ */
+export function useRdfState() {
   const entities = ref([])
   const uriToIds = ref()
   const currentPointer = ref()
   const currentFocus = ref()
   const isLoading = ref(false)
 
-  async function setPointer (pointer) {
+  async function setPointer(pointer) {
     currentPointer.value = pointer
     await defaultFacet()
   }
 
-  async function defaultFacet () {
+  async function defaultFacet() {
     currentFocus.value = undefined
     const options = {
       matchers: [
@@ -34,7 +37,7 @@ export const useStore = defineStore('state', () => {
     await traverseDataset(options)
   }
 
-  async function termFacet (term) {
+  async function termFacet(term) {
     currentFocus.value = term
     const options = {
       maxDepth: 1,
@@ -53,7 +56,7 @@ export const useStore = defineStore('state', () => {
     await traverseDataset(options)
   }
 
-  async function traverseDataset (options) {
+  async function traverseDataset(options) {
     isLoading.value = true
 
     try {
@@ -69,11 +72,11 @@ export const useStore = defineStore('state', () => {
     }
   }
 
-  function getRelated (term) {
+  function getRelated(term) {
     return getRelatedTerms(currentPointer.value.dataset, term)
   }
 
-  function getTermIds (term) {
+  function getTermIds(term) {
     if (!term || !uriToIds.value || typeof uriToIds.value.get !== 'function') {
       return []
     }
@@ -81,14 +84,14 @@ export const useStore = defineStore('state', () => {
     return Array.isArray(result) ? result : []
   }
 
-  function clearPointer () {
+  function clearPointer() {
     currentPointer.value = undefined
     currentFocus.value = undefined
     entities.value = []
     uriToIds.value = undefined
   }
 
-  function reset () {
+  function reset() {
     if (currentPointer.value) {
       currentFocus.value = undefined
       defaultFacet()
@@ -96,15 +99,18 @@ export const useStore = defineStore('state', () => {
   }
 
   return {
-    clearPointer,
+    // State
     entities,
+    currentFocus,
+    isLoading,
+    
+    // Methods - identical API to Pinia store
+    clearPointer,
     getTermIds,
     getRelated,
     setPointer,
     termFacet,
     defaultFacet,
     reset,
-    currentFocus,
-    isLoading,
   }
-})
+}

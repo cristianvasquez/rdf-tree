@@ -1,9 +1,8 @@
 <script setup>
 import { lightTheme, NButton, NConfigProvider, NSpin } from 'naive-ui'
-import { storeToRefs } from 'pinia'
-import { ref, onMounted, provide } from 'vue'
+import { ref, onMounted, provide, toRef } from 'vue'
 import EntityList from './components/EntityList.vue'
-import { useStore } from './state.js'
+import { useRdfState } from './composables/useRdfState.js'
 import { useEntityNavigation } from './composables/useEntityNavigation.js'
 
 // Props
@@ -11,17 +10,32 @@ const props = defineProps({
   pointer: {
     type: Object,
     required: true
+  },
+  enableHighlighting: {
+    type: Boolean,
+    default: true
+  },
+  enableRightClick: {
+    type: Boolean,
+    default: true
   }
 })
 
-const store = useStore()
-const { entities, currentFocus, isLoading } = storeToRefs(store)
+const store = useRdfState()
+const { entities, currentFocus, isLoading } = store
 
 const parseError = ref()
 
 // Create navigation composable and provide it to child components
 const navigation = useEntityNavigation(store)
 provide('entityNavigation', navigation)
+
+// Provide the store to child components
+provide('rdfStore', store)
+
+// Provide reactive configuration options to child components
+provide('enableHighlighting', toRef(props, 'enableHighlighting'))
+provide('enableRightClick', toRef(props, 'enableRightClick'))
 
 // Initialize with provided pointer
 onMounted(async () => {
@@ -40,7 +54,6 @@ onMounted(async () => {
         {{ currentFocus }}
       </n-button>
     </div>
-
     <div v-if="parseError" class="error">{{ parseError }}</div>
 
     <div class="entity-container">

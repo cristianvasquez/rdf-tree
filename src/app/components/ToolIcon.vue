@@ -1,14 +1,13 @@
 <script setup>
 import { NIcon } from 'naive-ui'
 import { ScanOutline, CheckmarkOutline } from '@vicons/ionicons5'
-import { storeToRefs } from 'pinia'
-import { useStore } from '../state.js'
+import { inject } from 'vue'
 
 const props = defineProps({
   term: Object,
 })
-const store = useStore()
-const { currentFocus } = storeToRefs(store)
+const store = inject('rdfStore')
+const { currentFocus } = store
 </script>
 
 <template>

@@ -1,7 +1,6 @@
 <script setup>
 import { NDropdown } from 'naive-ui'
-import { computed, toRaw, ref } from 'vue'
-import { useStore } from '../state.js'
+import { computed, toRaw, ref, inject } from 'vue'
 import { useEntityNavigation } from '../composables/useEntityNavigation.js'
 import { useDropdownMenu } from '../composables/useDropdownMenu.js'
 import { useEntityHighlighting } from '../composables/useEntityHighlighting.js'
@@ -11,7 +10,13 @@ const props = defineProps({
   pointer: Object,
 })
 
-const store = useStore()
+const store = inject('rdfStore')
+const enableHighlightingRef = inject('enableHighlighting', ref(true))
+const enableRightClickRef = inject('enableRightClick', ref(true))
+
+// Unwrap for easier usage
+const enableHighlighting = computed(() => enableHighlightingRef.value)
+const enableRightClick = computed(() => enableRightClickRef.value)
 
 // Use composables for clean separation of concerns
 const { scrollToEntity, cycleSameEntities, isScrollHighlighted } = useEntityNavigation(store)
@@ -25,23 +30,23 @@ const showDropdown = ref(false)
 // Compute CSS classes for this entity
 const entityClasses = computed(() => {
   const classes = []
-  
-  // Add highlight classes
-  if (props.pointer?.id) {
+
+  // Add highlight classes only if highlighting is enabled
+  if (enableHighlighting.value && props.pointer?.id) {
     classes.push(...getHighlightClasses(props.pointer.id))
   }
-  
+
   // Add scroll highlight class
   if (props.pointer?.id && isScrollHighlighted(props.pointer.id)) {
     classes.push('scrolled-to')
   }
-  
+
   return classes
 })
 
 function handleSelect(key, option) {
   const parsed = parseMenuKey(key)
-  
+
   switch (parsed.type) {
     case 'entity':
       scrollToEntity(parsed.value)
@@ -55,7 +60,7 @@ function handleSelect(key, option) {
     default:
       console.warn('Unknown menu selection:', key)
   }
-  
+
   // Close dropdown and clear menu after selection
   showDropdown.value = false
   clearMenu()
@@ -68,24 +73,31 @@ function handleMouseClick() {
 function handleMouseEnter() {
   const term = props.pointer?.term
   if (!term) return
-  
+
   const related = store.getRelated(term)
   updateMenu(props.pointer, related)
-  highlightRelated(term, related)
+
+  if (enableHighlighting.value) {
+    highlightRelated(term, related)
+  }
 }
 
 function handleMouseLeave() {
   const term = props.pointer?.term
   if (!term) return
-  
-  removeAllHighlighting()
+
+  if (enableHighlighting.value) {
+    removeAllHighlighting()
+  }
   // Don't clear menu when using manual trigger - let clickoutside handle it
 }
 
 function handleRightClick() {
+  if (!enableRightClick.value) return
+
   const term = props.pointer?.term
   if (!term) return
-  
+
   const related = store.getRelated(term)
   updateMenu(props.pointer, related)
   showDropdown.value = true
@@ -100,6 +112,7 @@ function handleClickOutside() {
 
 <template>
   <n-dropdown
+    v-if="enableRightClick"
     :options="menuOptions"
     placement="bottom-start"
     trigger="manual"
@@ -117,5 +130,14 @@ function handleClickOutside() {
       <slot></slot>
     </div>
   </n-dropdown>
+  <div
+    v-else
+    :class="entityClasses"
+    @click="handleMouseClick"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
+  >
+    <slot></slot>
+  </div>
   <ToolIcon :term="toRaw(pointer.term)"/>
 </template>
