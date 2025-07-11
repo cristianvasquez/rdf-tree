@@ -1,4 +1,5 @@
 <script setup>
+import { ref, onMounted, onUnmounted, inject } from 'vue'
 import PointerWrapper from './PointerWrapper.vue'
 import Row from './Row.vue'
 import Term from './Term.vue'
@@ -7,11 +8,28 @@ const props = defineProps({
   pointer: Object,
 })
 
+const entityRef = ref(null)
 
+// Try to inject navigation composable (may not be available in all contexts)
+const navigation = inject('entityNavigation', null)
+
+onMounted(() => {
+  // Register this entity element with the navigation system
+  if (navigation && props.pointer?.id && entityRef.value) {
+    navigation.registerEntity(props.pointer.id, entityRef.value)
+  }
+})
+
+onUnmounted(() => {
+  // Unregister when component is destroyed
+  if (navigation && props.pointer?.id) {
+    navigation.unregisterEntity(props.pointer.id)
+  }
+})
 </script>
 
 <template>
-  <div :id="pointer.id">
+  <div :id="pointer.id" ref="entityRef">
     <template v-if="pointer.rows.length">
       <!-- Entity with rows -->
       <div class="entity">

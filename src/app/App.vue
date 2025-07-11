@@ -1,22 +1,16 @@
 <script setup>
 import { lightTheme, NButton, NConfigProvider, NSpin } from 'naive-ui'
 import { storeToRefs } from 'pinia'
-import { Readable } from 'readable-stream'
-import { ref, computed, watch, onMounted } from 'vue'
-import { parseTurtle } from '../io/rdf-parser.js'
+import { ref, onMounted, provide } from 'vue'
 import EntityList from './components/EntityList.vue'
 import { useStore } from './state.js'
-import rdf from 'rdf-ext'
+import { useEntityNavigation } from './composables/useEntityNavigation.js'
 
 // Props
 const props = defineProps({
-  initialFile: {
-    type: String,
-    default: null
-  },
-  initialFiles: {
-    type: Array,
-    default: null
+  pointer: {
+    type: Object,
+    required: true
   }
 })
 
@@ -24,63 +18,17 @@ const store = useStore()
 const { entities, currentFocus, isLoading } = storeToRefs(store)
 
 const parseError = ref()
-const isExternalResource = ref(false)
 
-// Move initial dataset loading to onMounted
+// Create navigation composable and provide it to child components
+const navigation = useEntityNavigation(store)
+provide('entityNavigation', navigation)
+
+// Initialize with provided pointer
 onMounted(async () => {
-  // Handle multiple files (new format) or single file (legacy)
-  let filesToLoad = []
-  
-  if (props.initialFiles && props.initialFiles.length > 0) {
-    filesToLoad = props.initialFiles
-  } else if (props.initialFile) {
-    filesToLoad = [props.initialFile]
-  } else if (import.meta.env.VITE_INITIAL_RDF_FILES) {
-    filesToLoad = import.meta.env.VITE_INITIAL_RDF_FILES
-  } else if (import.meta.env.VITE_INITIAL_RDF_FILE) {
-    filesToLoad = [import.meta.env.VITE_INITIAL_RDF_FILE]
-  }
-  
-  if (filesToLoad.length > 0) {
-    try {
-      isExternalResource.value = true
-      
-      // Process multiple files using existing logic
-      const mergedDataset = rdf.dataset()
-      
-      for (const fileUrl of filesToLoad) {
-        try {
-          const response = await fetch(fileUrl)
-          const fileContent = await response.text()
-          const strStream = Readable.from(fileContent)
-          const dataset = await parseTurtle(strStream)
-          
-          // Extract filename from URL for graph naming
-          const fileName = fileUrl.split('/').pop()
-          
-          // Add each quad to merged dataset with filename as graph for default graphs
-          for (const quad of dataset) {
-            const graphName = quad.graph.termType === 'DefaultGraph'
-                ? { termType: 'NamedNode', value: fileName }
-                : quad.graph
-
-            mergedDataset.add({
-              subject: quad.subject,
-              predicate: quad.predicate,
-              object: quad.object,
-              graph: graphName,
-            })
-          }
-        } catch (e) {
-          console.error(`Error processing ${fileUrl}:`, e)
-          parseError.value = `Failed to load ${fileUrl}: ${e.message}`
-        }
-      }
-      
-      await store.setDataset(mergedDataset)
-    } catch (e) {
-      parseError.value = `Failed to load files: ${e.message}`
-    }
+  try {
+    await store.setPointer(props.pointer)
+  } catch (e) {
+    parseError.value = `Failed to initialize with pointer: ${e.message}`
   }
 })
 </script>
@@ -105,6 +53,11 @@ onMounted(async () => {
 </template>
 
 <style>
+body {
+  --border: #463838;
+  --metadata: #463838;
+}
+
 .entity-container {
   background-color: white;
   min-height: 100px;
@@ -117,5 +70,129 @@ onMounted(async () => {
   background-color: #ffeeee;
   border: 1px solid #ffcccc;
   margin: 1rem 0;
+}
+
+.entities {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-right: 1px solid var(--border);
+}
+
+.entity {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.entity-header {
+  background: #0000000d;
+}
+
+.entity-header > div {
+  margin: 5px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.rows > :nth-child(n) {
+  border-top: 1px solid var(--border);
+}
+
+.rows > :nth-child(2n) {
+  border-top: 1px solid var(--border);
+  background: #00000003;
+}
+
+.rows > .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.row > .property {
+  align-self: flex-start;
+  min-width: 200px;
+  word-wrap: break-word;
+  margin: .5rem .5rem .5rem 1%;
+}
+
+.row > .value {
+  flex: 2;
+  margin-left: .5rem;
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+}
+
+.rdf-container .row > .value > li > div:not([class]) {
+  word-wrap: break-word;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 5px;
+  justify-content: center;
+  padding-left: 5px;
+}
+
+ol {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  padding-left: 5px;
+}
+
+div .bring-down {
+  color: var(--metadata);
+}
+
+.vocab {
+  color: var(--metadata);
+  font-size: .8rem;
+}
+
+.language, .datatype {
+  color: var(--metadata);
+  font-size: .7rem;
+  margin-left: 4px;
+}
+
+.incoming-highlight {
+  outline: 1px solid rgba(70, 56, 56, 0.4);
+  outline-offset: 1px;
+  border-radius: 4px;
+}
+
+.same-highlight {
+  outline: 1px solid rgba(21, 51, 231, 0.6);
+  outline-offset: 1px;
+  border-radius: 4px;
+}
+
+.outgoing-highlight {
+  outline: 1px solid rgba(70, 56, 56, 0.4);
+  outline-offset: 1px;
+  border-radius: 4px;
+}
+
+.scrolled-to {
+  animation: flash 5s ease-out;
+}
+
+@keyframes flash {
+  0% {
+    background-color: rgba(255, 255, 100, 0.5);
+  }
+  100% {
+    background-color: transparent;
+  }
 }
 </style>
