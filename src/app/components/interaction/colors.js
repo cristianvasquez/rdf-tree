@@ -6,14 +6,15 @@
 const graphColorCache = new Map()
 // Predefined transparent colors
 const graphColors = [
-  'rgba(120, 200, 130, 0.3)',  // Soft Green
-  'rgba(100, 180, 255, 0.3)',  // Light Blue
-  'rgba(255, 180, 70, 0.3)',   // Warm Orange
-  'rgba(220, 140, 250, 0.3)',  // Soft Purple
-  'rgba(255, 100, 120, 0.3)',  // Bright Red
-  'rgba(80, 210, 230, 0.3)',   // Aqua Cyan
-  'rgba(255, 240, 80, 0.3)',   // Pastel Yellow
-  'rgba(190, 190, 190, 0.3)',  // Light Gray
+  'rgba(190, 190, 190, 0.1)',  // Light Gray
+  'rgba(120, 200, 130, 0.1)',  // Soft Green
+  'rgba(100, 180, 255, 0.1)',  // Light Blue
+  'rgba(255, 180, 70, 0.1)',   // Warm Orange
+  'rgba(220, 140, 250, 0.1)',  // Soft Purple
+  'rgba(255, 100, 120, 0.1)',  // Bright Red
+  'rgba(80, 210, 230, 0.1)',   // Aqua Cyan
+  'rgba(255, 240, 80, 0.1)',   // Pastel Yellow
+
 ]
 
 // Lazily assign color to a graph

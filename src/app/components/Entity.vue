@@ -1,6 +1,5 @@
 <script setup>
-import { computed, toRaw } from 'vue'
-import { getBackgroundStyle } from './colors.js'
+import { ref, onMounted, onUnmounted, inject, computed } from 'vue'
 import PointerWrapper from './PointerWrapper.vue'
 import Row from './Row.vue'
 import Term from './Term.vue'
@@ -9,23 +8,48 @@ const props = defineProps({
   pointer: Object,
 })
 
+const entityRef = ref(null)
 
+// Try to inject navigation composable (may not be available in all contexts)
+const navigation = inject('entityNavigation', null)
+
+// Inject custom term component (with fallback to default Term)
+const customTermComponentRef = inject('termComponent', ref(null))
+
+// Compute the actual term component to use
+const TermComponent = computed(() => {
+  return customTermComponentRef.value || Term
+})
+
+onMounted(() => {
+  // Register this entity element with the navigation system
+  if (navigation && props.pointer?.id && entityRef.value) {
+    navigation.registerEntity(props.pointer.id, entityRef.value)
+  }
+})
+
+onUnmounted(() => {
+  // Unregister when component is destroyed
+  if (navigation && props.pointer?.id) {
+    navigation.unregisterEntity(props.pointer.id)
+  }
+})
 </script>
 
 <template>
-  <div :id="pointer.id">
+  <div :id="pointer.id" ref="entityRef">
     <template v-if="pointer.rows.length">
       <!-- Entity with rows -->
       <div class="entity">
         <div class="entity-header">
           <PointerWrapper :pointer="pointer">
-            <Term :term="pointer.term"/>
+            <component :is="TermComponent" :term="pointer.term" :pointer="pointer" context="subject"/>
           </PointerWrapper>
         </div>
         <div class="rows">
           <template v-for="row of pointer.rows">
             <Row :row="row">
-              <Term :term="row.predicate"/>
+              <component :is="TermComponent" :term="row.predicate" :row="row" context="predicate"/>
             </Row>
           </template>
         </div>
@@ -33,7 +57,7 @@ const props = defineProps({
     </template>
     <template v-else>
       <PointerWrapper :pointer="pointer">
-        <Term :term="pointer.term"/>
+        <component :is="TermComponent" :term="pointer.term" :pointer="pointer" context="object"/>
       </PointerWrapper>
     </template>
   </div>

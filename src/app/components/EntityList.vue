@@ -34,7 +34,6 @@ body {
   display: flex;
   flex-direction: column;
   border-top: 1px solid var(--border);
-
   border-left: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -104,18 +103,16 @@ ol {
   padding-left: 5px;
 }
 
-div .bring-down {
-  color: var(--metadata);
-}
-
 .vocab {
   color: var(--metadata);
   font-size: 0.8rem;
 }
 
+/*
 .vocab::after {
   content: ':';
 }
+*/
 
 .language {
   color: var(--metadata);

@@ -1,232 +1,143 @@
 <script setup>
-import { NDropdown, NButton } from 'naive-ui'
-import { h, ref, toRaw } from 'vue'
-import { useStore } from '../state.js'
-import { getBackgroundStyle } from './colors.js'
+import { NDropdown } from 'naive-ui'
+import { computed, toRaw, ref, inject } from 'vue'
+import { useEntityNavigation } from '../composables/useEntityNavigation.js'
+import { useDropdownMenu } from '../composables/useDropdownMenu.js'
+import { useEntityHighlighting } from '../composables/useEntityHighlighting.js'
 import ToolIcon from './ToolIcon.vue'
 
 const props = defineProps({
   pointer: Object,
 })
 
-const store = useStore()
-const menuOptions = ref([])
-const currentRelated = ref(null)
+const store = inject('rdfStore')
+const enableHighlightingRef = inject('enableHighlighting', ref(true))
+const enableRightClickRef = inject('enableRightClick', ref(true))
 
-function loadOptions ({ incoming, same, outgoing, graphs }) {
-  const myId = props.pointer.id
-  const options = []
+// Unwrap for easier usage
+const enableHighlighting = computed(() => enableHighlightingRef.value)
+const enableRightClick = computed(() => enableRightClickRef.value)
 
-  if (outgoing.length) {
-    options.push({
-      label: `(${outgoing.length}) ➡️`,
-      key: 'outgoing',
-      children: outgoing.map(id => ({
-        label: id === myId ? `${id} (current)` : `${id}`,
-        key: `entity-${id}`,
-      })),
-    })
+// Use composables for clean separation of concerns
+const { scrollToEntity, cycleSameEntities, isScrollHighlighted } = useEntityNavigation(store)
+const { menuOptions, updateMenu, clearMenu, parseMenuKey } = useDropdownMenu(store)
+const { highlightRelated, removeAllHighlighting, getHighlightClasses } = useEntityHighlighting(store)
+
+// Dropdown state
+const showDropdown = ref(false)
+
+
+// Compute CSS classes for this entity
+const entityClasses = computed(() => {
+  const classes = []
+
+  // Add highlight classes only if highlighting is enabled
+  if (enableHighlighting.value && props.pointer?.id) {
+    classes.push(...getHighlightClasses(props.pointer.id))
   }
 
-  if (incoming.length) {
-    options.push({
-      label: `➡️ (${incoming.length})`,
-      key: 'incoming',
-      children: incoming.map(id => ({
-        label: id === myId ? `${id} (current)` : `${id}`,
-        key: `entity-${id}`,
-      })),
-    })
+  // Add scroll highlight class
+  if (props.pointer?.id && isScrollHighlighted(props.pointer.id)) {
+    classes.push('scrolled-to')
   }
 
-  const _same = same.filter(id => id !== myId)
-  if (_same.length) {
-    options.push({
-      label: `🔗 (${same.length})`,
-      key: 'same',
-      children: _same.map(id => ({
-        label: id === myId ? `${id} (current)` : `${id}`,
-        key: `entity-${id}`,
-      })),
-    })
+  return classes
+})
+
+function handleSelect(key, option) {
+  const parsed = parseMenuKey(key)
+
+  switch (parsed.type) {
+    case 'entity':
+      scrollToEntity(parsed.value)
+      break
+    case 'select':
+      store.termFacet(props.pointer?.term)
+      break
+    case 'graph':
+      console.log('selected graph', parsed.value)
+      break
+    default:
+      console.warn('Unknown menu selection:', key)
   }
 
-  if (graphs?.length) {
-    options.push({
-      type: 'divider',
-      key: 'divider',
-    })
-    options.push({
-      label: `G (${graphs.length})`,
-      key: 'graphs',
-      children: graphs.map(graph => ({
-        label: graph,
-        key: `graph-${graph}`,
-      })),
-    })
-  }
-
-  menuOptions.value = options
+  // Close dropdown and clear menu after selection
+  showDropdown.value = false
+  clearMenu()
 }
 
-function handleSelect (key) {
-  if (key.startsWith('entity-')) {
-    const id = key.replace('entity-', '')
-    goTo(id)
-  }
-
-  if (key.startsWith('graph-')) {
-    const id = key.replace('graph-', '')
-    const graph = props.pointer.meta.graphs.find(x => x.value === id)
-    console.log('select', graph)
-  }
+function handleMouseClick() {
+  cycleSameEntities(props.pointer)
 }
 
-function goTo (id) {
-  const element = document.getElementById(id)
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    element.classList.add('scrolled-to')
-    setTimeout(() => {
-      element.classList.remove('scrolled-to')
-    }, 2000)
+function handleMouseEnter() {
+  const term = props.pointer?.term
+  if (!term) return
+
+  const related = store.getRelated(term)
+  updateMenu(props.pointer, related)
+
+  if (enableHighlighting.value) {
+    highlightRelated(term, related)
   }
 }
 
-function highlightRelated (related) {
-  const { incoming, same, outgoing, idToGraphs } = related
+function handleMouseLeave() {
+  const term = props.pointer?.term
+  if (!term) return
 
-  const applyHighlight = (relationClass) => (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      // Add border highlight class
-      element.classList.add(`${relationClass}-highlight`)
-
-      // Apply graph background if available
-      if (idToGraphs && idToGraphs.has(id)) {
-        const graphValues = idToGraphs.get(id)
-        const backgroundStyle = getBackgroundStyle(graphValues, false)
-
-        // Apply all style properties from backgroundStyle to the element
-        Object.assign(element.style, {
-          // Store original background to restore later
-          '--original-background': element.style.background || 'transparent',
-          '--original-backgroundImage': element.style.backgroundImage || 'none',
-          // Apply new background
-          ...backgroundStyle,
-        })
-
-        // Add a data attribute to track which elements have had backgrounds applied
-        element.setAttribute('data-highlighted-graphs', 'true')
-      }
-    }
+  if (enableHighlighting.value) {
+    removeAllHighlighting()
   }
-
-  incoming.forEach(applyHighlight('incoming'))
-  same.forEach(applyHighlight('same'))
-  outgoing.forEach(applyHighlight('outgoing'))
+  // Don't clear menu when using manual trigger - let clickoutside handle it
 }
 
-function removeHighlight (related) {
-  const { incoming, same, outgoing } = related
+function handleRightClick() {
+  if (!enableRightClick.value) return
 
-  const removeHighlighting = (relationClass) => (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      // Remove border highlight class
-      element.classList.remove(`${relationClass}-highlight`)
+  const term = props.pointer?.term
+  if (!term) return
 
-      // Restore original background if we applied graph highlighting
-      if (element.getAttribute('data-highlighted-graphs') === 'true') {
-        // Restore original background
-        element.style.background = element.style.getPropertyValue('--original-background') || ''
-        element.style.backgroundImage = element.style.getPropertyValue('--original-backgroundImage') || ''
-
-        // Clean up custom properties
-        element.style.removeProperty('--original-background')
-        element.style.removeProperty('--original-backgroundImage')
-        element.style.isolation = ''
-
-        // Remove tracking attribute
-        element.removeAttribute('data-highlighted-graphs')
-      }
-    }
-  }
-
-  incoming.forEach(removeHighlighting('incoming'))
-  same.forEach(removeHighlighting('same'))
-  outgoing.forEach(removeHighlighting('outgoing'))
+  const related = store.getRelated(term)
+  updateMenu(props.pointer, related)
+  showDropdown.value = true
 }
 
-function handleMouseClick () {
-  if (currentRelated.value) {
-    const { same } = currentRelated.value
-    const myId = props.pointer.id
-    const sorted = same.sort()
-    const currentIndex = same.indexOf(myId)
-    const nextIndex = currentIndex === sorted.length - 1 ? 0 : currentIndex + 1
-    const id = sorted[nextIndex]
-    goTo(id)
-  }
+function handleClickOutside() {
+  showDropdown.value = false
+  clearMenu()
 }
-
-function handleMouseEnter () {
-  currentRelated.value = store.getRelated(props.pointer.term)
-  loadOptions(currentRelated.value)
-  highlightRelated(currentRelated.value)
-}
-
-function handleMouseLeave () {
-  if (currentRelated.value) {
-    removeHighlight(currentRelated.value)
-  }
-}
-
-
 </script>
 
+
 <template>
-  <ToolIcon :term="toRaw(pointer.term)"/>
   <n-dropdown
-      :options="menuOptions"
-      placement="right"
-      trigger="hover"
-      @select="handleSelect"
+    v-if="enableRightClick"
+    :options="menuOptions"
+    placement="bottom-start"
+    trigger="manual"
+    :show="showDropdown"
+    @select="handleSelect"
+    @clickoutside="handleClickOutside"
   >
-    <n-button
-        @click.prevent="handleMouseClick"
-        @mouseenter="handleMouseEnter"
-        @mouseleave="handleMouseLeave"
+    <div
+      :class="entityClasses"
+      @click="handleMouseClick"
+      @contextmenu.prevent="handleRightClick"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
     >
       <slot></slot>
-    </n-button>
+    </div>
   </n-dropdown>
+  <div
+    v-else
+    :class="entityClasses"
+    @click="handleMouseClick"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
+  >
+    <slot></slot>
+  </div>
+  <ToolIcon :term="toRaw(pointer.term)"/>
 </template>
-<style>
-
-.incoming-highlight {
-  outline: 1px solid rgb(70, 56, 56);
-}
-
-.same-highlight {
-  outline: 2px solid rgb(21, 51, 231);
-}
-
-.outgoing-highlight {
-  outline: 1px solid rgb(70, 56, 56);
-}
-
-.scrolled-to {
-  animation: flash 5s ease-out;
-}
-
-@keyframes flash {
-  0% {
-    background-color: rgba(255, 255, 100, 0.5);
-  }
-  100% {
-    background-color: transparent;
-  }
-}
-
-</style>
