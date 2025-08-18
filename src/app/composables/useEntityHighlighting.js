@@ -1,20 +1,12 @@
 import { ref, reactive, computed } from 'vue'
-import { DOMHighlightingService } from '../../services/dom-highlighting-service.js'
+import { applyHighlightToElement, removeHighlightFromElement } from '../../services/dom-highlighting-service.js'
 import { getBackgroundStyle } from '../components/interaction/colors.js'
 
 /**
  * Composable for entity highlighting functionality
- * Uses service-based architecture for DOM manipulation and reactive state management
+ * Uses utility functions for DOM manipulation and reactive state management
  */
 export function useEntityHighlighting(store) {
-  // Lazy initialize DOM service to avoid document access during imports
-  let domService = null
-  const getDomService = () => {
-    if (!domService) {
-      domService = new DOMHighlightingService()
-    }
-    return domService
-  }
   // Map of entity ID to highlight types
   const highlightedEntities = reactive(new Map())
   
@@ -96,9 +88,9 @@ export function useEntityHighlighting(store) {
       const graphValues = extractGraphValues(highlightTerm, termToGraphs)
       const backgroundStyle = getBackgroundStyle(graphValues, false)
       
-      // Apply DOM highlighting using service
+      // Apply DOM highlighting using utilities
       ids.forEach(id => {
-        getDomService().applyHighlightToElement(id, relationClass, backgroundStyle)
+        applyHighlightToElement(id, relationClass, backgroundStyle)
       })
       
       // Update reactive state
@@ -131,9 +123,9 @@ export function useEntityHighlighting(store) {
     return (relationClass) => (highlightTerm) => {
       const ids = safeGetTermIds(highlightTerm)
       
-      // Remove DOM highlighting using service
+      // Remove DOM highlighting using utilities
       ids.forEach(id => {
-        getDomService().removeHighlightFromElement(id, relationClass)
+        removeHighlightFromElement(id, relationClass)
       })
       
       // Update reactive state
