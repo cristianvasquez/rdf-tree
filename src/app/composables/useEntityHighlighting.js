@@ -1,5 +1,5 @@
 import { ref, reactive, computed } from 'vue'
-import { applyHighlightToElement, removeHighlightFromElement } from '../../services/dom-highlighting-service.js'
+import { applyHighlightToElement, removeHighlightFromElement } from '../components/interaction/dom-highlighting.js'
 import { getBackgroundStyle } from '../components/interaction/colors.js'
 
 /**
