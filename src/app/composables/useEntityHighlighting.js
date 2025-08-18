@@ -1,10 +1,20 @@
 import { ref, reactive, computed } from 'vue'
+import { DOMHighlightingService } from '../../services/dom-highlighting-service.js'
+import { getBackgroundStyle } from '../components/interaction/colors.js'
 
 /**
  * Composable for entity highlighting functionality
- * Replaces direct DOM manipulation with reactive state management
+ * Uses service-based architecture for DOM manipulation and reactive state management
  */
 export function useEntityHighlighting(store) {
+  // Lazy initialize DOM service to avoid document access during imports
+  let domService = null
+  const getDomService = () => {
+    if (!domService) {
+      domService = new DOMHighlightingService()
+    }
+    return domService
+  }
   // Map of entity ID to highlight types
   const highlightedEntities = reactive(new Map())
   
@@ -28,7 +38,11 @@ export function useEntityHighlighting(store) {
    * Add highlight for a set of entity IDs with a specific type
    */
   function addHighlight(entityIds, highlightType) {
+    if (!Array.isArray(entityIds) || entityIds.length === 0) return
+    
     entityIds.forEach(id => {
+      if (!id) return // Skip null/undefined IDs
+      
       const existing = highlightedEntities.get(id) || new Set()
       existing.add(highlightType)
       highlightedEntities.set(id, existing)
@@ -39,7 +53,11 @@ export function useEntityHighlighting(store) {
    * Remove specific highlight type from entity IDs
    */
   function removeHighlight(entityIds, highlightType) {
+    if (!Array.isArray(entityIds) || entityIds.length === 0) return
+    
     entityIds.forEach(id => {
+      if (!id) return // Skip null/undefined IDs
+      
       const existing = highlightedEntities.get(id)
       if (existing) {
         existing.delete(highlightType)
@@ -49,132 +67,105 @@ export function useEntityHighlighting(store) {
       }
     })
   }
+
+  /**
+   * Batch update highlights for better performance
+   */
+  function batchUpdateHighlights(updates) {
+    updates.forEach(({ entityIds, highlightType, operation }) => {
+      if (operation === 'add') {
+        addHighlight(entityIds, highlightType)
+      } else if (operation === 'remove') {
+        removeHighlight(entityIds, highlightType)
+      }
+    })
+  }
   
   /**
-   * Apply highlighting to related terms (using original DOM manipulation approach)
+   * Store current highlighting state
+   */
+  function storeCurrentState(term, related) {
+    currentHighlightedTerm.value = term
+    currentRelated.value = related
+  }
+
+  /**
+   * Extract graph values for a term from termToGraphs mapping
+   */
+  function extractGraphValues(term, termToGraphs) {
+    if (!termToGraphs || !term) return []
+    
+    const graphSet = termToGraphs.get(term)
+    return graphSet ? [...graphSet].map(x => x.value || 'Default') : []
+  }
+
+  /**
+   * Create highlight operation function for a specific relation class
+   */
+  function createHighlightOperation(termToGraphs) {
+    return (relationClass) => (highlightTerm) => {
+      const ids = safeGetTermIds(highlightTerm)
+      const graphValues = extractGraphValues(highlightTerm, termToGraphs)
+      const backgroundStyle = getBackgroundStyle(graphValues, false)
+      
+      // Apply DOM highlighting using service
+      ids.forEach(id => {
+        getDomService().applyHighlightToElement(id, relationClass, backgroundStyle)
+      })
+      
+      // Update reactive state
+      addHighlight(ids, relationClass)
+    }
+  }
+
+  /**
+   * Apply highlighting to related terms using service-based architecture
    */
   function highlightRelated(term, related) {
     if (!term || !related) return
     
-    // Store current state
-    currentHighlightedTerm.value = term
-    currentRelated.value = related
-    
+    storeCurrentState(term, related)
     const { incomingTerms = [], outgoingTerms = [], termToGraphs } = related
     
-    // Use original highlighting approach with direct DOM manipulation
-    const applyHighlight = (relationClass) => (highlightTerm) => {
-      const graphValues = [...(termToGraphs?.get(highlightTerm) ?? [])].map(
-        x => x.value || 'Default')
-      
-      // Get background style for graphs
-      const backgroundStyle = getBackgroundStyle(graphValues, false)
-      
+    const highlightOperation = createHighlightOperation(termToGraphs)
+    
+    // Apply highlights in defined order
+    incomingTerms?.forEach(highlightOperation('incoming'))
+    highlightOperation('same')(term)  // Same entities get same-highlight
+    outgoingTerms?.forEach(highlightOperation('outgoing'))
+  }
+  
+  
+  /**
+   * Create remove highlighting operation function for a specific relation class
+   */
+  function createRemoveOperation() {
+    return (relationClass) => (highlightTerm) => {
       const ids = safeGetTermIds(highlightTerm)
+      
+      // Remove DOM highlighting using service
       ids.forEach(id => {
-        const element = document.getElementById(id)
-        if (element) {
-          // Add border highlight class
-          element.classList.add(`${relationClass}-highlight`)
-          
-          // Apply background colors for graph highlighting
-          Object.assign(element.style, {
-            // Store original background to restore later
-            '--original-background': element.style.background || 'transparent',
-            '--original-backgroundImage': element.style.backgroundImage || 'none',
-            // Apply new background from graphs
-            ...backgroundStyle,
-          })
-          
-          // Mark as highlighted for cleanup
-          element.setAttribute('data-highlighted-graphs', 'true')
-        }
+        getDomService().removeHighlightFromElement(id, relationClass)
       })
       
-      // Also add to reactive state for CSS classes
-      addHighlight(ids, relationClass)
-    }
-    
-    // Apply highlights in original order
-    incomingTerms?.forEach(applyHighlight('incoming'))
-    applyHighlight('same')(term)  // Same entities get same-highlight
-    outgoingTerms?.forEach(applyHighlight('outgoing'))
-  }
-  
-  /**
-   * Import background style function from colors.js
-   */
-  function getBackgroundStyle(graphValues, ignoreParents = false) {
-    // Simple fallback - you might want to import the actual function
-    if (!graphValues || graphValues.length === 0) return {}
-    
-    const graphColors = [
-      'rgba(190, 190, 190, 0.1)',  // Light Gray
-      'rgba(120, 200, 130, 0.1)',  // Soft Green
-      'rgba(100, 180, 255, 0.1)',  // Light Blue
-      'rgba(255, 180, 70, 0.1)',   // Warm Orange
-      'rgba(220, 140, 250, 0.1)',  // Soft Purple
-      'rgba(255, 100, 120, 0.1)',  // Bright Red
-      'rgba(80, 210, 230, 0.1)',   // Aqua Cyan
-      'rgba(255, 240, 80, 0.1)',   // Pastel Yellow
-    ]
-    
-    if (graphValues.length === 1) {
-      const color = graphColors[0] // Simple approach
-      return { background: color }
-    }
-    
-    // Multiple graphs
-    const backgroundLayers = graphValues.map((_, i) => graphColors[i % graphColors.length])
-    return {
-      backgroundImage: `linear-gradient(45deg, ${backgroundLayers.join(', ')})`,
+      // Update reactive state
+      removeHighlight(ids, relationClass)
     }
   }
-  
+
   /**
-   * Remove all highlighting for the current term (using original DOM cleanup)
+   * Remove all highlighting for the current term using service-based architecture
    */
   function removeAllHighlighting() {
     if (!currentHighlightedTerm.value || !currentRelated.value) return
     
     const { incomingTerms = [], outgoingTerms = [] } = currentRelated.value
-    
-    // Use original cleanup approach
-    const removeHighlighting = (relationClass) => (highlightTerm) => {
-      const ids = safeGetTermIds(highlightTerm)
-      ids.forEach(id => {
-        const element = document.getElementById(id)
-        if (element) {
-          // Remove border highlight class
-          element.classList.remove(`${relationClass}-highlight`)
+    const removeOperation = createRemoveOperation()
 
-          // Restore original background if we applied graph highlighting
-          if (element.getAttribute('data-highlighted-graphs') === 'true') {
-            // Restore original background
-            element.style.background = element.style.getPropertyValue(
-              '--original-background') || ''
-            element.style.backgroundImage = element.style.getPropertyValue(
-              '--original-backgroundImage') || ''
-
-            // Clean up custom properties
-            element.style.removeProperty('--original-background')
-            element.style.removeProperty('--original-backgroundImage')
-            element.style.isolation = ''
-
-            // Remove tracking attribute
-            element.removeAttribute('data-highlighted-graphs')
-          }
-        }
-      })
-      
-      // Also remove from reactive state
-      removeHighlight(ids, relationClass)
-    }
-
-    // Remove highlights in original order
-    incomingTerms?.forEach(removeHighlighting('incoming'))
-    removeHighlighting('same')(currentHighlightedTerm.value)
-    outgoingTerms?.forEach(removeHighlighting('outgoing'))
+    // Remove highlights in defined order
+    incomingTerms?.forEach(removeOperation('incoming'))
+    removeOperation('same')(currentHighlightedTerm.value)
+    outgoingTerms?.forEach(removeOperation('outgoing'))
     
     // Clear current state
     currentHighlightedTerm.value = null
@@ -230,9 +221,24 @@ export function useEntityHighlighting(store) {
   const highlightedCount = computed(() => highlightedEntities.size)
   
   /**
-   * Get all highlighted entity IDs
+   * Get all highlighted entity IDs (cached for performance)
    */
   const highlightedEntityIds = computed(() => Array.from(highlightedEntities.keys()))
+
+  /**
+   * Get statistics about current highlights
+   */
+  const highlightStats = computed(() => {
+    const stats = { incoming: 0, outgoing: 0, same: 0, total: highlightedEntities.size }
+    
+    for (const types of highlightedEntities.values()) {
+      if (types.has('incoming')) stats.incoming++
+      if (types.has('outgoing')) stats.outgoing++  
+      if (types.has('same')) stats.same++
+    }
+    
+    return stats
+  })
   
   return {
     // State
@@ -249,10 +255,12 @@ export function useEntityHighlighting(store) {
     getHighlightClasses,
     addHighlight,
     removeHighlight,
+    batchUpdateHighlights,
     
     // Computed
     hasActiveHighlights,
     highlightedCount,
-    highlightedEntityIds
+    highlightedEntityIds,
+    highlightStats
   }
 }
