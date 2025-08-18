@@ -68,18 +68,6 @@ export function useEntityHighlighting(store) {
     })
   }
 
-  /**
-   * Batch update highlights for better performance
-   */
-  function batchUpdateHighlights(updates) {
-    updates.forEach(({ entityIds, highlightType, operation }) => {
-      if (operation === 'add') {
-        addHighlight(entityIds, highlightType)
-      } else if (operation === 'remove') {
-        removeHighlight(entityIds, highlightType)
-      }
-    })
-  }
   
   /**
    * Store current highlighting state
@@ -225,20 +213,6 @@ export function useEntityHighlighting(store) {
    */
   const highlightedEntityIds = computed(() => Array.from(highlightedEntities.keys()))
 
-  /**
-   * Get statistics about current highlights
-   */
-  const highlightStats = computed(() => {
-    const stats = { incoming: 0, outgoing: 0, same: 0, total: highlightedEntities.size }
-    
-    for (const types of highlightedEntities.values()) {
-      if (types.has('incoming')) stats.incoming++
-      if (types.has('outgoing')) stats.outgoing++  
-      if (types.has('same')) stats.same++
-    }
-    
-    return stats
-  })
   
   return {
     // State
@@ -255,12 +229,10 @@ export function useEntityHighlighting(store) {
     getHighlightClasses,
     addHighlight,
     removeHighlight,
-    batchUpdateHighlights,
     
     // Computed
     hasActiveHighlights,
     highlightedCount,
-    highlightedEntityIds,
-    highlightStats
+    highlightedEntityIds
   }
 }

@@ -1,8 +1,8 @@
 /**
  * DOM Highlighting Service
  * 
- * Handles all DOM manipulation for entity highlighting operations.
- * Separates DOM concerns from reactive state management for better testing and maintainability.
+ * Handles DOM manipulation for entity highlighting operations.
+ * Separates DOM concerns from reactive state management.
  */
 export class DOMHighlightingService {
   constructor(elementRegistry = document) {
@@ -83,38 +83,4 @@ export class DOMHighlightingService {
     element.style.removeProperty('--original-backgroundImage')
   }
 
-  /**
-   * Check if element exists in DOM
-   */
-  elementExists(id) {
-    return !!this.elementRegistry.getElementById(id)
-  }
-
-  /**
-   * Batch apply highlights to multiple elements
-   */
-  batchApplyHighlights(highlightOperations) {
-    const results = []
-    
-    for (const { id, relationClass, backgroundStyle } of highlightOperations) {
-      const success = this.applyHighlightToElement(id, relationClass, backgroundStyle)
-      results.push({ id, success })
-    }
-    
-    return results
-  }
-
-  /**
-   * Batch remove highlights from multiple elements
-   */
-  batchRemoveHighlights(removeOperations) {
-    const results = []
-    
-    for (const { id, relationClass } of removeOperations) {
-      const success = this.removeHighlightFromElement(id, relationClass)
-      results.push({ id, success })
-    }
-    
-    return results
-  }
 }
