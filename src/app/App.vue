@@ -11,6 +11,10 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  options: {
+    type: Object,
+    default: () => ({}),
+  },
   enableHighlighting: {
     type: Boolean,
     default: true,
@@ -44,7 +48,7 @@ provide('termComponent', toRef(props, 'termComponent'))
 
 // Initialize with provided pointer
 onMounted(async () => {
-  await store.setPointer(props.pointer)
+  await store.setPointer(props.pointer, props.options)
 })
 </script>
 

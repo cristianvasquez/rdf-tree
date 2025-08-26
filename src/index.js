@@ -1,7 +1,9 @@
 import RdfTreeComponent from './app/App.vue'
+import { getEntities } from './traversers/entities.js'
 
-// Export the component
+// Export the component and utilities
 export const RdfTree = RdfTreeComponent
+export { getEntities }
 
 // Export install function for Vue.use()
 export function install(app) {

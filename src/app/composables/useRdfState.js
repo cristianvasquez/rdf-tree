@@ -12,27 +12,32 @@ export function useRdfState() {
   const uriToIds = ref()
   const currentPointer = ref()
   const currentFocus = ref()
+  const currentOptions = ref({})
   const isLoading = ref(false)
 
-  async function setPointer(pointer) {
+  async function setPointer(pointer, options = {}) {
     currentPointer.value = pointer
-    await defaultFacet()
+    currentOptions.value = options
+    await defaultFacet(options)
   }
 
-  async function defaultFacet() {
+  async function defaultFacet(providedOptions = {}) {
     currentFocus.value = undefined
+    const defaultMatchers = [
+      { // Priority for entities of type
+        predicate: ns.rdf.type,
+        object: ns.epo.Procedure,
+      },
+      { // Priority for entities of type
+        predicate: ns.rdf.type,
+        object: ns.epo.Notice,
+      },
+      {}, // Everything else
+    ]
+    
     const options = {
-      matchers: [
-        { // Priority for entities of type
-          predicate: ns.rdf.type,
-          object: ns.epo.Procedure,
-        },
-        { // Priority for entities of type
-          predicate: ns.rdf.type,
-          object: ns.epo.Notice,
-        },
-        {}, // Everything else
-      ],
+      matchers: defaultMatchers,
+      ...providedOptions, // Override defaults with provided options
     }
     await traverseDataset(options)
   }
@@ -94,7 +99,7 @@ export function useRdfState() {
   function reset() {
     if (currentPointer.value) {
       currentFocus.value = undefined
-      defaultFacet()
+      defaultFacet(currentOptions.value)
     }
   }
 
