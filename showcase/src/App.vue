@@ -15,6 +15,7 @@
       :enableHighlighting="enableHighlighting"
       :enableRightClick="enableRightClick"
       :termComponent="useCustomTerm ? CustomTerm : null"
+      :cssClassifier="cssClassifier"
     />
     <!-- Configuration Demo Section -->
     <details class="config-demo">
@@ -33,8 +34,12 @@
           <input type="checkbox" v-model="useCustomTerm" />
           Use custom term component (with badges and styling)
         </label>
+        <label>
+          <input type="checkbox" v-model="useVerticalLayout" />
+          Apply custom styling to Address entities (CSS Classifier Demo)
+        </label>
         <p class="config-note">
-          Toggle these options to test the component's configurable features. The custom term component shows a completely different visual approach with badges and context-based styling.
+          Toggle these options to test the component's configurable features. The CSS classifier demo shows how specific entity types (Address) can get custom styling while leaving other entities (Person) with default styling.
         </p>
       </div>
     </details>
@@ -53,6 +58,29 @@ const error = ref(null)
 const enableHighlighting = ref(false)
 const enableRightClick = ref(false)
 const useCustomTerm = ref(true)
+const useVerticalLayout = ref(true)
+
+// CSS classifier function to demonstrate custom entity styling
+const cssClassifier = (entity, context = {}) => {
+  // Only apply classifier if vertical layout is enabled
+  if (!useVerticalLayout.value) return null
+
+  // ONLY classify Address entities - leave Person entities with default styling
+
+  // Check if entity has schema:Address type - gets orange card layout
+  if (entity.meta?.types?.some(type =>
+    type.value === 'http://schema.org/Address')) {
+    return 'address'
+  }
+
+  // Fallback for address entities by term pattern
+  if (entity.term?.value?.includes('address')) {
+    return 'address'
+  }
+
+  // Return null for all other entities (including Persons) - use default styling
+  return null
+}
 
 onMounted(async () => {
   try {
@@ -63,6 +91,7 @@ onMounted(async () => {
     const alice = rdf.namedNode('http://example.org/alice')
     const bob = rdf.namedNode('http://example.org/bob')
     const charlie = rdf.namedNode('http://example.org/charlie')
+    const bobAddress = rdf.namedNode('http://example.org/bob-address')
 
     const rdfType = rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
     const foafPerson = rdf.namedNode('http://xmlns.com/foaf/0.1/Person')
@@ -70,6 +99,13 @@ onMounted(async () => {
     const foafAge = rdf.namedNode('http://xmlns.com/foaf/0.1/age')
     const foafKnows = rdf.namedNode('http://xmlns.com/foaf/0.1/knows')
     const xsdInteger = rdf.namedNode('http://www.w3.org/2001/XMLSchema#integer')
+
+    // Address-related terms
+    const schemaAddress = rdf.namedNode('http://schema.org/Address')
+    const schemaAddressProp = rdf.namedNode('http://schema.org/address')
+    const schemaStreetAddress = rdf.namedNode('http://schema.org/streetAddress')
+    const schemaAddressLocality = rdf.namedNode('http://schema.org/addressLocality')
+    const schemaPostalCode = rdf.namedNode('http://schema.org/postalCode')
 
     // Add Alice's triples
     dataset.add(rdf.quad(alice, rdfType, foafPerson))
@@ -83,6 +119,13 @@ onMounted(async () => {
     dataset.add(rdf.quad(bob, foafName, rdf.literal('Bob Johnson')))
     dataset.add(rdf.quad(bob, foafAge, rdf.literal('25', xsdInteger)))
     dataset.add(rdf.quad(bob, foafKnows, alice))
+    dataset.add(rdf.quad(bob, schemaAddressProp, bobAddress))
+
+    // Add Bob's Address entity
+    dataset.add(rdf.quad(bobAddress, rdfType, schemaAddress))
+    dataset.add(rdf.quad(bobAddress, schemaStreetAddress, rdf.literal('123 Main Street')))
+    dataset.add(rdf.quad(bobAddress, schemaAddressLocality, rdf.literal('New York')))
+    dataset.add(rdf.quad(bobAddress, schemaPostalCode, rdf.literal('10001')))
 
     // Add Charlie's triples
     dataset.add(rdf.quad(charlie, rdfType, foafPerson))

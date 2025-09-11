@@ -7,6 +7,10 @@ import Entity from './Entity.vue'
 
 const props = defineProps({
   row: Object,
+  inheritedCssPrefix: {
+    type: String,
+    default: null,
+  },
 })
 
 const show = ref(true)
@@ -40,7 +44,7 @@ function toggle () {
     <ul class="value">
       <template v-if="show">
         <li v-for="v of row.values">
-          <Entity :pointer="v"/>
+          <Entity :pointer="v" :inheritedCssPrefix="inheritedCssPrefix"/>
         </li>
       </template>
       <template v-else>

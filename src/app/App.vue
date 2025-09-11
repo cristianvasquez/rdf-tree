@@ -27,6 +27,10 @@ const props = defineProps({
     type: [Object, String],
     default: null,
   },
+  cssClassifier: {
+    type: Function,
+    default: null,
+  },
 })
 
 const store = useRdfState()
@@ -45,6 +49,9 @@ provide('enableRightClick', toRef(props, 'enableRightClick'))
 
 // Provide custom term component to child components
 provide('termComponent', toRef(props, 'termComponent'))
+
+// Provide CSS classifier function to child components
+provide('cssClassifier', toRef(props, 'cssClassifier'))
 
 // Initialize with provided pointer
 onMounted(async () => {

@@ -11,39 +11,47 @@
             padding: 20px;
             background: #f5f5f5;
         }
+
         .header {
             text-align: center;
             margin-bottom: 2rem;
         }
+
         .header h1 {
             color: #2c3e50;
             margin: 0;
         }
+
         .header p {
             color: #7f8c8d;
             font-size: 1.1rem;
         }
+
         .demo-container {
             max-width: 1200px;
             margin: 0 auto;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
+
         .demo-content {
             padding: 2rem;
             min-height: 500px;
         }
+
         .feature h3 {
             margin: 0 0 0.5rem 0;
             color: #2c3e50;
         }
+
         .feature p {
             margin: 0;
             color: #7f8c8d;
             font-size: 0.9rem;
         }
+
         .sample-data {
             background: #2c3e50;
             color: #ecf0f1;
@@ -54,20 +62,16 @@
             overflow-x: auto;
             margin-bottom: 1rem;
         }
+
         .loading {
             text-align: center;
             padding: 2rem;
             color: #7f8c8d;
         }
+
         h1 {
             color: #2c3e50;
             margin-bottom: 30px;
-        }
-
-        .config-demo {
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
         }
 
         .config-demo summary {
@@ -76,10 +80,6 @@
             cursor: pointer;
             border-radius: 6px 6px 0 0;
             font-weight: bold;
-        }
-
-        .config-options {
-            padding: 16px;
         }
 
         .config-options h3 {
@@ -112,39 +112,75 @@
             color: #7f8c8d;
             padding: 2rem;
         }
+
+        /* CSS Classifier Demo Styles */
+
+        /* Address entities get custom card layout */
+        .address-entity {
+        }
+
+        .address-entity .address-entity-header {
+            text-align: center;
+
+        }
+
+        .address-entity .address-rows {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .address-entity .address-rows > .row {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            align-items: flex-start;
+            border: 1px dashed var(--border);
+            border-radius: 10px;
+
+        }
+
+        .address-entity .row > .property {
+            min-width: auto;
+            align-self: flex-start;
+        }
+
+        .address-entity .row > .value {
+        }
+
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🌳 RDF-Tree Vue.js component for visualizing RDF datasets</h1>
-    </div>
+<div class="header">
+    <h1>🌳 RDF-Tree Vue.js component for visualizing RDF datasets</h1>
+</div>
 
-    <div class="demo-container">
-        <div class="demo-content">
-            <div class="sample-data">
-@prefix ex: &lt;http://example.org/&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+<div class="demo-container">
+    <div class="demo-content">
+        <div class="sample-data">
+            @prefix ex: &lt;http://example.org/&gt; .
+            @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+            @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 
-ex:alice a foaf:Person ;
-    foaf:name "Alice Smith" ;
-    foaf:age 30 ;
-    foaf:knows ex:bob .
+            ex:alice a foaf:Person ;
+            foaf:name "Alice Smith" ;
+            foaf:age 30 ;
+            foaf:knows ex:bob .
 
-ex:bob a foaf:Person ;
-    foaf:name "Bob Johnson" ;
-    foaf:age 25 ;
-    foaf:knows ex:alice .
-            </div>
+            ex:bob a foaf:Person ;
+            foaf:name "Bob Johnson" ;
+            foaf:age 25 ;
+            foaf:knows ex:alice .
+        </div>
 
-            <div id="app">
-                <div class="loading">
-                    Loading RDF visualization...
-                </div>
+        <div id="app">
+            <div class="loading">
+                Loading RDF visualization...
             </div>
         </div>
     </div>
+</div>
 
-    <script type="module" src="/src/main.js"></script>
+<script type="module" src="/src/main.js"></script>
 </body>
 </html>
