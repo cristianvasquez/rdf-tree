@@ -2,7 +2,7 @@
 import { ChevronDown, ChevronForwardOutline } from '@vicons/ionicons5'
 
 import { NIcon } from 'naive-ui'
-import { ref } from 'vue'
+import { ref, inject, computed } from 'vue'
 import Entity from './Entity.vue'
 
 const props = defineProps({
@@ -14,6 +14,7 @@ const props = defineProps({
 })
 
 const show = ref(true)
+
 
 function toggle () {
   show.value = !show.value
@@ -44,7 +45,7 @@ function toggle () {
     <ul class="value">
       <template v-if="show">
         <li v-for="v of row.values">
-          <Entity :pointer="v" :inheritedCssPrefix="inheritedCssPrefix"/>
+          <Entity :pointer="v" :inheritedCssPrefix="inheritedCssPrefix" :incomingProperty="row.predicate"/>
         </li>
       </template>
       <template v-else>

@@ -36,10 +36,10 @@
         </label>
         <label>
           <input type="checkbox" v-model="useVerticalLayout" />
-          Apply custom styling to Address entities (CSS Classifier Demo)
+          Enable property + object CSS classification demo
         </label>
         <p class="config-note">
-          Toggle these options to test the component's configurable features. The CSS classifier demo shows how specific entity types (Address) can get custom styling while leaving other entities (Person) with default styling.
+          Toggle these options to test the component's configurable features. The CSS classifier demo shows both property-based styling (purple likes lists for ex:likes values) and object-based styling (orange cards for Address entities).
         </p>
       </div>
     </details>
@@ -65,9 +65,12 @@ const cssClassifier = (entity, context = {}) => {
   // Only apply classifier if vertical layout is enabled
   if (!useVerticalLayout.value) return null
 
-  // ONLY classify Address entities - leave Person entities with default styling
+  // Property-based classification: Check if this entity appears as a value of the "likes" property
+  if (context.incomingProperty?.value === 'http://example.org/likes') {
+    return 'likes'
+  }
 
-  // Check if entity has schema:Address type - gets orange card layout
+  // Classify Address entities
   if (entity.meta?.types?.some(type =>
     type.value === 'http://schema.org/Address')) {
     return 'address'
@@ -78,7 +81,6 @@ const cssClassifier = (entity, context = {}) => {
     return 'address'
   }
 
-  // Return null for all other entities (including Persons) - use default styling
   return null
 }
 
@@ -98,7 +100,13 @@ onMounted(async () => {
     const foafName = rdf.namedNode('http://xmlns.com/foaf/0.1/name')
     const foafAge = rdf.namedNode('http://xmlns.com/foaf/0.1/age')
     const foafKnows = rdf.namedNode('http://xmlns.com/foaf/0.1/knows')
+    const exLikes = rdf.namedNode('http://example.org/likes')
     const xsdInteger = rdf.namedNode('http://www.w3.org/2001/XMLSchema#integer')
+
+    // Alice's interests
+    const icecream = rdf.namedNode('http://example.org/icecream')
+    const sunsets = rdf.namedNode('http://example.org/sunsets')
+    const movies = rdf.namedNode('http://example.org/movies')
 
     // Address-related terms
     const schemaAddress = rdf.namedNode('http://schema.org/Address')
@@ -113,6 +121,9 @@ onMounted(async () => {
     dataset.add(rdf.quad(alice, foafAge, rdf.literal('30', xsdInteger)))
     dataset.add(rdf.quad(alice, foafKnows, bob))
     dataset.add(rdf.quad(alice, foafKnows, charlie))
+    dataset.add(rdf.quad(alice, exLikes, icecream))
+    dataset.add(rdf.quad(alice, exLikes, sunsets))
+    dataset.add(rdf.quad(alice, exLikes, movies))
 
     // Add Bob's triples
     dataset.add(rdf.quad(bob, rdfType, foafPerson))

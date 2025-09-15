@@ -10,6 +10,10 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  incomingProperty: {
+    type: Object,
+    default: null,
+  },
 })
 
 const entityRef = ref(null)
@@ -35,7 +39,11 @@ const cssPrefix = computed(() => {
   
   // Try to get prefix from classifier
   if (classifier && props.pointer) {
-    ownPrefix = classifier(props.pointer, { depth: 0, parentPrefix: props.inheritedCssPrefix })
+    ownPrefix = classifier(props.pointer, {
+      depth: 0,
+      parentPrefix: props.inheritedCssPrefix,
+      incomingProperty: props.incomingProperty
+    })
   }
   
   // If entity has its own classification, use it
