@@ -6,10 +6,6 @@ import Term from './Term.vue'
 
 const props = defineProps({
   pointer: Object,
-  inheritedCssPrefix: {
-    type: String,
-    default: null,
-  },
   incomingProperty: {
     type: Object,
     default: null,
@@ -35,20 +31,16 @@ const TermComponent = computed(() => {
 // Compute CSS prefix for this entity
 const cssPrefix = computed(() => {
   const classifier = cssClassifierRef.value
-  let ownPrefix = null
-  
+
   // Try to get prefix from classifier
   if (classifier && props.pointer) {
-    ownPrefix = classifier(props.pointer, {
+    return classifier(props.pointer, {
       depth: 0,
-      parentPrefix: props.inheritedCssPrefix,
       incomingProperty: props.incomingProperty
     })
   }
-  
-  // If entity has its own classification, use it
-  // Otherwise, inherit from parent
-  return ownPrefix || props.inheritedCssPrefix
+
+  return null
 })
 
 // Compute CSS classes to apply
@@ -84,7 +76,7 @@ onUnmounted(() => {
         </div>
         <div class="rows" :class="cssPrefix ? `${cssPrefix}-rows` : ''">
           <template v-for="row of pointer.rows">
-            <Row :row="row" :inheritedCssPrefix="cssPrefix">
+            <Row :row="row">
               <component :is="TermComponent" :term="row.predicate" :row="row" context="predicate"/>
             </Row>
           </template>
