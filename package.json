@@ -1,7 +1,7 @@
 {
   "name": "rdf-tree",
   "type": "module",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Vue.js component library for visualizing RDF datasets",
   "author": "",
   "license": "MIT",
