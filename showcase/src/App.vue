@@ -60,24 +60,21 @@ const enableRightClick = ref(false)
 const useCustomTerm = ref(true)
 const useVerticalLayout = ref(true)
 
-// CSS classifier function to demonstrate custom entity styling
-const cssClassifier = (entity, context = {}) => {
+// CSS classifier function to demonstrate custom row styling
+const cssClassifier = (row, context = {}) => {
   // Only apply classifier if vertical layout is enabled
   if (!useVerticalLayout.value) return null
 
-  // Property-based classification: Check if this entity appears as a value of the "likes" property
-  if (context.incomingProperty?.value === 'http://example.org/likes') {
+  // Property-based classification: Check the predicate of this row
+  if (row.predicate?.value === 'http://example.org/likes') {
     return 'likes'
   }
 
-  // Classify Address entities
-  if (entity.meta?.types?.some(type =>
-    type.value === 'http://schema.org/Address')) {
-    return 'address'
-  }
-
-  // Fallback for address entities by term pattern
-  if (entity.term?.value?.includes('address')) {
+  // Object-based classification: Check if any of the values are Address entities
+  if (row.values?.some(value => 
+    value.meta?.types?.some(type => type.value === 'http://schema.org/Address') ||
+    value.term?.value?.includes('address')
+  )) {
     return 'address'
   }
 
@@ -159,5 +156,36 @@ onMounted(async () => {
 </script>
 
 <style>
+/* CSS styles for row-level classification */
+.likes-row {
+  background-color: rgba(147, 51, 234, 0.1);
+  border-left: 3px solid rgb(147, 51, 234);
+}
 
+.likes-property {
+  background-color: rgba(147, 51, 234, 0.2);
+  border-radius: 4px;
+}
+
+.likes-value {
+  background-color: rgba(147, 51, 234, 0.05);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.address-row {
+  background-color: rgba(251, 146, 60, 0.1);
+  border-left: 3px solid rgb(251, 146, 60);
+}
+
+.address-property {
+  background-color: rgba(251, 146, 60, 0.2);
+  border-radius: 4px;
+}
+
+.address-value {
+  background-color: rgba(251, 146, 60, 0.05);
+}
 </style>

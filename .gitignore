@@ -4,3 +4,4 @@ assets
 dist
 /public/*.trig
 /public/*.ttl
+.serena

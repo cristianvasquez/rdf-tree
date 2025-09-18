@@ -2,7 +2,7 @@
 import { ChevronDown, ChevronForwardOutline } from '@vicons/ionicons5'
 
 import { NIcon } from 'naive-ui'
-import { ref } from 'vue'
+import { ref, inject, computed } from 'vue'
 import Entity from './Entity.vue'
 
 const props = defineProps({
@@ -11,6 +11,39 @@ const props = defineProps({
 
 const show = ref(true)
 
+// Inject CSS classifier function
+const cssClassifierRef = inject('cssClassifier', ref(null))
+
+// Compute CSS prefix for this row
+const rowCssPrefix = computed(() => {
+  const classifier = cssClassifierRef.value
+  
+  // Try to get prefix from classifier
+  if (classifier && props.row) {
+    return classifier(props.row, {
+      predicate: props.row.predicate,
+      values: props.row.values
+    })
+  }
+  
+  return null
+})
+
+// Compute CSS classes for row elements
+const rowClasses = computed(() => {
+  const prefix = rowCssPrefix.value
+  return prefix ? `${prefix}-row` : ''
+})
+
+const propertyClasses = computed(() => {
+  const prefix = rowCssPrefix.value
+  return prefix ? `${prefix}-property` : ''
+})
+
+const valueClasses = computed(() => {
+  const prefix = rowCssPrefix.value
+  return prefix ? `${prefix}-value` : ''
+})
 
 function toggle () {
   show.value = !show.value
@@ -18,8 +51,8 @@ function toggle () {
 
 </script>
 <template>
-  <div class="row">
-    <ul class="property">
+  <div class="row" :class="rowClasses">
+    <ul class="property" :class="propertyClasses">
       <li>
         <div style="display: flex; align-items: center">
           <template v-if="row.values.length > 1">
@@ -38,7 +71,7 @@ function toggle () {
         </div>
       </li>
     </ul>
-    <ul class="value">
+    <ul class="value" :class="valueClasses">
       <template v-if="show">
         <li v-for="v of row.values">
           <Entity :pointer="v" :incomingProperty="row.predicate"/>
