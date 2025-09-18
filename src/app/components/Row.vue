@@ -17,7 +17,7 @@ const cssClassifierRef = inject('cssClassifier', ref(null))
 // Compute CSS prefix for this row
 const rowCssPrefix = computed(() => {
   const classifier = cssClassifierRef.value
-  
+
   // Try to get prefix from classifier
   if (classifier && props.row) {
     return classifier(props.row, {
@@ -25,7 +25,7 @@ const rowCssPrefix = computed(() => {
       values: props.row.values
     })
   }
-  
+
   return null
 })
 
@@ -74,7 +74,7 @@ function toggle () {
     <ul class="value" :class="valueClasses">
       <template v-if="show">
         <li v-for="v of row.values">
-          <Entity :pointer="v" :incomingProperty="row.predicate"/>
+          <Entity :pointer="v"/>
         </li>
       </template>
       <template v-else>

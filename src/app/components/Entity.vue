@@ -6,10 +6,6 @@ import Term from './Term.vue'
 
 const props = defineProps({
   pointer: Object,
-  incomingProperty: {
-    type: Object,
-    default: null,
-  },
 })
 
 const entityRef = ref(null)
