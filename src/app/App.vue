@@ -31,6 +31,10 @@ const props = defineProps({
     type: Function,
     default: null,
   },
+  namespaces: {
+    type: Object,
+    default: () => ({}),
+  },
 })
 
 const store = useRdfState()
@@ -52,6 +56,9 @@ provide('termComponent', toRef(props, 'termComponent'))
 
 // Provide CSS classifier function to child components
 provide('cssClassifier', toRef(props, 'cssClassifier'))
+
+// Provide custom namespaces to child components
+provide('customNamespaces', toRef(props, 'namespaces'))
 
 // Initialize with provided pointer
 onMounted(async () => {

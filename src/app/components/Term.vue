@@ -1,11 +1,13 @@
 <script setup xmlns="http://www.w3.org/1999/html">
 
 import { ns } from '../../namespaces.js'
-import { computed, ref } from 'vue'
+import { computed, ref, inject } from 'vue'
 
 const props = defineProps({
   term: Object,
 })
+
+const customNamespaces = inject('customNamespaces', ref({}))
 
 function getDatatype (term) {
   function shrink (x) {
@@ -18,10 +20,12 @@ function getLanguage (term) {
   return term.language
 }
 
-const knownNamespaces = { ...ns }
+const knownNamespaces = computed(() => {
+  return { ...ns, ...customNamespaces.value }
+})
 
 function guessPrefix (value) {
-  for (const [prefix, namespace] of Object.entries(knownNamespaces)) {
+  for (const [prefix, namespace] of Object.entries(knownNamespaces.value)) {
     const startURL = namespace().value
     if (value.startsWith(startURL)) {
       return { prefix, display: value.replaceAll(startURL, ''), href: value }
