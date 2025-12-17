@@ -16,6 +16,7 @@
       :enableRightClick="enableRightClick"
       :termComponent="useCustomTerm ? CustomTerm : null"
       :cssClassifier="cssClassifier"
+      :namespaces="customNamespaces"
     />
     <!-- Configuration Demo Section -->
     <details class="config-demo">
@@ -57,8 +58,13 @@ const rootPointer = ref(null)
 const error = ref(null)
 const enableHighlighting = ref(false)
 const enableRightClick = ref(false)
-const useCustomTerm = ref(true)
+const useCustomTerm = ref(false)
 const useVerticalLayout = ref(true)
+
+// Custom namespaces to demonstrate namespace extension
+const customNamespaces = {
+  ex: rdf.namespace('http://example.org/')
+}
 
 // CSS classifier function to demonstrate custom row styling
 const cssClassifier = (row, context = {}) => {
@@ -71,7 +77,7 @@ const cssClassifier = (row, context = {}) => {
   }
 
   // Object-based classification: Check if any of the values are Address entities
-  if (row.values?.some(value => 
+  if (row.values?.some(value =>
     value.meta?.types?.some(type => type.value === 'http://schema.org/Address') ||
     value.term?.value?.includes('address')
   )) {

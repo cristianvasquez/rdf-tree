@@ -22,7 +22,6 @@
     "dev:showcase": "vite --config vite.showcase.config.js",
     "build": "vite build --config vite.showcase.config.js",
     "build:lib": "vite build --mode lib",
-    "preview:showcase": "vite preview --config vite.showcase.config.js",
     "snapshot": "mocha",
     "test": "mocha"
   },
@@ -49,6 +48,7 @@
     "readable-stream": "^4.7.0",
     "vite": "^6.3.5",
     "vite-plugin-node-polyfills": "^0.23.0",
-    "vue": "^3.5.20"
+    "vue": "^3.5.20",
+    "release-it": "^19.0.3"
   }
 }
